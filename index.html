@@ -816,7 +816,7 @@
 
     <section class="hero">
       <div class="hero-brand">
-        get it done.<span class="pronunciation">(luh-jwah)</span>
+        get it done.<span class="pronunciation">with Lajoie (luh-jwah)</span>
       </div>
       <div class="hero-image-container" id="heroContainer">
         <img
@@ -824,6 +824,17 @@
           alt="Hero"
           style="width: 100%; height: 100%; object-fit: cover; display: block"
         />
+        <div
+          style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+          "
+        ></div>
         <canvas
           id="grainCanvas"
           style="
@@ -833,7 +844,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 2;
             mix-blend-mode: overlay;
             opacity: 0.5;
           "
@@ -862,27 +873,7 @@
         </p>
       </div>
       <div class="fade-up delay-2">
-        <div
-          style="
-            width: 100%;
-            height: 600px;
-            background: linear-gradient(to bottom right, #e2e2e2, #ccc);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          "
-        >
-          <span
-            style="
-              font-family: &quot;Oswald&quot;, sans-serif;
-              text-transform: uppercase;
-              letter-spacing: 4px;
-              font-size: 0.8rem;
-              color: #999;
-            "
-            >Your Photo</span
-          >
-        </div>
+        <img src="/assets/images/photo1.jpg" alt="Photo 1" style="width: 100%; height: 600px; object-fit: cover; display: block;" />
       </div>
     </section>
 
@@ -934,33 +925,13 @@
         >
       </div>
       <div class="fade-up delay-2">
-        <div
-          style="
-            width: 100%;
-            height: 550px;
-            background: linear-gradient(to bottom right, #e2e2e2, #ccc);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          "
-        >
-          <span
-            style="
-              font-family: &quot;Oswald&quot;, sans-serif;
-              text-transform: uppercase;
-              letter-spacing: 4px;
-              font-size: 0.8rem;
-              color: #999;
-            "
-            >Your Photo</span
-          >
-        </div>
+        <img src="/assets/images/photo2.jpg" alt="Photo 2" style="width: 100%; height: 550px; object-fit: cover; display: block;" />
       </div>
     </section>
 
     <section class="product-section">
       <div class="product-image-area fade-up">
-        <div class="product-placeholder">Workshop Image</div>
+        <img src="/assets/images/photo3.jpg" alt="Photo 3" class="product-placeholder" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
       </div>
       <div class="product-text fade-up delay-2">
         <h3>Neurodivergent Strategies For Tech People</h3>
@@ -997,27 +968,7 @@
         </p>
       </div>
       <div class="fade-up delay-2">
-        <div
-          style="
-            width: 100%;
-            height: 600px;
-            background: linear-gradient(to bottom right, #e2e2e2, #ccc);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          "
-        >
-          <span
-            style="
-              font-family: &quot;Oswald&quot;, sans-serif;
-              text-transform: uppercase;
-              letter-spacing: 4px;
-              font-size: 0.8rem;
-              color: #999;
-            "
-            >Your Photo</span
-          >
-        </div>
+        <img src="/assets/images/photo4.jpg" alt="Photo 4" style="width: 100%; height: 600px; object-fit: cover; display: block;" />
       </div>
     </section>
 
@@ -1055,19 +1006,19 @@
         <h3 class="fade-up">Popular Episodes</h3>
         <div class="episodes-grid">
           <div class="episode-card fade-up delay-1">
-            <div class="episode-avatar">Guest Photo</div>
+            <div class="episode-avatar"><img src="/assets/images/photo5.jpg" alt="Photo 5" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" /></div>
             <div class="episode-name">
               Guest One <span class="arrow">→</span>
             </div>
           </div>
           <div class="episode-card fade-up delay-2">
-            <div class="episode-avatar">Guest Photo</div>
+            <div class="episode-avatar"><img src="/assets/images/photo6.jpg" alt="Photo 6" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" /></div>
             <div class="episode-name">
               Guest Two <span class="arrow">→</span>
             </div>
           </div>
           <div class="episode-card fade-up delay-3">
-            <div class="episode-avatar">Guest Photo</div>
+            <div class="episode-avatar"><img src="/assets/images/photo7.jpg" alt="Photo 7" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" /></div>
             <div class="episode-name">
               Guest Three <span class="arrow">→</span>
             </div>
