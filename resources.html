@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Lajoie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{--mint:#A8E6CF;--mint-light:#D4F5E4;--mint-dark:#7DCBA8;--black:#0A0A0A;--white:#FAFAFA;--gray:#888}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body.dark{--mint:#7DCBA8;--mint-light:#1a2e24;--mint-dark:#5fb892;--black:#EBEBEB;--white:#111111;--gray:#999}
+  body.dark{background:#111;color:#ebebeb}
+  body.dark nav{background:#1a2e24}
+  body.dark nav a{color:#ebebeb}
+  body.dark nav a.nav-link::after{background:#ebebeb}
+  body.dark nav a.active{border-bottom-color:#ebebeb}
+  body.dark .manifesto-text p,body.dark .mentorship p,body.dark .product-text p,body.dark .about-text p,body.dark .program-card p,body.dark .page-hero .subtitle,body.dark .story p,body.dark .value-card p,body.dark .chapter-card p,body.dark .topic-card p,body.dark .what-to-expect-text p,body.dark .expect-item p,body.dark .resource-card p,body.dark .tool-card p,body.dark .about-show-text p,body.dark .about-hero-text p,body.dark .book-info p,body.dark .podcast-hero p{color:#bbb}
+  body.dark .got-you{background:#1a2e24}
+  body.dark .got-you .pressure-text,body.dark .got-you .eyebrow,body.dark .got-you h2{color:#ebebeb}
+  body.dark .marquee-section{background:#1a2e24}
+  body.dark .cta-pill{background:#7DCBA8;color:#111}
+  body.dark .cta-pill:hover{background:#5fb892}
+  body.dark .mentorship h3{color:#555}
+  body.dark .product-placeholder{background:linear-gradient(135deg,#1a2e24,#2a4035)}
+  body.dark .cta-banner{background:#1a2e24}
+  body.dark .cta-banner h2{color:#ebebeb}
+  body.dark .cta-banner .cta-pill{background:#ebebeb;color:#111}
+  body.dark .cta-banner .cta-pill:hover{background:#ccc}
+  body.dark .booking-cta{background:#1a2e24}
+  body.dark .booking-cta h2,.dark .booking-cta p{color:#ebebeb}
+  body.dark .booking-cta .cta-pill{background:#ebebeb;color:#111}
+  body.dark .bonus-section{background:#1a2e24}
+  body.dark .bonus-section h2,.dark .bonus-section p{color:#ebebeb}
+  body.dark .program-card{border-color:#333}
+  body.dark .program-details{background:#1a2e24}
+  body.dark .resource-card{border-color:#333;background:#1a1a1a}
+  body.dark .resource-card:hover{border-color:#7DCBA8}
+  body.dark .topic-card{border-color:#333;background:#1a1a1a}
+  body.dark .topic-card:hover{border-color:#7DCBA8}
+  body.dark .tool-section{background:#1a2e24}
+  body.dark .tool-card{background:#111}
+  body.dark .chapter-card{background:#1a1a1a}
+  body.dark .whats-inside{background:#1a2e24}
+  body.dark .values{background:#1a2e24}
+  body.dark .what-to-expect{background:#1a2e24}
+  body.dark .story .pull-quote{border-left-color:#7DCBA8;color:#ebebeb}
+  body.dark .about-hero-image{background:linear-gradient(135deg,#222,#333)}
+  body.dark .speaking-hero-bg{background:linear-gradient(135deg,#222,#333)}
+  body.dark .praise .cta-pill,.dark .praise-card{border-color:#7DCBA8}
+  body.dark .cta-pill.outline{border-color:#7DCBA8;color:#7DCBA8}
+  body.dark .cta-pill.outline:hover{background:#7DCBA8;color:#111}
+  body.dark .cta-pill.secondary{border-color:#ebebeb;color:#ebebeb}
+  body.dark .cta-pill.secondary:hover{background:#ebebeb;color:#111}
+  body.dark .book-cover{background:linear-gradient(145deg,#1a2e24,#2a4035);box-shadow:20px 20px 60px rgba(0,0,0,.4),-5px -5px 20px rgba(255,255,255,.03)}
+  body.dark .book-info .tagline{color:#999}
+  .dark-toggle{position:fixed;top:58px;right:16px;z-index:1001;background:none;border:none;cursor:pointer;font-size:1.1rem;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:.7}
+  .dark-toggle:hover{opacity:1;transform:scale(1.1)}
+html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--white);color:var(--black);overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--mint);padding:16px 0;display:flex;justify-content:stretch;align-items:center;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;font-weight:600}nav a{color:var(--black);text-decoration:none;transition:opacity .3s;flex:1;text-align:center}nav a:hover{opacity:.6}nav a.nav-link{position:relative}nav a.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1.5px;background:var(--black);transition:width .3s}nav a.nav-link:hover::after{width:60%}nav a.active{border-bottom:2px solid var(--black)}
+  .page-hero{padding:180px 48px 100px}.page-hero h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(3rem,8vw,8rem);text-transform:uppercase;line-height:.95;max-width:900px}.page-hero .subtitle{font-size:1.3rem;line-height:1.7;color:#444;max-width:600px;margin-top:32px}
+  .resources-grid{padding:0 48px 120px;display:grid;grid-template-columns:repeat(2,1fr);gap:40px;max-width:1000px}
+  .resource-card{padding:48px 40px;border:1px solid #e0e0e0;border-radius:4px;transition:all .3s}.resource-card:hover{border-color:var(--mint);box-shadow:0 8px 30px rgba(168,230,207,.15);transform:translateY(-4px)}
+  .resource-card .tag{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.7rem;letter-spacing:3px;color:var(--mint-dark);margin-bottom:12px}
+  .resource-card h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;line-height:1.15}
+  .resource-card p{font-size:1.1rem;line-height:1.7;color:#555;margin-bottom:24px}
+  .cta-pill{display:inline-flex;align-items:center;gap:12px;background:var(--mint);color:var(--black);padding:14px 32px;border-radius:50px;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.85rem;letter-spacing:2px;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer}.cta-pill:hover{background:var(--mint-dark);transform:translateX(4px)}.cta-pill .arrow{font-size:1.2rem;transition:transform .3s}.cta-pill:hover .arrow{transform:translateX(4px)}
+  .tool-section{padding:120px 48px;background:var(--mint-light)}
+  .tool-section h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,3.5vw,3rem);text-transform:uppercase;text-align:center;margin-bottom:20px}
+  .tool-section .sub{text-align:center;font-size:1.15rem;color:#555;max-width:600px;margin:0 auto 60px;line-height:1.7}
+  .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1000px;margin:0 auto}
+  .tool-card{background:var(--white);padding:32px;border-radius:4px;text-align:center}
+  .tool-card .tool-num{font-family:'Oswald',sans-serif;font-weight:700;font-size:2.5rem;color:var(--mint-dark);margin-bottom:8px}
+  .tool-card h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}.tool-card p{font-size:1.05rem;line-height:1.65;color:#555}
+  .cta-banner{background:var(--mint);padding:100px 48px;text-align:center}.cta-banner h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.5rem);line-height:1.15;max-width:700px;margin:0 auto 36px}
+  .cta-banner .cta-pill{background:var(--black);color:var(--white)}.cta-banner .cta-pill:hover{background:#333}
+  footer{background:var(--black);border-top:1px solid #222;padding:60px 48px;display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif}.footer-brand{font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:3px;color:var(--mint)}.footer-links{display:flex;gap:32px}.footer-links a{color:var(--gray);text-decoration:none;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;transition:color .3s}.footer-links a:hover{color:var(--mint)}.footer-copy{color:#555;font-size:.7rem;letter-spacing:1px;text-transform:uppercase}
+  .fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.fade-up.delay-1{transition-delay:.1s}.fade-up.delay-2{transition-delay:.2s}.fade-up.delay-3{transition-delay:.3s}
+  @media(max-width:900px){nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}.page-hero{padding:140px 24px 60px}.resources-grid{grid-template-columns:1fr;padding:0 24px 80px}.tool-section{padding:80px 24px}.tools-grid{grid-template-columns:1fr}.cta-banner{padding:60px 24px}footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}}
+</style>
+</head>
+<body>
+<button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">☀️</button>
+<nav><a href="index.html">Home</a><a href="programs.html" class="nav-link">Programs</a><a href="about.html" class="nav-link">About</a><a href="resources.html" class="nav-link active">Resources</a><a href="podcast.html" class="nav-link">Podcast</a><a href="speaking.html" class="nav-link">Speaking</a></nav>
+
+<section class="page-hero">
+  <h1 class="fade-up">Resources &amp; Tools</h1>
+  <p class="subtitle fade-up delay-1">Free and paid resources to help you break The Perfect Plan Trap and start taking aligned action — today, not someday.</p>
+</section>
+
+<div class="resources-grid">
+  <div class="resource-card fade-up">
+    <div class="tag">Free Tool</div>
+    <h2>The Task Inflation Test</h2>
+    <p>Pick any task from this week that didn't get done. Ask: how long was it designed to take? What standard was it being held to? Could it have been done in 15 minutes if "good enough" was the standard? The answer is almost always yes. This free worksheet walks you through the full audit.</p>
+    <a href="#" class="cta-pill">Download Free <span class="arrow">→</span></a>
+  </div>
+  <div class="resource-card fade-up delay-1">
+    <div class="tag">Free Guide</div>
+    <h2>The Perfectionism Audit</h2>
+    <p>A guided self-assessment to map exactly where The Perfect Plan Trap shows up in your daily life. Identify the tasks perfectionism has inflated, the standards that are silently killing your consistency, and the micro-actions hiding inside your oversized plans.</p>
+    <a href="#" class="cta-pill">Download Free <span class="arrow">→</span></a>
+  </div>
+  <div class="resource-card fade-up">
+    <div class="tag">Workshop Replay</div>
+    <h2>Values &amp; Decision-Making Framework</h2>
+    <p>Replay from our weekly live workshop with Sasha Franklin. A practical framework for tech professionals making career decisions — whether it's a pivot, a promotion, or a full transition. Designed for high performers stuck between knowing and doing.</p>
+    <a href="#" class="cta-pill">Watch Replay <span class="arrow">→</span></a>
+  </div>
+  <div class="resource-card fade-up delay-1">
+    <div class="tag">Interactive</div>
+    <h2>Find Your Ikigai Quiz</h2>
+    <p>A personalized assessment that maps your four Ikigai pillars — what you love, what you're great at, what the world needs, and what you can be paid for — and generates a custom roadmap based on your answers.</p>
+    <a href="#" class="cta-pill">Take The Quiz <span class="arrow">→</span></a>
+  </div>
+</div>
+
+<section class="tool-section">
+  <h2 class="fade-up">The Micro-Action Method</h2>
+  <p class="sub fade-up delay-1">The core framework behind everything I teach. Three shifts that break the start-stop cycle for good.</p>
+  <div class="tools-grid">
+    <div class="tool-card fade-up"><div class="tool-num">01</div><h3>Shrink The Task</h3><p>If it can't be done in 15 minutes with "good enough" as the standard, it's too big. Perfectionism is the architect of oversized tasks. Fire it.</p></div>
+    <div class="tool-card fade-up delay-1"><div class="tool-num">02</div><h3>Protect The Streak</h3><p>Consistency over correctness. A 12-minute imperfect action done daily beats a 3-hour perfect session done once a month. Every time.</p></div>
+    <div class="tool-card fade-up delay-2"><div class="tool-num">03</div><h3>Let The Habit Lead</h3><p>Do it daily until it stops being something you're trying to do and starts being who you are. That's the identity shift. That's the real work.</p></div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2 class="fade-up">Want personalized coaching to implement all of this?</h2>
+  <a href="programs.html" class="cta-pill fade-up delay-1">Explore The 90-Day Container <span class="arrow">→</span></a>
+</section>
+
+<footer><div class="footer-brand">Lajoie</div><div class="footer-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="podcast.html">Podcast</a><a href="speaking.html">Speaking</a></div><div class="footer-copy">© 2026 All Rights Reserved</div></footer>
+<script>const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));</script>
+
+<script>
+  function toggleDark(){
+    document.body.classList.toggle('dark');
+    const isDark=document.body.classList.contains('dark');
+    localStorage.setItem('darkMode',isDark?'true':'false');
+    document.querySelector('.dark-toggle').textContent=isDark?'☀️':'🌙';
+  }
+  (function(){
+    if(localStorage.getItem('darkMode')==='true'){
+      document.body.classList.add('dark');
+      document.querySelector('.dark-toggle').textContent='☀️';
+    }else{
+      document.querySelector('.dark-toggle').textContent='🌙';
+    }
+  })();
+</script>
+</body>
+</html>

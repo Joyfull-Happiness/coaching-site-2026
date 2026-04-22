@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podcast — Lajoie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{--mint:#A8E6CF;--mint-light:#D4F5E4;--mint-dark:#7DCBA8;--black:#0A0A0A;--white:#FAFAFA;--gray:#888}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body.dark{--mint:#7DCBA8;--mint-light:#1a2e24;--mint-dark:#5fb892;--black:#EBEBEB;--white:#111111;--gray:#999}
+  body.dark{background:#111;color:#ebebeb}
+  body.dark nav{background:#1a2e24}
+  body.dark nav a{color:#ebebeb}
+  body.dark nav a.nav-link::after{background:#ebebeb}
+  body.dark nav a.active{border-bottom-color:#ebebeb}
+  body.dark .manifesto-text p,body.dark .mentorship p,body.dark .product-text p,body.dark .about-text p,body.dark .program-card p,body.dark .page-hero .subtitle,body.dark .story p,body.dark .value-card p,body.dark .chapter-card p,body.dark .topic-card p,body.dark .what-to-expect-text p,body.dark .expect-item p,body.dark .resource-card p,body.dark .tool-card p,body.dark .about-show-text p,body.dark .about-hero-text p,body.dark .book-info p,body.dark .podcast-hero p{color:#bbb}
+  body.dark .got-you{background:#1a2e24}
+  body.dark .got-you .pressure-text,body.dark .got-you .eyebrow,body.dark .got-you h2{color:#ebebeb}
+  body.dark .marquee-section{background:#1a2e24}
+  body.dark .cta-pill{background:#7DCBA8;color:#111}
+  body.dark .cta-pill:hover{background:#5fb892}
+  body.dark .mentorship h3{color:#555}
+  body.dark .product-placeholder{background:linear-gradient(135deg,#1a2e24,#2a4035)}
+  body.dark .cta-banner{background:#1a2e24}
+  body.dark .cta-banner h2{color:#ebebeb}
+  body.dark .cta-banner .cta-pill{background:#ebebeb;color:#111}
+  body.dark .cta-banner .cta-pill:hover{background:#ccc}
+  body.dark .booking-cta{background:#1a2e24}
+  body.dark .booking-cta h2,.dark .booking-cta p{color:#ebebeb}
+  body.dark .booking-cta .cta-pill{background:#ebebeb;color:#111}
+  body.dark .bonus-section{background:#1a2e24}
+  body.dark .bonus-section h2,.dark .bonus-section p{color:#ebebeb}
+  body.dark .program-card{border-color:#333}
+  body.dark .program-details{background:#1a2e24}
+  body.dark .resource-card{border-color:#333;background:#1a1a1a}
+  body.dark .resource-card:hover{border-color:#7DCBA8}
+  body.dark .topic-card{border-color:#333;background:#1a1a1a}
+  body.dark .topic-card:hover{border-color:#7DCBA8}
+  body.dark .tool-section{background:#1a2e24}
+  body.dark .tool-card{background:#111}
+  body.dark .chapter-card{background:#1a1a1a}
+  body.dark .whats-inside{background:#1a2e24}
+  body.dark .values{background:#1a2e24}
+  body.dark .what-to-expect{background:#1a2e24}
+  body.dark .story .pull-quote{border-left-color:#7DCBA8;color:#ebebeb}
+  body.dark .about-hero-image{background:linear-gradient(135deg,#222,#333)}
+  body.dark .speaking-hero-bg{background:linear-gradient(135deg,#222,#333)}
+  body.dark .praise .cta-pill,.dark .praise-card{border-color:#7DCBA8}
+  body.dark .cta-pill.outline{border-color:#7DCBA8;color:#7DCBA8}
+  body.dark .cta-pill.outline:hover{background:#7DCBA8;color:#111}
+  body.dark .cta-pill.secondary{border-color:#ebebeb;color:#ebebeb}
+  body.dark .cta-pill.secondary:hover{background:#ebebeb;color:#111}
+  body.dark .book-cover{background:linear-gradient(145deg,#1a2e24,#2a4035);box-shadow:20px 20px 60px rgba(0,0,0,.4),-5px -5px 20px rgba(255,255,255,.03)}
+  body.dark .book-info .tagline{color:#999}
+  .dark-toggle{position:fixed;top:58px;right:16px;z-index:1001;background:none;border:none;cursor:pointer;font-size:1.1rem;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:.7}
+  .dark-toggle:hover{opacity:1;transform:scale(1.1)}
+html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--black);color:var(--white);overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--mint);padding:16px 0;display:flex;justify-content:stretch;align-items:center;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;font-weight:600}nav a{color:var(--black);text-decoration:none;transition:opacity .3s;flex:1;text-align:center}nav a:hover{opacity:.6}nav a.nav-link{position:relative}nav a.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1.5px;background:var(--black);transition:width .3s}nav a.nav-link:hover::after{width:60%}nav a.active{border-bottom:2px solid var(--black)}
+  .podcast-hero{padding:180px 48px 100px;text-align:center}
+  .podcast-hero .eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:4px;color:var(--mint);margin-bottom:20px}
+  .podcast-hero h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(3rem,8vw,8rem);text-transform:uppercase;line-height:.95;color:var(--mint);margin-bottom:40px}
+  .podcast-hero p{font-size:1.3rem;line-height:1.7;color:#bbb;max-width:600px;margin:0 auto 48px}
+  .stats-row{display:flex;justify-content:center;gap:60px;margin-bottom:48px}.stat{text-align:center}
+  .stat-number{font-family:'Oswald',sans-serif;font-weight:700;font-size:2rem;color:var(--mint)}
+  .stat-label{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.7rem;letter-spacing:2px;color:var(--gray);margin-top:4px}
+  .listen-buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .cta-pill{display:inline-flex;align-items:center;gap:12px;background:var(--mint);color:var(--black);padding:14px 32px;border-radius:50px;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.85rem;letter-spacing:2px;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer}.cta-pill:hover{background:var(--mint-dark);transform:translateX(4px)}
+  .cta-pill.outline{background:transparent;border:2px solid var(--mint);color:var(--mint)}.cta-pill.outline:hover{background:var(--mint);color:var(--black)}
+  .cta-pill .arrow{font-size:1.2rem;transition:transform .3s}.cta-pill:hover .arrow{transform:translateX(4px)}
+  .featured{padding:100px 48px;border-top:1px solid #222}
+  .featured h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:4px;color:var(--mint);text-align:center;margin-bottom:60px}
+  .episodes-list{max-width:800px;margin:0 auto}
+  .episode-row{display:grid;grid-template-columns:80px 1fr auto;gap:24px;align-items:center;padding:28px 0;border-bottom:1px solid #222;transition:background .3s;cursor:pointer}.episode-row:hover{background:rgba(168,230,207,.05)}
+  .episode-number{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.8rem;color:var(--mint-dark);text-align:center}
+  .episode-info h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}.episode-info p{font-size:1rem;color:var(--gray);line-height:1.5}
+  .episode-play{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;color:var(--mint);display:flex;align-items:center;gap:8px;white-space:nowrap}
+  .about-show{padding:120px 48px;background:var(--mint);color:var(--black);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about-show-image{width:100%;height:500px;background:linear-gradient(135deg,#d4c9b8,#b5a892);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:.8rem;color:#888;border-radius:4px}
+  .about-show-text h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,3.5vw,3rem);text-transform:uppercase;line-height:1.05;margin-bottom:24px}
+  .about-show-text p{font-size:1.2rem;line-height:1.8;color:#333;margin-bottom:20px}
+  .subscribe-cta{padding:100px 48px;text-align:center;border-top:1px solid #222}
+  .subscribe-cta h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.5rem);color:var(--mint);line-height:1.15;max-width:600px;margin:0 auto 36px}
+  footer{background:var(--black);border-top:1px solid #222;padding:60px 48px;display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif}.footer-brand{font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:3px;color:var(--mint)}.footer-links{display:flex;gap:32px}.footer-links a{color:var(--gray);text-decoration:none;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;transition:color .3s}.footer-links a:hover{color:var(--mint)}.footer-copy{color:#555;font-size:.7rem;letter-spacing:1px;text-transform:uppercase}
+  .fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.fade-up.delay-1{transition-delay:.1s}.fade-up.delay-2{transition-delay:.2s}.fade-up.delay-3{transition-delay:.3s}
+  @media(max-width:900px){nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}.podcast-hero{padding:140px 24px 60px}.stats-row{gap:32px;flex-wrap:wrap}.featured{padding:60px 24px}.episode-row{grid-template-columns:50px 1fr}.episode-play{display:none}.about-show{grid-template-columns:1fr;padding:80px 24px}.about-show-image{height:350px}.subscribe-cta{padding:60px 24px}footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}}
+</style>
+</head>
+<body>
+<button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">☀️</button>
+<nav><a href="index.html">Home</a><a href="programs.html" class="nav-link">Programs</a><a href="about.html" class="nav-link">About</a><a href="resources.html" class="nav-link">Resources</a><a href="podcast.html" class="nav-link active">Podcast</a><a href="speaking.html" class="nav-link">Speaking</a></nav>
+
+<section class="podcast-hero">
+  <p class="eyebrow fade-up">The Podcast &amp; Live Stream</p>
+  <h1 class="fade-up delay-1">Transformation To Expansion</h1>
+  <p class="fade-up delay-2">Real talk about breaking the start-stop cycle, taking imperfect action, and building a life that actually matches who you've become. Conversations on mental health, purpose, spirituality, and the messy middle of transformation.</p>
+  <div class="stats-row fade-up delay-2">
+    <div class="stat"><div class="stat-number">Weekly</div><div class="stat-label">Live Streams</div></div>
+    <div class="stat"><div class="stat-number">100+</div><div class="stat-label">Episodes</div></div>
+    <div class="stat"><div class="stat-number">Tech</div><div class="stat-label">Leaders &amp; Founders</div></div>
+  </div>
+  <div class="listen-buttons fade-up delay-3">
+    <a href="#" class="cta-pill">Listen on Spotify <span class="arrow">→</span></a>
+    <a href="#" class="cta-pill outline">Apple Podcasts</a>
+    <a href="#" class="cta-pill outline">YouTube</a>
+  </div>
+</section>
+
+<section class="featured">
+  <h2 class="fade-up">Featured Episodes</h2>
+  <div class="episodes-list">
+    <div class="episode-row fade-up"><div class="episode-number">01</div><div class="episode-info"><h3>The Perfect Plan Trap: Why You Keep Starting And Stopping</h3><p>The episode that started it all — naming the cycle and showing you exactly how perfectionism designs your failure.</p></div><div class="episode-play">Listen →</div></div>
+    <div class="episode-row fade-up delay-1"><div class="episode-number">02</div><div class="episode-info"><h3>Your Spirit Guides Are Real ft. Anjie Hipple</h3><p>Spirit guide communication, channeling angels, healing trauma, and raising your consciousness — with 350K angel messages.</p></div><div class="episode-play">Listen →</div></div>
+    <div class="episode-row fade-up delay-1"><div class="episode-number">03</div><div class="episode-info"><h3>Micro-Actions: Why 12 Minutes Beats 3 Hours</h3><p>The case for consistency over correctness — and why your 15-minute imperfect action is worth more than your perfect plan.</p></div><div class="episode-play">Listen →</div></div>
+    <div class="episode-row fade-up delay-2"><div class="episode-number">04</div><div class="episode-info"><h3>From Tech Career To Purpose-Led Life</h3><p>How tech professionals are navigating the gap between the career they built and the life they actually want.</p></div><div class="episode-play">Listen →</div></div>
+    <div class="episode-row fade-up delay-2"><div class="episode-number">05</div><div class="episode-info"><h3>Values-Based Decision Making For High Performers</h3><p>The framework from our weekly workshop with Sasha Franklin — adapted for tech leaders at a crossroads.</p></div><div class="episode-play">Listen →</div></div>
+  </div>
+</section>
+
+<section class="about-show">
+  <div class="about-show-image fade-up">Your Photo</div>
+  <div class="about-show-text fade-up delay-1">
+    <h2>About The Show</h2>
+    <p>Transformation to Expansion started as a weekly live stream — just me, a mic, and real conversations about what it actually takes to change your life. Not the highlight reel. The messy middle.</p>
+    <p>Every episode explores the intersection of mental health, purpose, spirituality, and action. Whether it's a solo pep talk about the start-stop cycle, a deep-dive with a guest on channeling and consciousness, or practical frameworks for career transitions — this show is for tech professionals who are done consuming and ready to start creating.</p>
+  </div>
+</section>
+
+<section class="subscribe-cta">
+  <h2 class="fade-up">New episodes drop weekly. Subscribe wherever you listen.</h2>
+  <div class="listen-buttons fade-up delay-1">
+    <a href="#" class="cta-pill">Spotify <span class="arrow">→</span></a>
+    <a href="#" class="cta-pill outline">Apple Podcasts</a>
+    <a href="#" class="cta-pill outline">YouTube</a>
+  </div>
+</section>
+
+<footer><div class="footer-brand">Lajoie</div><div class="footer-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="podcast.html">Podcast</a><a href="speaking.html">Speaking</a></div><div class="footer-copy">© 2026 All Rights Reserved</div></footer>
+<script>const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));</script>
+
+<script>
+  function toggleDark(){
+    document.body.classList.toggle('dark');
+    const isDark=document.body.classList.contains('dark');
+    localStorage.setItem('darkMode',isDark?'true':'false');
+    document.querySelector('.dark-toggle').textContent=isDark?'☀️':'🌙';
+  }
+  (function(){
+    if(localStorage.getItem('darkMode')==='true'){
+      document.body.classList.add('dark');
+      document.querySelector('.dark-toggle').textContent='☀️';
+    }else{
+      document.querySelector('.dark-toggle').textContent='🌙';
+    }
+  })();
+</script>
+</body>
+</html>

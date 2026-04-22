@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaking — Lajoie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{--mint:#A8E6CF;--mint-light:#D4F5E4;--mint-dark:#7DCBA8;--black:#0A0A0A;--white:#FAFAFA;--gray:#888}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body.dark{--mint:#7DCBA8;--mint-light:#1a2e24;--mint-dark:#5fb892;--black:#EBEBEB;--white:#111111;--gray:#999}
+  body.dark{background:#111;color:#ebebeb}
+  body.dark nav{background:#1a2e24}
+  body.dark nav a{color:#ebebeb}
+  body.dark nav a.nav-link::after{background:#ebebeb}
+  body.dark nav a.active{border-bottom-color:#ebebeb}
+  body.dark .manifesto-text p,body.dark .mentorship p,body.dark .product-text p,body.dark .about-text p,body.dark .program-card p,body.dark .page-hero .subtitle,body.dark .story p,body.dark .value-card p,body.dark .chapter-card p,body.dark .topic-card p,body.dark .what-to-expect-text p,body.dark .expect-item p,body.dark .resource-card p,body.dark .tool-card p,body.dark .about-show-text p,body.dark .about-hero-text p,body.dark .book-info p,body.dark .podcast-hero p{color:#bbb}
+  body.dark .got-you{background:#1a2e24}
+  body.dark .got-you .pressure-text,body.dark .got-you .eyebrow,body.dark .got-you h2{color:#ebebeb}
+  body.dark .marquee-section{background:#1a2e24}
+  body.dark .cta-pill{background:#7DCBA8;color:#111}
+  body.dark .cta-pill:hover{background:#5fb892}
+  body.dark .mentorship h3{color:#555}
+  body.dark .product-placeholder{background:linear-gradient(135deg,#1a2e24,#2a4035)}
+  body.dark .cta-banner{background:#1a2e24}
+  body.dark .cta-banner h2{color:#ebebeb}
+  body.dark .cta-banner .cta-pill{background:#ebebeb;color:#111}
+  body.dark .cta-banner .cta-pill:hover{background:#ccc}
+  body.dark .booking-cta{background:#1a2e24}
+  body.dark .booking-cta h2,.dark .booking-cta p{color:#ebebeb}
+  body.dark .booking-cta .cta-pill{background:#ebebeb;color:#111}
+  body.dark .bonus-section{background:#1a2e24}
+  body.dark .bonus-section h2,.dark .bonus-section p{color:#ebebeb}
+  body.dark .program-card{border-color:#333}
+  body.dark .program-details{background:#1a2e24}
+  body.dark .resource-card{border-color:#333;background:#1a1a1a}
+  body.dark .resource-card:hover{border-color:#7DCBA8}
+  body.dark .topic-card{border-color:#333;background:#1a1a1a}
+  body.dark .topic-card:hover{border-color:#7DCBA8}
+  body.dark .tool-section{background:#1a2e24}
+  body.dark .tool-card{background:#111}
+  body.dark .chapter-card{background:#1a1a1a}
+  body.dark .whats-inside{background:#1a2e24}
+  body.dark .values{background:#1a2e24}
+  body.dark .what-to-expect{background:#1a2e24}
+  body.dark .story .pull-quote{border-left-color:#7DCBA8;color:#ebebeb}
+  body.dark .about-hero-image{background:linear-gradient(135deg,#222,#333)}
+  body.dark .speaking-hero-bg{background:linear-gradient(135deg,#222,#333)}
+  body.dark .praise .cta-pill,.dark .praise-card{border-color:#7DCBA8}
+  body.dark .cta-pill.outline{border-color:#7DCBA8;color:#7DCBA8}
+  body.dark .cta-pill.outline:hover{background:#7DCBA8;color:#111}
+  body.dark .cta-pill.secondary{border-color:#ebebeb;color:#ebebeb}
+  body.dark .cta-pill.secondary:hover{background:#ebebeb;color:#111}
+  body.dark .book-cover{background:linear-gradient(145deg,#1a2e24,#2a4035);box-shadow:20px 20px 60px rgba(0,0,0,.4),-5px -5px 20px rgba(255,255,255,.03)}
+  body.dark .book-info .tagline{color:#999}
+  .dark-toggle{position:fixed;top:58px;right:16px;z-index:1001;background:none;border:none;cursor:pointer;font-size:1.1rem;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:.7}
+  .dark-toggle:hover{opacity:1;transform:scale(1.1)}
+html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--white);color:var(--black);overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--mint);padding:16px 0;display:flex;justify-content:stretch;align-items:center;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;font-weight:600}nav a{color:var(--black);text-decoration:none;transition:opacity .3s;flex:1;text-align:center}nav a:hover{opacity:.6}nav a.nav-link{position:relative}nav a.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1.5px;background:var(--black);transition:width .3s}nav a.nav-link:hover::after{width:60%}nav a.active{border-bottom:2px solid var(--black)}
+  .speaking-hero{padding-top:60px;min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+  .speaking-hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#d4c9b8,#a89880);z-index:0}
+  .speaking-hero-bg::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;opacity:.35;mix-blend-mode:overlay;background:repeating-conic-gradient(#0003 0% 25%,transparent 0% 50%) 0 0/3px 3px}
+  .speaking-hero-content{position:relative;z-index:1;padding:120px 48px;max-width:750px}
+  .speaking-hero-content .eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:4px;color:var(--mint);margin-bottom:20px;background:var(--black);display:inline-block;padding:8px 20px}
+  .speaking-hero-content h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(3rem,7vw,7rem);text-transform:uppercase;line-height:.95;color:var(--white);margin-bottom:28px;text-shadow:2px 4px 20px rgba(0,0,0,.2)}
+  .speaking-hero-content p{font-size:1.3rem;line-height:1.7;color:var(--white);max-width:550px;margin-bottom:36px;text-shadow:1px 2px 8px rgba(0,0,0,.15)}
+  .cta-pill{display:inline-flex;align-items:center;gap:12px;background:var(--mint);color:var(--black);padding:14px 32px;border-radius:50px;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.85rem;letter-spacing:2px;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer}.cta-pill:hover{background:var(--mint-dark);transform:translateX(4px)}.cta-pill .arrow{font-size:1.2rem;transition:transform .3s}.cta-pill:hover .arrow{transform:translateX(4px)}
+  .topics{padding:120px 48px}
+  .topics h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,4vw,3.5rem);text-transform:uppercase;text-align:center;margin-bottom:20px}
+  .topics .sub{text-align:center;font-size:1.15rem;color:#666;max-width:600px;margin:0 auto 60px;line-height:1.7}
+  .topics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1000px;margin:0 auto}
+  .topic-card{padding:40px 32px;border:1px solid #e0e0e0;border-radius:4px;transition:all .3s}.topic-card:hover{border-color:var(--mint);box-shadow:0 8px 30px rgba(168,230,207,.15);transform:translateY(-4px)}
+  .topic-card .topic-icon{font-family:'Oswald',sans-serif;font-weight:700;font-size:2.5rem;color:var(--mint-dark);margin-bottom:16px}
+  .topic-card h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}.topic-card p{font-size:1.05rem;line-height:1.65;color:#555}
+  .what-to-expect{padding:120px 48px;background:var(--mint-light);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .what-to-expect-image{width:100%;height:500px;background:linear-gradient(to bottom right,#e2e2e2,#ccc);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:.8rem;color:#999;border-radius:4px}
+  .what-to-expect-text h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,3.5vw,3rem);text-transform:uppercase;line-height:1.05;margin-bottom:28px}
+  .what-to-expect-text p{font-size:1.15rem;line-height:1.8;color:#444;margin-bottom:20px}
+  .expect-list{margin:28px 0 36px}.expect-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:16px}
+  .expect-check{font-family:'Oswald',sans-serif;font-weight:700;color:var(--mint-dark);font-size:1.2rem;flex-shrink:0;margin-top:2px}
+  .expect-item p{margin:0;font-size:1.1rem;line-height:1.6;color:#444}
+  .booking-cta{padding:100px 48px;background:var(--mint);text-align:center}
+  .booking-cta h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.5rem);line-height:1.15;max-width:700px;margin:0 auto 20px}
+  .booking-cta p{font-size:1.15rem;color:#333;max-width:500px;margin:0 auto 36px;line-height:1.6}
+  .booking-cta .cta-pill{background:var(--black);color:var(--white)}.booking-cta .cta-pill:hover{background:#333}
+  footer{background:var(--black);border-top:1px solid #222;padding:60px 48px;display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif}.footer-brand{font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:3px;color:var(--mint)}.footer-links{display:flex;gap:32px}.footer-links a{color:var(--gray);text-decoration:none;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;transition:color .3s}.footer-links a:hover{color:var(--mint)}.footer-copy{color:#555;font-size:.7rem;letter-spacing:1px;text-transform:uppercase}
+  .fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.fade-up.delay-1{transition-delay:.1s}.fade-up.delay-2{transition-delay:.2s}.fade-up.delay-3{transition-delay:.3s}
+  @media(max-width:900px){nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}.speaking-hero-content{padding:120px 24px 60px}.topics{padding:80px 24px}.topics-grid{grid-template-columns:1fr}.what-to-expect{grid-template-columns:1fr;padding:80px 24px;gap:40px}.what-to-expect-image{height:350px}.booking-cta{padding:60px 24px}footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}}
+</style>
+</head>
+<body>
+<button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">☀️</button>
+<nav><a href="index.html">Home</a><a href="programs.html" class="nav-link">Programs</a><a href="about.html" class="nav-link">About</a><a href="resources.html" class="nav-link">Resources</a><a href="podcast.html" class="nav-link">Podcast</a><a href="speaking.html" class="nav-link active">Speaking</a></nav>
+
+<section class="speaking-hero">
+  <div class="speaking-hero-bg"></div>
+  <div class="speaking-hero-content">
+    <div class="eyebrow fade-up">Keynote Speaker &amp; Workshop Leader</div>
+    <h1 class="fade-up delay-1">Break The Cycle</h1>
+    <p class="fade-up delay-2">High-energy keynotes and interactive workshops for tech teams, leadership summits, and professional development events. I don't do motivation fluff — I deliver frameworks your audience can use the same day.</p>
+    <a href="#" class="cta-pill fade-up delay-3">Book Me To Speak <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<section class="topics">
+  <h2 class="fade-up">Signature Topics</h2>
+  <p class="sub fade-up delay-1">Every talk is customized to your audience. These are the frameworks I deliver with the most impact.</p>
+  <div class="topics-grid">
+    <div class="topic-card fade-up"><div class="topic-icon">01</div><h3>The Perfect Plan Trap</h3><p>Why your highest performers keep starting and stopping — and the micro-action framework that breaks the cycle. The flagship talk that names the problem nobody's naming.</p></div>
+    <div class="topic-card fade-up delay-1"><div class="topic-icon">02</div><h3>Consistency Over Correctness</h3><p>Why 12 minutes of imperfect action beats 3 hours of perfect execution. A mindset shift for teams drowning in optimization and starving for output.</p></div>
+    <div class="topic-card fade-up delay-2"><div class="topic-icon">03</div><h3>Values-Based Decision Making</h3><p>The practical framework I co-developed with Sasha Franklin for high-performing professionals at a crossroads — career pivots, leadership transitions, and life redesigns.</p></div>
+    <div class="topic-card fade-up"><div class="topic-icon">04</div><h3>From Clarity To Action</h3><p>For teams who have done the vision work but can't execute. How to bridge the gap between knowing your values and living them — without another offsite or strategy deck.</p></div>
+    <div class="topic-card fade-up delay-1"><div class="topic-icon">05</div><h3>The Ikigai Framework For Tech Leaders</h3><p>A practical, evidence-based approach to finding purpose at the intersection of passion, skill, impact, and income — adapted specifically for tech professionals.</p></div>
+    <div class="topic-card fade-up delay-2"><div class="topic-icon">06</div><h3>Mental Health In Tech</h3><p>Real talk about burnout, perfectionism, and the hidden mental health cost of high-performance culture. Practical tools, not platitudes.</p></div>
+  </div>
+</section>
+
+<section class="what-to-expect">
+  <div class="what-to-expect-image fade-up">Your Speaking Photo</div>
+  <div class="what-to-expect-text fade-up delay-1">
+    <h2>What To Expect When You Book Me</h2>
+    <p>I partner with your team to create an experience your audience acts on — not just applauds.</p>
+    <div class="expect-list">
+      <div class="expect-item"><span class="expect-check">✓</span><p>Pre-event call to customize the talk to your audience's specific challenges</p></div>
+      <div class="expect-item"><span class="expect-check">✓</span><p>Interactive delivery — your audience does the work in real time, not just listens</p></div>
+      <div class="expect-item"><span class="expect-check">✓</span><p>Actionable takeaways your team can implement the same day (like the Task Inflation Test)</p></div>
+      <div class="expect-item"><span class="expect-check">✓</span><p>Optional post-event Q&A, workshop extension, or VIP coaching session</p></div>
+    </div>
+    <a href="#" class="cta-pill" style="background:var(--mint);color:var(--black)">Inquire About Availability <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<section class="booking-cta">
+  <h2 class="fade-up">Let's give your audience something they'll actually use.</h2>
+  <p class="fade-up delay-1">Tech summits, leadership retreats, team offsites, professional development events — I'd love to be part of it.</p>
+  <a href="#" class="cta-pill fade-up delay-2">Get In Touch <span class="arrow">→</span></a>
+</section>
+
+<footer><div class="footer-brand">Lajoie</div><div class="footer-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="podcast.html">Podcast</a><a href="speaking.html">Speaking</a></div><div class="footer-copy">© 2026 All Rights Reserved</div></footer>
+<script>const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));</script>
+
+<script>
+  function toggleDark(){
+    document.body.classList.toggle('dark');
+    const isDark=document.body.classList.contains('dark');
+    localStorage.setItem('darkMode',isDark?'true':'false');
+    document.querySelector('.dark-toggle').textContent=isDark?'☀️':'🌙';
+  }
+  (function(){
+    if(localStorage.getItem('darkMode')==='true'){
+      document.body.classList.add('dark');
+      document.querySelector('.dark-toggle').textContent='☀️';
+    }else{
+      document.querySelector('.dark-toggle').textContent='🌙';
+    }
+  })();
+</script>
+</body>
+</html>

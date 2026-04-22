@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Lajoie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{--mint:#A8E6CF;--mint-light:#D4F5E4;--mint-dark:#7DCBA8;--black:#0A0A0A;--white:#FAFAFA;--gray:#888}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body.dark{--mint:#7DCBA8;--mint-light:#1a2e24;--mint-dark:#5fb892;--black:#EBEBEB;--white:#111111;--gray:#999}
+  body.dark{background:#111;color:#ebebeb}
+  body.dark nav{background:#1a2e24}
+  body.dark nav a{color:#ebebeb}
+  body.dark nav a.nav-link::after{background:#ebebeb}
+  body.dark nav a.active{border-bottom-color:#ebebeb}
+  body.dark .manifesto-text p,body.dark .mentorship p,body.dark .product-text p,body.dark .about-text p,body.dark .program-card p,body.dark .page-hero .subtitle,body.dark .story p,body.dark .value-card p,body.dark .chapter-card p,body.dark .topic-card p,body.dark .what-to-expect-text p,body.dark .expect-item p,body.dark .resource-card p,body.dark .tool-card p,body.dark .about-show-text p,body.dark .about-hero-text p,body.dark .book-info p,body.dark .podcast-hero p{color:#bbb}
+  body.dark .got-you{background:#1a2e24}
+  body.dark .got-you .pressure-text,body.dark .got-you .eyebrow,body.dark .got-you h2{color:#ebebeb}
+  body.dark .marquee-section{background:#1a2e24}
+  body.dark .cta-pill{background:#7DCBA8;color:#111}
+  body.dark .cta-pill:hover{background:#5fb892}
+  body.dark .mentorship h3{color:#555}
+  body.dark .product-placeholder{background:linear-gradient(135deg,#1a2e24,#2a4035)}
+  body.dark .cta-banner{background:#1a2e24}
+  body.dark .cta-banner h2{color:#ebebeb}
+  body.dark .cta-banner .cta-pill{background:#ebebeb;color:#111}
+  body.dark .cta-banner .cta-pill:hover{background:#ccc}
+  body.dark .booking-cta{background:#1a2e24}
+  body.dark .booking-cta h2,.dark .booking-cta p{color:#ebebeb}
+  body.dark .booking-cta .cta-pill{background:#ebebeb;color:#111}
+  body.dark .bonus-section{background:#1a2e24}
+  body.dark .bonus-section h2,.dark .bonus-section p{color:#ebebeb}
+  body.dark .program-card{border-color:#333}
+  body.dark .program-details{background:#1a2e24}
+  body.dark .resource-card{border-color:#333;background:#1a1a1a}
+  body.dark .resource-card:hover{border-color:#7DCBA8}
+  body.dark .topic-card{border-color:#333;background:#1a1a1a}
+  body.dark .topic-card:hover{border-color:#7DCBA8}
+  body.dark .tool-section{background:#1a2e24}
+  body.dark .tool-card{background:#111}
+  body.dark .chapter-card{background:#1a1a1a}
+  body.dark .whats-inside{background:#1a2e24}
+  body.dark .values{background:#1a2e24}
+  body.dark .what-to-expect{background:#1a2e24}
+  body.dark .story .pull-quote{border-left-color:#7DCBA8;color:#ebebeb}
+  body.dark .about-hero-image{background:linear-gradient(135deg,#222,#333)}
+  body.dark .speaking-hero-bg{background:linear-gradient(135deg,#222,#333)}
+  body.dark .praise .cta-pill,.dark .praise-card{border-color:#7DCBA8}
+  body.dark .cta-pill.outline{border-color:#7DCBA8;color:#7DCBA8}
+  body.dark .cta-pill.outline:hover{background:#7DCBA8;color:#111}
+  body.dark .cta-pill.secondary{border-color:#ebebeb;color:#ebebeb}
+  body.dark .cta-pill.secondary:hover{background:#ebebeb;color:#111}
+  body.dark .book-cover{background:linear-gradient(145deg,#1a2e24,#2a4035);box-shadow:20px 20px 60px rgba(0,0,0,.4),-5px -5px 20px rgba(255,255,255,.03)}
+  body.dark .book-info .tagline{color:#999}
+  .dark-toggle{position:fixed;top:58px;right:16px;z-index:1001;background:none;border:none;cursor:pointer;font-size:1.1rem;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:.7}
+  .dark-toggle:hover{opacity:1;transform:scale(1.1)}
+html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--white);color:var(--black);overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--mint);padding:16px 0;display:flex;justify-content:stretch;align-items:center;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;font-weight:600}nav a{color:var(--black);text-decoration:none;transition:opacity .3s;flex:1;text-align:center}nav a:hover{opacity:.6}nav a.nav-link{position:relative}nav a.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1.5px;background:var(--black);transition:width .3s}nav a.nav-link:hover::after{width:60%}nav a.active{border-bottom:2px solid var(--black)}
+  .about-hero{padding-top:60px;display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+  .about-hero-image{background:linear-gradient(135deg,#d4c9b8,#b5a892);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:.8rem;color:#999;min-height:100vh;position:relative}
+  .about-hero-image::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.35;mix-blend-mode:overlay;background:repeating-conic-gradient(#0003 0% 25%,transparent 0% 50%) 0 0/3px 3px}
+  .about-hero-text{display:flex;flex-direction:column;justify-content:center;padding:120px 60px 80px}
+  .about-hero-text h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2.5rem,4vw,4.5rem);text-transform:uppercase;line-height:1.05;margin-bottom:32px}
+  .about-hero-text p{font-size:1.2rem;line-height:1.8;color:#444;margin-bottom:20px;max-width:500px}
+  .story{padding:120px 48px;max-width:800px;margin:0 auto}
+  .story h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,3.5vw,3rem);line-height:1.2;margin-bottom:40px;text-align:center}.story h2 em{font-style:italic;color:var(--mint-dark)}
+  .story p{font-size:1.2rem;line-height:1.85;color:#444;margin-bottom:24px}
+  .story .pull-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.8rem;line-height:1.4;color:var(--black);border-left:4px solid var(--mint);padding:20px 0 20px 32px;margin:48px 0}
+  .numbers{background:var(--black);color:var(--white);padding:100px 48px}
+  .numbers h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:4px;text-align:center;color:var(--mint);margin-bottom:60px}
+  .numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:900px;margin:0 auto;text-align:center}
+  .number-item .big{font-family:'Oswald',sans-serif;font-weight:700;font-size:3rem;color:var(--mint)}.number-item .label{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.7rem;letter-spacing:2px;color:var(--gray);margin-top:8px}
+  .certifications{padding:120px 48px;background:var(--white)}
+  .certifications h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,3.5vw,3rem);text-transform:uppercase;text-align:center;margin-bottom:16px}
+  .cert-intro{text-align:center;font-size:1.15rem;color:#666;max-width:600px;margin:0 auto 60px;line-height:1.7}
+  .cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:36px;max-width:800px;margin:0 auto}
+  .cert-card{padding:40px 32px;border:1px solid #e0e0e0;border-radius:4px;transition:all .3s}
+  .cert-card:hover{border-color:var(--mint);box-shadow:0 8px 30px rgba(168,230,207,.15);transform:translateY(-4px)}
+  .cert-badge{font-family:'Oswald',sans-serif;font-weight:700;font-size:2rem;color:var(--mint-dark);margin-bottom:12px;letter-spacing:2px}
+  .cert-card h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;line-height:1.3}
+  .cert-card p{font-size:1.05rem;line-height:1.7;color:#555}
+  body.dark .cert-card{border-color:#333;background:#1a1a1a}
+  body.dark .cert-card:hover{border-color:#7DCBA8}
+  body.dark .cert-card p{color:#bbb}
+  body.dark .cert-intro{color:#999}
+  .values{padding:120px 48px;background:var(--mint-light)}
+  .values h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,3.5vw,3rem);text-transform:uppercase;text-align:center;margin-bottom:60px}
+  .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1000px;margin:0 auto}.value-card{text-align:center}
+  .value-card .value-number{font-family:'Oswald',sans-serif;font-weight:700;font-size:3rem;color:var(--mint-dark);margin-bottom:12px}
+  .value-card h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}.value-card p{font-size:1.1rem;line-height:1.7;color:#555}
+  .cta-banner{background:var(--mint);padding:100px 48px;text-align:center}.cta-banner h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.5rem);line-height:1.15;max-width:700px;margin:0 auto 36px}
+  .cta-pill{display:inline-flex;align-items:center;gap:12px;background:var(--black);color:var(--white);padding:14px 32px;border-radius:50px;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.85rem;letter-spacing:2px;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer}.cta-pill:hover{background:#333;transform:translateX(4px)}.cta-pill .arrow{font-size:1.2rem;transition:transform .3s}.cta-pill:hover .arrow{transform:translateX(4px)}
+  footer{background:var(--black);border-top:1px solid #222;padding:60px 48px;display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif}.footer-brand{font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:3px;color:var(--mint)}.footer-links{display:flex;gap:32px}.footer-links a{color:var(--gray);text-decoration:none;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;transition:color .3s}.footer-links a:hover{color:var(--mint)}.footer-copy{color:#555;font-size:.7rem;letter-spacing:1px;text-transform:uppercase}
+  .fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.fade-up.delay-1{transition-delay:.1s}.fade-up.delay-2{transition-delay:.2s}.fade-up.delay-3{transition-delay:.3s}
+  @media(max-width:900px){nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}.about-hero{grid-template-columns:1fr;min-height:auto}.about-hero-image{min-height:50vh}.about-hero-text{padding:60px 24px}.story{padding:80px 24px}.numbers{padding:60px 24px}.numbers-grid{grid-template-columns:repeat(2,1fr)}.values{padding:80px 24px}.values-grid{grid-template-columns:1fr}.cta-banner{padding:60px 24px}.certifications{padding:80px 24px}.cert-grid{grid-template-columns:1fr}footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}}
+</style>
+</head>
+<body>
+<button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">☀️</button>
+<nav><a href="index.html">Home</a><a href="programs.html" class="nav-link">Programs</a><a href="about.html" class="nav-link active">About</a><a href="resources.html" class="nav-link">Resources</a><a href="podcast.html" class="nav-link">Podcast</a><a href="speaking.html" class="nav-link">Speaking</a></nav>
+
+<section class="about-hero">
+  <div class="about-hero-image">Your Photo</div>
+  <div class="about-hero-text">
+    <h1 class="fade-up">Hi, I'm Lajoie</h1>
+    <p class="fade-up delay-1">Aligned action coach. ICF certified coach. iNLP certified. Podcast host. Faculty at The Multiverse AI School. Plant mom. And the person who's going to tell you what the social media gurus won't: perfectionism is not a personality trait — it's the thing that's keeping you stuck.</p>
+    <p class="fade-up delay-2">I do the most. I work with tech professionals, I'm tapped into the spiritual community, I host a podcast, I teach AI, I make music, and I'm living my best life doing all of it. People ask me how. That's the secret I help others unlock.</p>
+  </div>
+</section>
+
+<section class="story">
+  <h2 class="fade-up">I have all the interests. I'm successful in <em>all of them</em>. Here's how.</h2>
+  <p class="fade-up">I'm not going to pretend I picked one lane and stayed in it. I coach tech professionals through career transitions. I'm faculty at an AI school. I host a podcast about transformation and spirituality. I write music. I talk to my plants. And somehow — all of it works.</p>
+  <p class="fade-up">But it didn't always. I used to be the person who had a hundred ideas, a dozen half-finished plans, and zero consistency. I'd invest in a course, build an elaborate strategy, get interrupted by life, and interpret the unfinished work as failure. Then I'd start over. Again.</p>
+  <div class="pull-quote fade-up">The problem was never me. It was perfectionism — often the exact perfectionism that social media gurus and that quiet inner voice told me was ambition.</div>
+  <p class="fade-up">Here's what nobody tells you: that voice whispering "it's not good enough yet" isn't your higher self. It's not your standards. It's The Perfect Plan Trap — perfectionism disguised as drive, designing every task too big to survive your real, unpredictable, beautifully full life.</p>
+  <p class="fade-up">The moment I stopped listening to it and started taking small, imperfect, aligned action every single day — everything changed. Not because life got simpler. Because I stopped waiting for perfect conditions to show up before I did.</p>
+  <p class="fade-up">Now I help others do the same. I've worked with 100+ tech founders, UX designers, AI specialists, and high-performing professionals who have all the knowledge, all the ambition, and none of the follow-through. Not because they're broken — because perfectionism has been running the show. I help them fire it.</p>
+  <p class="fade-up">I love what I do. I love that I get to have all of these interests and be successful in all of them. And I love showing other people that they can too — once they let go of the lie that they have to be perfect first.</p>
+</section>
+
+<section class="numbers">
+  <h2 class="fade-up">By The Numbers</h2>
+  <div class="numbers-grid">
+    <div class="number-item fade-up"><div class="big">100+</div><div class="label">Tech Professionals Coached</div></div>
+    <div class="number-item fade-up delay-1"><div class="big">90</div><div class="label">Day Coaching Container</div></div>
+    <div class="number-item fade-up delay-2"><div class="big">ICF</div><div class="label">Certified Coach</div></div>
+    <div class="number-item fade-up delay-3"><div class="big">iNLP</div><div class="label">NLP Certified</div></div>
+  </div>
+</section>
+
+<section class="certifications">
+  <h2 class="fade-up">My Certifications &amp; What They Mean For You</h2>
+  <p class="cert-intro fade-up delay-1">These aren't just letters after my name. Each certification shapes how I coach — and directly impacts the results you get.</p>
+  <div class="cert-grid">
+    <div class="cert-card fade-up">
+      <div class="cert-badge">ICF</div>
+      <h3>Certified Coach — International Coaching Federation</h3>
+      <p>The ICF is the gold standard in professional coaching worldwide, with over 50,000 members across 150+ countries. Being ICF certified means I've completed rigorous coach-specific training, logged 100+ hours of real coaching experience, and passed a comprehensive knowledge assessment. For you, it means every session follows evidence-based coaching competencies — active listening, powerful questioning, and facilitating growth — not just advice-giving. ICF certification also requires ongoing ethics training and continuing education, so my practice stays current and accountable.</p>
+    </div>
+    <div class="cert-card fade-up delay-1">
+      <div class="cert-badge">iNLP</div>
+      <h3>Certified NLP Practitioner — iNLP Center</h3>
+      <p>Neuro-Linguistic Programming is the study of how language and mental patterns shape your behavior, habits, and emotional responses. NLP is the same methodology behind Tony Robbins' entire coaching career — he trained directly under NLP co-founder John Grinder, and it's the foundation of everything he teaches. Oprah Winfrey has also credited NLP techniques in her work. My iNLP certification means I'm trained to identify and rewire the unconscious patterns that keep you stuck — like the perfectionism loop that inflates your tasks, or the self-talk that convinces you "good enough" isn't enough. It's the reason my coaching changes how you think, not just what you do.</p>
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <h2 class="fade-up">What I Believe</h2>
+  <div class="values-grid">
+    <div class="value-card fade-up"><div class="value-number">01</div><h3>Consistency Over Correctness</h3><p>Done is better than perfect. The people who win are the ones who start before they're ready and keep going when it's messy.</p></div>
+    <div class="value-card fade-up delay-1"><div class="value-number">02</div><h3>Micro-Actions Over Master Plans</h3><p>If a task can't survive a real day with interruptions, it's too big. Shrink the action, protect the streak, let the habit do the heavy lifting.</p></div>
+    <div class="value-card fade-up delay-2"><div class="value-number">03</div><h3>Your Story Is Your Superpower</h3><p>The things that make you different — your struggles, your detours, your imperfect path — are exactly what make your brand unforgettable.</p></div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2 class="fade-up">Ready to stop planning and start doing?</h2>
+  <a href="programs.html" class="cta-pill fade-up delay-1">Explore Programs <span class="arrow">→</span></a>
+</section>
+
+<footer><div class="footer-brand">Lajoie</div><div class="footer-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="podcast.html">Podcast</a><a href="speaking.html">Speaking</a></div><div class="footer-copy">© 2026 All Rights Reserved</div></footer>
+<script>const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));</script>
+
+<script>
+  function toggleDark(){
+    document.body.classList.toggle('dark');
+    const isDark=document.body.classList.contains('dark');
+    localStorage.setItem('darkMode',isDark?'true':'false');
+    document.querySelector('.dark-toggle').textContent=isDark?'☀️':'🌙';
+  }
+  (function(){
+    if(localStorage.getItem('darkMode')==='true'){
+      document.body.classList.add('dark');
+      document.querySelector('.dark-toggle').textContent='☀️';
+    }else{
+      document.querySelector('.dark-toggle').textContent='🌙';
+    }
+  })();
+</script>
+</body>
+</html>
