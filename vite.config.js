@@ -11,6 +11,7 @@ export default defineConfig({
         programs: resolve(__dirname, 'programs.html'),
         resources: resolve(__dirname, 'resources.html'),
         speaking: resolve(__dirname, 'speaking.html'),
+        events: resolve(__dirname, 'events.html'),
       },
     },
   },

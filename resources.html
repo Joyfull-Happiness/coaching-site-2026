@@ -52,83 +52,151 @@
   body.dark .cta-pill.secondary:hover{background:#ebebeb;color:#111}
   body.dark .book-cover{background:linear-gradient(145deg,#1a2e24,#2a4035);box-shadow:20px 20px 60px rgba(0,0,0,.4),-5px -5px 20px rgba(255,255,255,.03)}
   body.dark .book-info .tagline{color:#999}
+  body.dark .section-intro p{color:#bbb}
+  body.dark .mtool-card{border-color:#333;background:#1a1a1a}
+  body.dark .mtool-card:hover{border-color:#7DCBA8}
+  body.dark .mtool-card p{color:#bbb}
+  body.dark .mtool-card .tag{color:#666}
+  body.dark .coaching-bridge{background:#1a2e24}
+  body.dark .coaching-bridge h2{color:#ebebeb}
+  body.dark .coaching-bridge p{color:#bbb}
   .dark-toggle{position:fixed;top:58px;right:16px;z-index:1001;background:none;border:none;cursor:pointer;font-size:1.1rem;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:.7}
   .dark-toggle:hover{opacity:1;transform:scale(1.1)}
-html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--white);color:var(--black);overflow-x:hidden}
+  html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--white);color:var(--black);overflow-x:hidden}
   nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--mint);padding:16px 0;display:flex;justify-content:stretch;align-items:center;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;font-weight:600}nav a{color:var(--black);text-decoration:none;transition:opacity .3s;flex:1;text-align:center}nav a:hover{opacity:.6}nav a.nav-link{position:relative}nav a.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1.5px;background:var(--black);transition:width .3s}nav a.nav-link:hover::after{width:60%}nav a.active{border-bottom:2px solid var(--black)}
-  .page-hero{padding:180px 48px 100px}.page-hero h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(3rem,8vw,8rem);text-transform:uppercase;line-height:.95;max-width:900px}.page-hero .subtitle{font-size:1.3rem;line-height:1.7;color:#444;max-width:600px;margin-top:32px}
-  .resources-grid{padding:0 48px 120px;display:grid;grid-template-columns:repeat(2,1fr);gap:40px;max-width:1000px}
-  .resource-card{padding:48px 40px;border:1px solid #e0e0e0;border-radius:4px;transition:all .3s}.resource-card:hover{border-color:var(--mint);box-shadow:0 8px 30px rgba(168,230,207,.15);transform:translateY(-4px)}
-  .resource-card .tag{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.7rem;letter-spacing:3px;color:var(--mint-dark);margin-bottom:12px}
-  .resource-card h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;line-height:1.15}
-  .resource-card p{font-size:1.1rem;line-height:1.7;color:#555;margin-bottom:24px}
+
+  /* Page hero */
+  .page-hero{padding:180px 48px 80px}.page-hero h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(3rem,8vw,8rem);text-transform:uppercase;line-height:.95;max-width:900px}.page-hero .subtitle{font-size:1.3rem;line-height:1.7;color:#444;max-width:600px;margin-top:32px}
+
+  /* Lead magnet */
+  .lead-magnet{background:var(--black);color:var(--white);padding:80px 48px}
+  .lead-magnet-inner{max-width:680px;margin:0 auto;text-align:center}
+  .free-badge{display:inline-block;background:var(--mint);color:var(--black);font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.75rem;letter-spacing:4px;padding:6px 24px;border-radius:50px;margin-bottom:28px;font-weight:700}
+  .lead-magnet h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,4vw,3.5rem);text-transform:uppercase;line-height:1;margin-bottom:24px;color:var(--mint)}
+  .lead-magnet .desc{font-size:1.2rem;line-height:1.75;color:#ccc;margin-bottom:20px}
+  .small-win{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.78rem;letter-spacing:2px;color:var(--mint-dark);margin:24px 0 36px;line-height:1.6}
+
+  /* Micro-tools */
+  .micro-tools{padding:100px 48px}
+  .section-intro{text-align:center;max-width:700px;margin:0 auto 60px}
+  .section-intro .eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.75rem;letter-spacing:4px;color:var(--mint-dark);margin-bottom:12px}
+  .section-intro h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,3.5vw,3rem);text-transform:uppercase;margin-bottom:16px;line-height:1.05}
+  .section-intro p{font-size:1.15rem;line-height:1.7;color:#555}
+  .micro-tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:960px;margin:0 auto}
+  .mtool-card{padding:40px;border:1px solid #e0e0e0;border-radius:4px;transition:all .3s;display:flex;flex-direction:column}
+  .mtool-card:hover{border-color:var(--mint);box-shadow:0 8px 30px rgba(168,230,207,.15);transform:translateY(-4px)}
+  .mtool-price{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.6rem;color:var(--mint-dark);margin-bottom:4px}
+  .mtool-card .tag{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.7rem;letter-spacing:3px;color:#999;margin-bottom:16px}
+  .mtool-card h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;line-height:1.2}
+  .mtool-card p{font-size:1.05rem;line-height:1.7;color:#555;margin-bottom:8px}
+  .stuck-moment{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.72rem;letter-spacing:1.5px;color:var(--mint-dark);margin:16px 0 24px;line-height:1.5}
+  .mtool-card .cta-pill{margin-top:auto;align-self:flex-start}
+
+  /* Coaching bridge */
+  .coaching-bridge{background:var(--mint-light);padding:100px 48px;text-align:center}
+  .coaching-bridge .eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.75rem;letter-spacing:4px;color:var(--mint-dark);margin-bottom:20px}
+  .coaching-bridge h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.25;max-width:760px;margin:0 auto 24px}
+  .coaching-bridge h2 em{font-style:italic;color:var(--mint-dark)}
+  .coaching-bridge p{font-size:1.15rem;line-height:1.75;color:#444;max-width:580px;margin:0 auto 36px}
+
   .cta-pill{display:inline-flex;align-items:center;gap:12px;background:var(--mint);color:var(--black);padding:14px 32px;border-radius:50px;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.85rem;letter-spacing:2px;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer}.cta-pill:hover{background:var(--mint-dark);transform:translateX(4px)}.cta-pill .arrow{font-size:1.2rem;transition:transform .3s}.cta-pill:hover .arrow{transform:translateX(4px)}
-  .tool-section{padding:120px 48px;background:var(--mint-light)}
-  .tool-section h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,3.5vw,3rem);text-transform:uppercase;text-align:center;margin-bottom:20px}
-  .tool-section .sub{text-align:center;font-size:1.15rem;color:#555;max-width:600px;margin:0 auto 60px;line-height:1.7}
-  .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1000px;margin:0 auto}
-  .tool-card{background:var(--white);padding:32px;border-radius:4px;text-align:center}
-  .tool-card .tool-num{font-family:'Oswald',sans-serif;font-weight:700;font-size:2.5rem;color:var(--mint-dark);margin-bottom:8px}
-  .tool-card h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}.tool-card p{font-size:1.05rem;line-height:1.65;color:#555}
-  .cta-banner{background:var(--mint);padding:100px 48px;text-align:center}.cta-banner h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.5rem);line-height:1.15;max-width:700px;margin:0 auto 36px}
-  .cta-banner .cta-pill{background:var(--black);color:var(--white)}.cta-banner .cta-pill:hover{background:#333}
   footer{background:var(--black);border-top:1px solid #222;padding:60px 48px;display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif}.footer-brand{font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:3px;color:var(--mint)}.footer-links{display:flex;gap:32px}.footer-links a{color:var(--gray);text-decoration:none;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;transition:color .3s}.footer-links a:hover{color:var(--mint)}.footer-copy{color:#555;font-size:.7rem;letter-spacing:1px;text-transform:uppercase}
   .fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.fade-up.delay-1{transition-delay:.1s}.fade-up.delay-2{transition-delay:.2s}.fade-up.delay-3{transition-delay:.3s}
-  @media(max-width:900px){nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}.page-hero{padding:140px 24px 60px}.resources-grid{grid-template-columns:1fr;padding:0 24px 80px}.tool-section{padding:80px 24px}.tools-grid{grid-template-columns:1fr}.cta-banner{padding:60px 24px}footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}}
+  @media(max-width:900px){nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}.page-hero{padding:140px 24px 60px}.lead-magnet{padding:60px 24px}.micro-tools{padding:60px 24px}.micro-tools-grid{grid-template-columns:1fr}.coaching-bridge{padding:60px 24px}footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}}
 </style>
 </head>
 <body>
 <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">☀️</button>
-<nav><a href="index.html">Home</a><a href="programs.html" class="nav-link">Programs</a><a href="about.html" class="nav-link">About</a><a href="resources.html" class="nav-link active">Resources</a><a href="podcast.html" class="nav-link">Podcast</a><a href="speaking.html" class="nav-link">Speaking</a></nav>
+<nav><a href="index.html">Home</a><a href="programs.html" class="nav-link">Programs</a><a href="about.html" class="nav-link">About</a><a href="resources.html" class="nav-link active">Resources</a><a href="podcast.html" class="nav-link">Podcast</a><a href="events.html" class="nav-link">Events</a></nav>
 
 <section class="page-hero">
   <h1 class="fade-up">Resources &amp; Tools</h1>
-  <p class="subtitle fade-up delay-1">Free and paid resources to help you break The Perfect Plan Trap and start taking aligned action — today, not someday.</p>
+  <p class="subtitle fade-up delay-1">Start free. Go deeper when you're ready. Every tool is built for one stuck moment and one fast win.</p>
 </section>
 
-<div class="resources-grid">
-  <div class="resource-card fade-up">
-    <div class="tag">Free Tool</div>
-    <h2>The Task Inflation Test</h2>
-    <p>Pick any task from this week that didn't get done. Ask: how long was it designed to take? What standard was it being held to? Could it have been done in 15 minutes if "good enough" was the standard? The answer is almost always yes. This free worksheet walks you through the full audit.</p>
-    <a href="#" class="cta-pill">Download Free <span class="arrow">→</span></a>
-  </div>
-  <div class="resource-card fade-up delay-1">
-    <div class="tag">Free Guide</div>
-    <h2>The Perfectionism Audit</h2>
-    <p>A guided self-assessment to map exactly where The Perfect Plan Trap shows up in your daily life. Identify the tasks perfectionism has inflated, the standards that are silently killing your consistency, and the micro-actions hiding inside your oversized plans.</p>
-    <a href="#" class="cta-pill">Download Free <span class="arrow">→</span></a>
-  </div>
-  <div class="resource-card fade-up">
-    <div class="tag">Workshop Replay</div>
-    <h2>Values &amp; Decision-Making Framework</h2>
-    <p>Replay from our weekly live workshop with Sasha Franklin. A practical framework for tech professionals making career decisions — whether it's a pivot, a promotion, or a full transition. Designed for high performers stuck between knowing and doing.</p>
-    <a href="#" class="cta-pill">Watch Replay <span class="arrow">→</span></a>
-  </div>
-  <div class="resource-card fade-up delay-1">
-    <div class="tag">Interactive</div>
-    <h2>Find Your Ikigai Quiz</h2>
-    <p>A personalized assessment that maps your four Ikigai pillars — what you love, what you're great at, what the world needs, and what you can be paid for — and generates a custom roadmap based on your answers.</p>
-    <a href="#" class="cta-pill">Take The Quiz <span class="arrow">→</span></a>
-  </div>
-</div>
-
-<section class="tool-section">
-  <h2 class="fade-up">The Micro-Action Method</h2>
-  <p class="sub fade-up delay-1">The core framework behind everything I teach. Three shifts that break the start-stop cycle for good.</p>
-  <div class="tools-grid">
-    <div class="tool-card fade-up"><div class="tool-num">01</div><h3>Shrink The Task</h3><p>If it can't be done in 15 minutes with "good enough" as the standard, it's too big. Perfectionism is the architect of oversized tasks. Fire it.</p></div>
-    <div class="tool-card fade-up delay-1"><div class="tool-num">02</div><h3>Protect The Streak</h3><p>Consistency over correctness. A 12-minute imperfect action done daily beats a 3-hour perfect session done once a month. Every time.</p></div>
-    <div class="tool-card fade-up delay-2"><div class="tool-num">03</div><h3>Let The Habit Lead</h3><p>Do it daily until it stops being something you're trying to do and starts being who you are. That's the identity shift. That's the real work.</p></div>
+<section class="lead-magnet">
+  <div class="lead-magnet-inner">
+    <div class="free-badge fade-up">Free</div>
+    <h2 class="fade-up delay-1">The Perfectionism Audit</h2>
+    <p class="desc fade-up delay-2">Map exactly where The Perfect Plan Trap is showing up in your daily life — in under 10 minutes. Identify the tasks perfectionism has inflated, the hidden standards killing your consistency, and the micro-actions hiding inside your oversized plans.</p>
+    <p class="small-win fade-up delay-2">Small win: You'll finish knowing the exact moment perfectionism hijacks your follow-through — and what to replace it with.</p>
+    <a href="#" class="cta-pill fade-up delay-3">Download Free <span class="arrow">→</span></a>
   </div>
 </section>
 
-<section class="cta-banner">
-  <h2 class="fade-up">Want personalized coaching to implement all of this?</h2>
-  <a href="programs.html" class="cta-pill fade-up delay-1">Explore The 90-Day Container <span class="arrow">→</span></a>
+<section class="micro-tools">
+  <div class="section-intro fade-up">
+    <p class="eyebrow">$5–$15 Micro-Tools</p>
+    <h2>One Stuck Moment. One Fast Fix.</h2>
+    <p>Small, specific, self-guided tools — each one solves one problem in under 20 minutes. The price removes tire-kickers. The tool removes the excuse.</p>
+  </div>
+  <div class="micro-tools-grid">
+
+    <div class="mtool-card fade-up">
+      <div class="mtool-price">$5</div>
+      <div class="tag">Printable Worksheet</div>
+      <h3>The Task Inflation Test</h3>
+      <p>Pick any task that keeps not getting done. Run it through this worksheet. Find out exactly how perfectionism inflated it — and walk away with a version that fits your real day.</p>
+      <p class="stuck-moment">Stuck moment: the task that's been on your list for two weeks.</p>
+      <a href="#" class="cta-pill">Get It <span class="arrow">→</span></a>
+    </div>
+
+    <div class="mtool-card fade-up delay-1">
+      <div class="mtool-price">$7</div>
+      <div class="tag">Printable Planner</div>
+      <h3>Micro-Action Planner</h3>
+      <p>A one-page weekly planner built entirely around 15-minute sprints. No massive to-do lists. No perfection required. Just today's three micro-actions, stacked in the order you can actually do them.</p>
+      <p class="stuck-moment">Stuck moment: you plan your day but never finish what's on it.</p>
+      <a href="#" class="cta-pill">Get It <span class="arrow">→</span></a>
+    </div>
+
+    <div class="mtool-card fade-up">
+      <div class="mtool-price">$9</div>
+      <div class="tag">PDF Card Deck</div>
+      <h3>Shrink The Task Sprint Cards</h3>
+      <p>A printable decision-prompt deck that walks any task through the Shrink The Task framework. Pull a card, run the prompts, have something smaller and startable in under 15 minutes.</p>
+      <p class="stuck-moment">Stuck moment: every task you write down feels too big before you start.</p>
+      <a href="#" class="cta-pill">Get It <span class="arrow">→</span></a>
+    </div>
+
+    <div class="mtool-card fade-up delay-1">
+      <div class="mtool-price">$9</div>
+      <div class="tag">ADHD &amp; ND Friendly</div>
+      <h3>Neurodivergent Daily Sprint Template</h3>
+      <p>A daily planning template built for ADHD, autistic, and neurodivergent brains. Power-aware, flexible, and designed to work with your executive function — not against it.</p>
+      <p class="stuck-moment">Stuck moment: every productivity system you've tried feels built for someone else's brain.</p>
+      <a href="#" class="cta-pill">Get It <span class="arrow">→</span></a>
+    </div>
+
+    <div class="mtool-card fade-up">
+      <div class="mtool-price">$12</div>
+      <div class="tag">Interactive Assessment</div>
+      <h3>Find Your Ikigai</h3>
+      <p>A personalized assessment that maps your four Ikigai pillars — what you love, what you're great at, what the world needs, and what you can be paid for — and generates a custom clarity roadmap based on your answers.</p>
+      <p class="stuck-moment">Stuck moment: you know something has to change but you can't name what you actually want.</p>
+      <a href="#" class="cta-pill">Get It <span class="arrow">→</span></a>
+    </div>
+
+    <div class="mtool-card fade-up delay-1">
+      <div class="mtool-price">$15</div>
+      <div class="tag">Workshop Replay — 60 min</div>
+      <h3>Values &amp; Decision-Making Framework</h3>
+      <p>A live workshop with Sasha Franklin. A practical, values-based framework for tech professionals at a crossroads — career pivots, leadership transitions, and life redesigns. The decision you've been avoiding gets clearer in the first 20 minutes.</p>
+      <p class="stuck-moment">Stuck moment: you know something has to change but you can't decide what to do next.</p>
+      <a href="#" class="cta-pill">Get It <span class="arrow">→</span></a>
+    </div>
+
+  </div>
 </section>
 
-<footer><div class="footer-brand">Lajoie</div><div class="footer-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="podcast.html">Podcast</a><a href="speaking.html">Speaking</a></div><div class="footer-copy">© 2026 All Rights Reserved</div></footer>
+<section class="coaching-bridge">
+  <p class="eyebrow fade-up">Ready for the real work?</p>
+  <h2 class="fade-up delay-1">These tools handle <em>the what.</em> The 90-day container handles the how, the when, and the accountability.</h2>
+  <p class="fade-up delay-2">Self-guided tools are powerful for isolated stuck moments. But if you're caught in the start-stop cycle across every area of your life, you don't need another tool — you need a partner who can see what you can't.</p>
+  <a href="programs.html" class="cta-pill fade-up delay-3">Explore The 90-Day Container <span class="arrow">→</span></a>
+</section>
+
+<footer><div class="footer-brand">Lajoie</div><div class="footer-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="podcast.html">Podcast</a><a href="events.html">Events</a></div><div class="footer-copy">© 2026 All Rights Reserved</div></footer>
 <script>const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));</script>
 
 <script>
