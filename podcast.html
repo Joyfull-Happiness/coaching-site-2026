@@ -70,8 +70,8 @@ html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond'
   .featured{padding:100px 48px;border-top:1px solid #222}
   .featured h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:4px;color:var(--mint);text-align:center;margin-bottom:60px}
   .episodes-list{max-width:800px;margin:0 auto}
-  .episode-row{display:grid;grid-template-columns:80px 1fr auto;gap:24px;align-items:center;padding:28px 0;border-bottom:1px solid #222;transition:background .3s;cursor:pointer}.episode-row:hover{background:rgba(168,230,207,.05)}
-  .episode-number{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.8rem;color:var(--mint-dark);text-align:center}
+  .episode-row{display:grid;grid-template-columns:180px 1fr auto;gap:24px;align-items:center;padding:28px 0;border-bottom:1px solid #222;transition:background .3s;cursor:pointer}.episode-row:hover{background:rgba(168,230,207,.05)}
+  .episode-thumb{width:180px;height:102px;overflow:hidden;border-radius:4px;flex-shrink:0}.episode-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}.episode-row:hover .episode-thumb img{transform:scale(1.05)}
   .episode-info h3{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}.episode-info p{font-size:1rem;color:var(--gray);line-height:1.5}
   .episode-play{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;color:var(--mint);display:flex;align-items:center;gap:8px;white-space:nowrap}
   .about-show{padding:120px 48px;background:var(--mint);color:var(--black);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
@@ -81,13 +81,27 @@ html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond'
   .subscribe-cta{padding:100px 48px;text-align:center;border-top:1px solid #222}
   .subscribe-cta h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.5rem);color:var(--mint);line-height:1.15;max-width:600px;margin:0 auto 36px}
   footer{background:var(--black);border-top:1px solid #222;padding:60px 48px;display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif}.footer-brand{font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:3px;color:var(--mint)}.footer-links{display:flex;gap:32px}.footer-links a{color:var(--gray);text-decoration:none;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;transition:color .3s}.footer-links a:hover{color:var(--mint)}.footer-copy{color:#555;font-size:.7rem;letter-spacing:1px;text-transform:uppercase}
+  .podcast-section{background:var(--black);color:var(--white);padding:120px 48px 80px}
+  .podcast-header{text-align:center;margin-bottom:24px}
+  .podcast-header .eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:4px;color:var(--mint);margin-bottom:16px}
+  .podcast-header h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2.5rem,6vw,6rem);text-transform:uppercase;line-height:.95;color:var(--mint)}
+  .podcast-stats{display:flex;justify-content:center;gap:60px;margin:48px 0}
+  .podcast-description{text-align:center;max-width:600px;margin:0 auto 48px;font-size:1.15rem;line-height:1.7;color:#ccc}
+  .podcast-cta{text-align:center;margin-bottom:80px}
+  .top-episodes{margin-top:80px}
+  .top-episodes h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.4rem;text-transform:uppercase;letter-spacing:3px;text-align:center;color:var(--mint);margin-bottom:48px}
+  .episodes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:900px;margin:0 auto}
+  .episode-card{text-align:center}
+  .episode-avatar{width:180px;height:180px;border-radius:4px;background:#222;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
+  .episode-name{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;color:var(--mint);display:flex;align-items:center;justify-content:center;gap:8px}
   .fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.fade-up.delay-1{transition-delay:.1s}.fade-up.delay-2{transition-delay:.2s}.fade-up.delay-3{transition-delay:.3s}
-  @media(max-width:900px){nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}.podcast-hero{padding:140px 24px 60px}.stats-row{gap:32px;flex-wrap:wrap}.featured{padding:60px 24px}.episode-row{grid-template-columns:50px 1fr}.episode-play{display:none}.about-show{grid-template-columns:1fr;padding:80px 24px}.about-show-image{height:350px}.subscribe-cta{padding:60px 24px}footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}}
+  @media(max-width:900px){nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}.podcast-hero{padding:140px 24px 60px}.stats-row{gap:32px;flex-wrap:wrap}.featured{padding:60px 24px}.episode-row{grid-template-columns:120px 1fr}.episode-thumb{width:120px;height:68px}.episode-play{display:none}.about-show{grid-template-columns:1fr;padding:80px 24px}.about-show-image{height:350px}.subscribe-cta{padding:60px 24px}footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}}
 </style>
 </head>
 <body>
 <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">☀️</button>
 <nav><a href="index.html">Home</a><a href="programs.html" class="nav-link">Programs</a><a href="about.html" class="nav-link">About</a><a href="resources.html" class="nav-link">Resources</a><a href="podcast.html" class="nav-link active">Podcast</a><a href="events.html" class="nav-link">Events</a></nav>
+
 
 <section class="podcast-hero">
   <p class="eyebrow fade-up">The Podcast &amp; Live Stream</p>
@@ -107,14 +121,15 @@ html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond'
 <section class="featured">
   <h2 class="fade-up">Top Episodes</h2>
   <div class="episodes-list">
-    <a href="https://youtu.be/_Up4e26QAoE" target="_blank" rel="noopener" class="episode-row fade-up" style="text-decoration:none;color:inherit"><div class="episode-number">01</div><div class="episode-info"><h3>How to Heal Trauma, Gain Your Supernatural Powers, and Quantum Leaping ft. Isis Wisdom</h3><p>Isis Wisdom guides us through trauma healing as a portal to unlocking supernatural abilities — and how quantum leaping can shift your reality fast.</p></div><div class="episode-play">Watch →</div></a>
-    <a href="https://youtu.be/HUKdTq8p0RA" target="_blank" rel="noopener" class="episode-row fade-up delay-1" style="text-decoration:none;color:inherit"><div class="episode-number">02</div><div class="episode-info"><h3>How to Live in Your Purpose and Stop Chasing It</h3><p>The shift from chasing purpose to embodying it — and why the pursuit itself is often what keeps you from arriving.</p></div><div class="episode-play">Watch →</div></a>
-    <a href="https://youtu.be/dEQBaaB9eMg" target="_blank" rel="noopener" class="episode-row fade-up delay-2" style="text-decoration:none;color:inherit"><div class="episode-number">03</div><div class="episode-info"><h3>The Mandela Effect Explained: 7 Mind-Bending Reality Shifts ft. Cynthia Sue Larson</h3><p>Reality shifter Cynthia Sue Larson breaks down the Mandela Effect, quantum jumping, and what these collective memory anomalies reveal about the nature of consciousness.</p></div><div class="episode-play">Watch →</div></a>
+    <a href="https://youtu.be/_Up4e26QAoE" target="_blank" rel="noopener" class="episode-row fade-up" style="text-decoration:none;color:inherit"><div class="episode-thumb"><img src="https://img.youtube.com/vi/_Up4e26QAoE/mqdefault.jpg" alt="Isis Wisdom episode thumbnail" /></div><div class="episode-info"><h3>How to Heal Trauma, Gain Your Supernatural Powers, and Quantum Leaping ft. Isis Wisdom</h3><p>Isis Wisdom guides us through trauma healing as a portal to unlocking supernatural abilities — and how quantum leaping can shift your reality fast.</p></div><div class="episode-play">Watch →</div></a>
+    <a href="https://youtu.be/HUKdTq8p0RA" target="_blank" rel="noopener" class="episode-row fade-up delay-1" style="text-decoration:none;color:inherit"><div class="episode-thumb"><img src="https://img.youtube.com/vi/HUKdTq8p0RA/mqdefault.jpg" alt="How to Live in Your Purpose episode thumbnail" /></div><div class="episode-info"><h3>How to Live in Your Purpose and Stop Chasing It</h3><p>The shift from chasing purpose to embodying it — and why the pursuit itself is often what keeps you from arriving.</p></div><div class="episode-play">Watch →</div></a>
+    <a href="https://youtu.be/dEQBaaB9eMg" target="_blank" rel="noopener" class="episode-row fade-up delay-2" style="text-decoration:none;color:inherit"><div class="episode-thumb"><img src="https://img.youtube.com/vi/dEQBaaB9eMg/mqdefault.jpg" alt="Mandela Effect episode thumbnail" /></div><div class="episode-info"><h3>The Mandela Effect Explained: 7 Mind-Bending Reality Shifts ft. Cynthia Sue Larson</h3><p>Reality shifter Cynthia Sue Larson breaks down the Mandela Effect, quantum jumping, and what these collective memory anomalies reveal about the nature of consciousness.</p></div><div class="episode-play">Watch →</div></a>
+    <a href="#" class="episode-row fade-up delay-3" style="text-decoration:none;color:inherit"><div class="episode-thumb"><img src="/assets/images/podcast-ep4.png" alt="10 Lessons on How to Live in Your Purpose Now" /></div><div class="episode-info"><h3>10 Lessons on How to Live in Your Purpose NOW! — Part 2</h3><p>Part 2 of the purpose series — 10 practical lessons for stepping fully into the life you were designed for, starting right now.</p></div><div class="episode-play">Watch →</div></a>
   </div>
 </section>
 
 <section class="about-show">
-  <div class="about-show-image fade-up"><img src="/assets/images/photo12.jpg" alt="Photo 12" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+  <div class="about-show-image fade-up"><img src="/assets/images/podcast-ep4.png" alt="10 Lessons on How to Live in Your Purpose Now" style="width: 100%; height: 100%; object-fit: cover;" /></div>
   <div class="about-show-text fade-up delay-1">
     <h2>About The Show</h2>
     <p>Transformation to Expansion is a spiritual interview podcast hosted by Lajoie Bradley, featuring 100+ conversations with spiritual leaders, healers, shamans, angel experts, energy intuitives, and teachers from around the world — with a deep focus on the voices of female spiritual leaders.</p>

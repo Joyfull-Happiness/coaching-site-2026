@@ -56,113 +56,219 @@
   .dark-toggle:hover{opacity:1;transform:scale(1.1)}
 html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--white);color:var(--black);overflow-x:hidden}
   nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--mint);padding:16px 0;display:flex;justify-content:stretch;align-items:center;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;font-weight:600}nav a{color:var(--black);text-decoration:none;transition:opacity .3s;flex:1;text-align:center}nav a:hover{opacity:.6}nav a.nav-link{position:relative}nav a.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1.5px;background:var(--black);transition:width .3s}nav a.nav-link:hover::after{width:60%}nav a.active{border-bottom:2px solid var(--black)}
-  .page-hero{padding:180px 48px 100px;background:var(--white)}.page-hero h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(3rem,8vw,8rem);text-transform:uppercase;line-height:.95;max-width:900px}.page-hero .subtitle{font-size:1.3rem;line-height:1.7;color:#444;max-width:600px;margin-top:32px}
   .programs{padding:80px 48px 120px}
   .program-card{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:80px 0;border-top:1px solid #e0e0e0}.program-card:last-child{border-bottom:1px solid #e0e0e0}.program-card.reverse .program-image-wrap{order:-1}
   .program-label{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.75rem;letter-spacing:4px;color:var(--mint-dark);margin-bottom:12px}
   .program-card h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,3.5vw,3.5rem);text-transform:uppercase;line-height:1.05;margin-bottom:24px}
   .program-card p{font-size:1.2rem;line-height:1.75;color:#444;margin-bottom:16px;max-width:480px}
   .program-details{margin:24px 0 32px;padding:20px 24px;background:var(--mint-light);border-radius:4px}.program-details span{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;display:block;margin-bottom:6px}
-  .program-image-wrap{width:100%;height:500px;background:linear-gradient(to bottom right,#e2e2e2,#ccc);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:.8rem;color:#999}
+  .program-image-wrap{width:100%;height:500px;background:linear-gradient(to bottom right,#e2e2e2,#ccc);display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:.8rem;color:#999;overflow:hidden;position:relative;z-index:1;transition:transform .4s ease,box-shadow .4s ease}
+  .program-image-wrap:hover{transform:scale(1.06);z-index:10;box-shadow:0 24px 60px rgba(0,0,0,.18)}
+  .program-image-wrap a{display:block;width:100%;height:100%}
+  .program-image-wrap.square{width:500px;height:500px;max-width:100%}
   .cta-pill{display:inline-flex;align-items:center;gap:12px;background:var(--mint);color:var(--black);padding:14px 32px;border-radius:50px;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.85rem;letter-spacing:2px;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer}.cta-pill:hover{background:var(--mint-dark);transform:translateX(4px)}.cta-pill .arrow{font-size:1.2rem;transition:transform .3s}.cta-pill:hover .arrow{transform:translateX(4px)}
+  /* Programs hero (podcast-style) */
+  .programs-hero{background:var(--black);color:var(--white);padding:180px 48px 100px;text-align:center}
+  .programs-hero .eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:4px;color:var(--mint);margin-bottom:20px}
+  .programs-hero h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(3rem,8vw,8rem);text-transform:uppercase;line-height:.95;color:var(--mint);margin-bottom:36px}
+  .programs-hero p{font-size:1.25rem;line-height:1.75;color:#bbb;max-width:620px;margin:0 auto 48px}
+  .programs-hero-stats{display:flex;justify-content:center;gap:64px;margin-bottom:48px}
+  .programs-hero-stats .stat-number{font-family:'Oswald',sans-serif;font-weight:700;font-size:2rem;color:var(--mint)}
+  .programs-hero-stats .stat-label{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.7rem;letter-spacing:2px;color:var(--gray);margin-top:4px}
+
+  /* Testimonials carousel */
   .testimonials{background:var(--black);color:var(--white);padding:120px 48px}.testimonials h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.5rem,3vw,2.5rem);text-transform:uppercase;letter-spacing:3px;text-align:center;color:var(--mint);margin-bottom:60px}
-  .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:1100px;margin:0 auto}
-  .testimonial-card{border-left:3px solid var(--mint);padding-left:24px}.testimonial-card blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;line-height:1.7;color:#ccc;margin-bottom:20px}.testimonial-card cite{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;color:var(--mint);font-style:normal}
+  .carousel-wrapper{position:relative;display:flex;align-items:center;gap:20px;max-width:1160px;margin:0 auto}
+  .carousel-viewport{overflow:hidden;flex:1}
+  .testimonial-track{display:flex;gap:40px;transition:transform .5s ease;will-change:transform}
+  .testimonial-card{flex:0 0 calc((100% - 80px) / 3);border-left:3px solid var(--mint);padding-left:24px}
+  .testimonial-card blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;line-height:1.7;color:#ccc;margin-bottom:20px}
+  .testimonial-card cite{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;color:var(--mint);font-style:normal}
+  .carousel-btn{background:none;border:1px solid #333;color:var(--mint);width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer;flex-shrink:0;transition:all .3s;display:flex;align-items:center;justify-content:center}
+  .carousel-btn:hover{border-color:var(--mint);background:rgba(125,203,168,.1)}
+  .carousel-btn:disabled{opacity:.25;cursor:default}
+  .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:40px}
+  .carousel-dot{width:8px;height:8px;border-radius:50%;background:#333;border:none;cursor:pointer;transition:background .3s;padding:0}
+  .carousel-dot.active{background:var(--mint)}
   .cta-banner{background:var(--mint);padding:100px 48px;text-align:center}.cta-banner h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,4rem);line-height:1.1;max-width:700px;margin:0 auto 36px}.cta-banner .cta-pill{background:var(--black);color:var(--white)}.cta-banner .cta-pill:hover{background:#333}
   footer{background:var(--black);border-top:1px solid #222;padding:60px 48px;display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif}.footer-brand{font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:3px;color:var(--mint)}.footer-links{display:flex;gap:32px}.footer-links a{color:var(--gray);text-decoration:none;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;transition:color .3s}.footer-links a:hover{color:var(--mint)}.footer-copy{color:#555;font-size:.7rem;letter-spacing:1px;text-transform:uppercase}
   .fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.fade-up.delay-1{transition-delay:.1s}.fade-up.delay-2{transition-delay:.2s}.fade-up.delay-3{transition-delay:.3s}
-  @media(max-width:900px){nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}.page-hero{padding:140px 24px 60px}.programs{padding:40px 24px 80px}.program-card{grid-template-columns:1fr;gap:32px;padding:48px 0}.program-card.reverse .program-image-wrap{order:0}.program-image-wrap{height:350px}.testimonials{padding:80px 24px}.testimonial-grid{grid-template-columns:1fr}.cta-banner{padding:60px 24px}footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}}
+  @media(max-width:900px){nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}.programs-hero{padding:140px 24px 60px}.programs-hero-stats{gap:32px;flex-wrap:wrap}.testimonial-card{flex:0 0 calc(100% - 0px)}.programs{padding:40px 24px 80px}.program-card{grid-template-columns:1fr;gap:32px;padding:48px 0}.program-card.reverse .program-image-wrap{order:0}.program-image-wrap{height:350px}.testimonials{padding:80px 24px}.testimonial-grid{grid-template-columns:1fr}.cta-banner{padding:60px 24px}footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}}
 </style>
 </head>
 <body>
 <button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">☀️</button>
 <nav><a href="index.html">Home</a><a href="programs.html" class="nav-link active">Programs</a><a href="about.html" class="nav-link">About</a><a href="resources.html" class="nav-link">Resources</a><a href="podcast.html" class="nav-link">Podcast</a><a href="events.html" class="nav-link">Events</a></nav>
 
-<section class="page-hero">
-  <h1 class="fade-up">The Neuro Spicy Superhero Framework</h1>
-  <p class="subtitle fade-up delay-1">A gamified coaching experience for ADHD professionals who are done being told to "try harder" — and ready to build a microhabit system designed for how their brain actually works. Discover your superpowers. Name your kryptonite. Build habits that fuel you.</p>
+<section class="programs-hero">
+  <p class="eyebrow fade-up">Work With Me</p>
+  <h1 class="fade-up delay-1">Programs &amp; Courses</h1>
+  <p class="fade-up delay-2">Three ways to work together — whether you want to go deep on neurodivergent strategies, build a daily self-love practice, or get clear on your career. Pick the one that meets you where you are.</p>
+  <div class="programs-hero-stats fade-up delay-2">
+    <div class="stat"><div class="stat-number">6+</div><div class="stat-label">Years Coaching ND Professionals</div></div>
+    <div class="stat"><div class="stat-number">100+</div><div class="stat-label">ND Professionals Coached</div></div>
+    <div class="stat"><div class="stat-number">ACC</div><div class="stat-label">ICF Certified Coach</div></div>
+  </div>
+  <a href="https://calendly.com/lajoiefortunesmm-kbf8/30min" class="cta-pill fade-up delay-3" target="_blank" rel="noopener">Book A Call <span class="arrow">→</span></a>
 </section>
 
 <section class="programs">
+  <div class="program-card reverse fade-up">
+    <div>
+      <div class="program-label">The ND Superhero Framework</div>
+      <h2>Power Parts Profile</h2>
+      <p>You've always had superpowers. You just haven't had the map. The Power Parts Profile helps you identify the core parts of your neurodivergent brain — each with a superpower you didn't know you had and a kryptonite that's been running the show without your permission.</p>
+      <p>Discover your top Power Parts, understand what fuels you and what drains you, and start building a life and career designed around how you actually work.</p>
+      <div class="program-details">
+        <span>The ND Superhero Framework</span>
+        <span>Identify Your Power Parts</span>
+        <span>Name Your Kryptonite</span>
+        <span>Build Systems Around Your Brain</span>
+      </div>
+      <a href="https://powerparts.netlify.app/" class="cta-pill" target="_blank" rel="noopener">Discover Your Power Parts <span class="arrow">→</span></a>
+    </div>
+    <div class="program-image-wrap" style="background:#fff;"><a href="https://powerparts.netlify.app/" target="_blank" rel="noopener"><img src="/assets/images/program-powerparts.png" alt="Power Parts Profile" style="width:100%;height:100%;object-fit:contain;" /></a></div>
+  </div>
+
   <div class="program-card fade-up">
     <div>
-      <div class="program-label">High Ticket — 12-Week 1:1 Coaching</div>
-      <h2>The Neuro Spicy Superhero Framework: 1:1 Container</h2>
-      <p>This is not a course. There's no curriculum to consume — that's the last thing your brain needs. This is 12 weeks of personalized coaching built around your specific ADHD brain, your Power Parts, and your real, unpredictable life.</p>
-      <p>We start with your values audit and Power Parts profile to understand exactly what you're working with. Then we build a personalized microhabit system — small enough to bypass executive dysfunction, engaging enough to keep you coming back, and flexible enough to survive the interruptions. Weekly coaching keeps it running as life happens.</p>
+      <div class="program-label">Now Enrolling</div>
+      <h2>The Multiverse School</h2>
+      <p>The Multiverse School is an AI training program founded by Liz, a developer building the future of learning for people who think differently. I'm the Neurodivergent Strategies coach inside the school — supporting students as they move through the AI curriculum and showing up every week for live group coaching.</p>
+      <p>Every week I run the Neurodivergent Strategies group coaching session — a dedicated space for ND students to get real-time support, build systems that work for their brain, and move through the program without burning out.</p>
       <div class="program-details">
-        <span>12-Week Container — $5,000</span>
-        <span>Weekly 1:1 Coaching Calls</span>
-        <span>Power Parts Profile + Values Audit</span>
-        <span>Personalized Microhabit System</span>
+        <span>AI Training Program</span>
+        <span>Weekly ND Group Coaching</span>
+        <span>Neurodivergent Strategies</span>
+        <span>Founded by Liz the Developer</span>
       </div>
-      <a href="#" class="cta-pill">Apply Now <span class="arrow">→</span></a>
+      <a href="https://themultiverse.school/" class="cta-pill" target="_blank" rel="noopener">Visit The Multiverse School <span class="arrow">→</span></a>
     </div>
-    <div class="program-image-wrap"><img src="/assets/images/photo8.jpg" alt="Photo 8" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+    <div class="program-image-wrap" style="background:#111;"><a href="https://themultiverse.school/" target="_blank" rel="noopener"><img src="/assets/images/program-multiverse.png" alt="The Multiverse School" style="width:100%;height:100%;object-fit:contain;" /></a></div>
   </div>
 
   <div class="program-card reverse fade-up">
     <div>
-      <div class="program-label">Digital Product — Low Ticket</div>
-      <h2>The Power Parts Program</h2>
-      <p>You just found out you have superpowers. You don't totally know how to use them yet. Sometimes they save the day. Sometimes they accidentally level the city. Past misfires aren't character flaws — they're uncontrolled power surges. Every hero has them. Now it's time to train.</p>
-      <p>The Power Parts Program is a gamified self-discovery experience built for neurodivergent brains. Through a series of missions, you'll discover your top 3 Neuro Spicy Parts — each with a superpower you didn't know you had and a kryptonite that's been running the show without your permission.</p>
+      <div class="program-label">Self-Love Program for Women</div>
+      <h2>Devotion to Self</h2>
+      <p>Self-love isn't a two-week retreat you save up for once a year. It's a daily practice — and this program will help you build it into your actual routine, no spa weekend required. Devotion to Self is designed for women who are done putting themselves last and ready to make self-care something they do every day, not just when they're burnt out.</p>
+      <p>You'll learn how to weave self-love rituals into the life you already have — building a foundation of care, confidence, and connection to yourself that holds up in the real world.</p>
       <div class="program-details">
-        <span>Mission 1 — Power Values Quiz</span>
-        <span>Mission 2 — 36-Question Power Parts Quiz</span>
-        <span>Mission 3 — Power Goals (Micro-Goals)</span>
-        <span>Mission 4 — Hero Command Center</span>
+        <span>Daily Self-Love Rituals</span>
+        <span>Built Into Your Existing Routine</span>
+        <span>For Women Ready to Put Themselves First</span>
+        <span>Ongoing Practice, Not a One-Time Event</span>
       </div>
-      <a href="#" class="cta-pill">Start Your Hero Training <span class="arrow">→</span></a>
+      <a href="https://lajoiefortune.thinkific.com/courses/devotion-to-self-empowerment-course" class="cta-pill" target="_blank" rel="noopener">Enroll Now <span class="arrow">→</span></a>
     </div>
-    <div class="program-image-wrap"><img src="/assets/images/photo9.jpg" alt="Photo 9" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+    <div class="program-image-wrap" style="background:#a8e6cf;"><a href="https://lajoiefortune.thinkific.com/courses/devotion-to-self-empowerment-course" target="_blank" rel="noopener"><img src="/assets/images/program-devotion.png" alt="Devotion to Self" style="width:100%;height:100%;object-fit:contain;" /></a></div>
   </div>
 
   <div class="program-card fade-up">
     <div>
-      <div class="program-label">Free — Start Here</div>
-      <h2>The Values Quiz</h2>
-      <p>Most ADHD professionals are drowning in tasks, tabs, and decisions — not because they can't handle it, but because they haven't filtered it through what actually matters. Decision fatigue isn't a brain problem. It's a values problem. When you don't know what you're fighting for, everything feels equally urgent.</p>
-      <p>This AI-powered values quiz reveals the gap between your stated values (what you say matters) and your lived values (where your time and energy actually go). In 10 minutes, you'll see exactly where the misalignment is — and why you've been feeling so scattered. Once your values are clear, 80% of the overwhelm eliminates itself.</p>
+      <div class="program-label">1:1 Coaching</div>
+      <h2>Career Coaching</h2>
+      <p>You're talented, capable, and probably the most creative thinker in the room — so why does your career still feel like it's running on someone else's timeline? Career coaching with Lajoie is designed for neurodivergent professionals who are ready to stop shrinking and start building a career that matches their actual potential.</p>
+      <p>In your 1:1 sessions, we'll cut through the noise, get clear on where you want to go, and build a strategy that works for the way your brain is wired — not the way the corporate handbook assumes you work.</p>
       <div class="program-details">
-        <span>Free — AI-Powered Quiz</span>
-        <span>Stated vs. Lived Values</span>
-        <span>10 Minutes</span>
-        <span>Leads to Power Parts Program</span>
+        <span>1:1 Private Sessions</span>
+        <span>Strategy Built for the ND Brain</span>
+        <span>Career Clarity + Direction</span>
+        <span>Execution That Actually Sticks</span>
       </div>
-      <a href="#" class="cta-pill">Take The Free Quiz <span class="arrow">→</span></a>
+      <a href="https://calendly.com/lajoiefortunesmm-kbf8/30min" class="cta-pill" target="_blank" rel="noopener">Book Your Session <span class="arrow">→</span></a>
     </div>
-    <div class="program-image-wrap"><img src="/assets/images/photo10.jpg" alt="Photo 10" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+    <div class="program-image-wrap"><a href="https://calendly.com/lajoiefortunesmm-kbf8/30min" target="_blank" rel="noopener"><img src="/assets/images/program-career.jpg" alt="Career Coaching" style="width:100%;height:100%;object-fit:cover;object-position:center top;" /></a></div>
   </div>
 </section>
 
 <section class="testimonials">
   <h2 class="fade-up">What They're Saying</h2>
-  <div class="testimonial-grid">
-    <div class="testimonial-card fade-up delay-1">
-      <blockquote>"Working with Lajoie felt like the design process I use every day — but turned inward. She helped me see I was still living from an old wireframe of myself. One coaching round gave me the clarity to redesign my life with the same intentionality I bring to my work."</blockquote>
-      <cite>— UX/UI Designer</cite>
+  <div class="carousel-wrapper fade-up delay-1">
+    <button class="carousel-btn" id="prevBtn" onclick="slideTestimonials(-1)" aria-label="Previous" disabled>←</button>
+    <div class="carousel-viewport" id="carouselViewport">
+      <div class="testimonial-track" id="testimonialTrack">
+        <div class="testimonial-card">
+          <blockquote>"Working with Lajoie felt like the design process I use every day — but turned inward. She helped me see I was still living from an old wireframe of myself. One coaching round gave me the clarity to redesign my life with the same intentionality I bring to my work."</blockquote>
+          <cite>— UX/UI Designer</cite>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"I don't do fluff. I came to Lajoie because I had a problem and I wanted it solved. She called it out immediately — I was running old logic on a new system. One round of coaching and I stopped overcomplicating the transition and started executing."</blockquote>
+          <cite>— AI Integration Specialist</cite>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"She helped me see that clarity without action is just a cute Pinterest board. In four months I manifested a promotion I didn't even apply for, paid off my credit card debt, and started waking up genuinely excited about my life."</blockquote>
+          <cite>— Tech Professional, California</cite>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"Lajoie doesn't let you stay comfortable in your confusion. She asks the one question that cracks it open — and suddenly the thing you've been avoiding for six months takes fifteen minutes. I've never felt so seen in a coaching relationship."</blockquote>
+          <cite>— Product Manager, NYC</cite>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"I came in overwhelmed and left organized — not because she gave me a to-do list, but because she helped me see I already had everything I needed. The framework she builds with you actually sticks because it comes from you."</blockquote>
+          <cite>— Software Engineer</cite>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"I've done therapy, read every productivity book, tried every app. Nothing worked until I worked with Lajoie. She got my brain in a way nobody else had. Three months in and I'm consistent for the first time in my life."</blockquote>
+          <cite>— ND Entrepreneur</cite>
+        </div>
+      </div>
     </div>
-    <div class="testimonial-card fade-up delay-2">
-      <blockquote>"I don't do fluff. I came to Lajoie because I had a problem and I wanted it solved. She called it out immediately — I was running old logic on a new system. One round of coaching and I stopped overcomplicating the transition and started executing."</blockquote>
-      <cite>— AI Integration Specialist</cite>
-    </div>
-    <div class="testimonial-card fade-up delay-3">
-      <blockquote>"She helped me see that clarity without action is just a cute Pinterest board. In four months I manifested a promotion I didn't even apply for, paid off my credit card debt, and started waking up genuinely excited about my life."</blockquote>
-      <cite>— Tech Professional, California</cite>
-    </div>
+    <button class="carousel-btn" id="nextBtn" onclick="slideTestimonials(1)" aria-label="Next">→</button>
   </div>
+  <div class="carousel-dots" id="carouselDots"></div>
 </section>
 
 <section class="cta-banner">
   <h2 class="fade-up">Every system you've tried was built for someone else's brain. This is the first one built for yours.</h2>
-  <a href="#" class="cta-pill fade-up delay-1">Book A Call <span class="arrow">→</span></a>
+  <a href="https://calendly.com/lajoiefortunesmm-kbf8/30min" class="cta-pill fade-up delay-1" target="_blank" rel="noopener">Book A Call <span class="arrow">→</span></a>
 </section>
 
 <footer><div class="footer-brand">Lajoie</div><div class="footer-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="podcast.html">Podcast</a><a href="events.html">Events</a></div><div class="footer-copy">© 2026 All Rights Reserved</div></footer>
 <script>const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));</script>
 
 <script>
+  // Testimonial carousel
+  (function(){
+    const track = document.getElementById('testimonialTrack');
+    const viewport = document.getElementById('carouselViewport');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('carouselDots');
+    const cards = track.querySelectorAll('.testimonial-card');
+    const isMobile = () => window.innerWidth <= 900;
+    const perPage = () => isMobile() ? 1 : 3;
+    let currentPage = 0;
+
+    function totalPages(){ return Math.ceil(cards.length / perPage()); }
+
+    function buildDots(){
+      dotsContainer.innerHTML = '';
+      for(let i = 0; i < totalPages(); i++){
+        const d = document.createElement('button');
+        d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to page ' + (i+1));
+        d.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(d);
+      }
+    }
+
+    function goTo(page){
+      currentPage = Math.max(0, Math.min(totalPages() - 1, page));
+      track.style.transform = 'translateX(-' + (currentPage * viewport.offsetWidth) + 'px)';
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage >= totalPages() - 1;
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i === currentPage));
+    }
+
+    function slideTestimonials(dir){ goTo(currentPage + dir); }
+    window.slideTestimonials = slideTestimonials;
+
+    buildDots();
+    goTo(0);
+    window.addEventListener('resize', () => { buildDots(); goTo(0); });
+  })();
+
   function toggleDark(){
     document.body.classList.toggle('dark');
     const isDark=document.body.classList.contains('dark');
