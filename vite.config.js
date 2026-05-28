@@ -12,6 +12,8 @@ export default defineConfig({
         resources: resolve(__dirname, 'resources.html'),
         speaking: resolve(__dirname, 'speaking.html'),
         events: resolve(__dirname, 'events.html'),
+        terms: resolve(__dirname, 'terms.html'),
+        privacy: resolve(__dirname, 'privacy.html'),
       },
     },
   },
