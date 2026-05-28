@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Agreement — Lajoie Fortune LLC</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --mint: #a8e6cf;
+        --mint-light: #d4f5e4;
+        --mint-dark: #7dcba8;
+        --black: #0a0a0a;
+        --white: #fafafa;
+        --gray: #888;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #ffffff;
+        color: #111;
+        font-family: "Cormorant Garamond", Georgia, serif;
+      }
+      body.dark {
+        background: #111;
+        color: #ebebeb;
+      }
+      body.dark nav {
+        background: #1a2e24;
+      }
+      body.dark nav a {
+        color: #ebebeb;
+      }
+      body.dark nav a.nav-link::after {
+        background: #ebebeb;
+      }
+      .dark-toggle {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 1000;
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+      nav {
+        background: var(--mint-light);
+        padding: 18px 48px;
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        font-family: "Oswald", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      nav a {
+        color: var(--black);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      nav a:hover {
+        color: var(--mint-dark);
+      }
+      nav a.nav-link {
+        position: relative;
+        padding-bottom: 2px;
+      }
+      nav a.nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--black);
+        transition: width 0.3s;
+      }
+      nav a.nav-link:hover::after {
+        width: 100%;
+      }
+      .legal-container {
+        max-width: 860px;
+        margin: 60px auto 80px;
+        padding: 0 40px;
+      }
+      .legal-container h1 {
+        font-family: "Oswald", sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #111;
+        margin-bottom: 4px;
+      }
+      body.dark .legal-container h1 {
+        color: #ebebeb;
+      }
+      .legal-container .effective {
+        font-size: 0.6rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 40px;
+        font-family: "Oswald", sans-serif;
+      }
+      .legal-container h2 {
+        font-family: "Oswald", sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #333;
+        margin: 32px 0 10px;
+      }
+      body.dark .legal-container h2 {
+        color: #ccc;
+      }
+      .legal-container p,
+      .legal-container li {
+        font-size: 0.62rem;
+        line-height: 1.85;
+        color: #444;
+        margin-bottom: 8px;
+      }
+      body.dark .legal-container p,
+      body.dark .legal-container li {
+        color: #aaa;
+      }
+      .legal-container ul,
+      .legal-container ol {
+        padding-left: 18px;
+        margin-bottom: 8px;
+      }
+      .legal-container .caps {
+        font-size: 0.58rem;
+        line-height: 1.8;
+      }
+      footer {
+        background: var(--black);
+        border-top: 1px solid #222;
+        padding: 60px 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Oswald", sans-serif;
+      }
+      .footer-brand {
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--mint);
+      }
+      .footer-links {
+        display: flex;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: var(--gray);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        transition: color 0.3s;
+      }
+      .footer-links a:hover {
+        color: var(--mint);
+      }
+      .footer-legal {
+        display: flex;
+        gap: 20px;
+        margin-top: 6px;
+      }
+      .footer-legal a {
+        color: #555;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.6rem;
+        letter-spacing: 1.5px;
+        transition: color 0.3s;
+      }
+      .footer-legal a:hover {
+        color: var(--mint);
+      }
+      .footer-right {
+        text-align: right;
+      }
+      .footer-copy {
+        color: #555;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      @media (max-width: 900px) {
+        nav {
+          padding: 14px 8px;
+          font-size: 0.6rem;
+          letter-spacing: 1px;
+        }
+        .legal-container {
+          padding: 0 20px;
+          margin: 40px auto 60px;
+        }
+        footer {
+          flex-direction: column;
+          gap: 24px;
+          text-align: center;
+          padding: 40px 24px;
+        }
+        .footer-right {
+          text-align: center;
+        }
+        .footer-legal {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      class="dark-toggle"
+      onclick="toggleDark()"
+      aria-label="Toggle dark mode"
+    >
+      ☀️
+    </button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="programs.html" class="nav-link">Programs</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="resources.html" class="nav-link">Resources</a>
+      <a href="podcast.html" class="nav-link">Podcast</a>
+      <a href="events.html" class="nav-link">Events</a>
+    </nav>
+
+    <div class="legal-container">
+      <h1>Coaching Services Agreement — Terms and Conditions</h1>
+      <p class="effective">Lajoie Fortune LLC &nbsp;·&nbsp; A Washington State Limited Liability Company &nbsp;·&nbsp; Effective Date: May 27, 2026</p>
+
+      <h2>Article I — Definitions and Interpretation</h2>
+      <p><strong>1.1 Definitions.</strong> For the purposes of this Agreement, the following terms shall have the meanings ascribed to them below:</p>
+      <p>(a) <strong>"Coach"</strong> refers to Lajoie Fortune LLC, a Washington State limited liability company, including its members, managers, employees, agents, contractors, affiliates, assigns, and successors thereof.</p>
+      <p>(b) <strong>"Client"</strong> refers to the individual or entity that engages Coach for Coaching Services under this Agreement, including any authorized representatives thereof.</p>
+      <p>(c) <strong>"Coaching Services"</strong> refers to all services provided by Coach, including but not limited to one-on-one (1:1) coaching sessions, group coaching sessions, workshops, online programs, digital content, course materials, resources, communications (whether by telephone, video conference, electronic mail, text message, or any other medium), and any ancillary support services.</p>
+      <p>(d) <strong>"Agreement"</strong> refers to the entirety of this document, including all articles, sections, schedules, exhibits, and appendices incorporated herein by reference.</p>
+      <p>(e) <strong>"Confidential Information"</strong> refers to all information disclosed by either party to the other, whether oral, written, electronic, or visual, that is designated as confidential or that reasonably should be understood to be confidential given the nature of the information and the circumstances of disclosure.</p>
+      <p>(f) <strong>"Intellectual Property"</strong> refers to all content, materials, methodologies, frameworks, curricula, worksheets, templates, proprietary processes, trade secrets, trademarks, copyrights, and any other proprietary materials developed, created, or provided by Coach in connection with the Coaching Services.</p>
+      <p>(g) <strong>"Session"</strong> refers to any individual scheduled meeting, call, or interaction between Coach and Client for the purpose of delivering Coaching Services, including but not limited to 1:1 coaching sessions.</p>
+      <p>(h) <strong>"Fees"</strong> refers to all compensation, charges, and costs payable by Client to Coach in exchange for the Coaching Services.</p>
+      <p>(i) <strong>"Purchase"</strong> refers to any transaction through which Client acquires or pays for a 1:1 coaching session or any other Coaching Service offered by Lajoie Fortune LLC, whether through the Coach's website, payment processor, booking platform, or any other method of engagement.</p>
+      <p><strong>1.2 Interpretation.</strong> In this Agreement, unless the context otherwise requires: (i) the singular includes the plural and vice versa; (ii) references to "including" or "includes" mean "including without limitation"; (iii) headings are for convenience only and shall not affect interpretation; (iv) references to "Articles" or "Sections" are to articles and sections of this Agreement; (v) the words "herein," "hereof," "hereunder," and similar words refer to this Agreement as a whole.</p>
+
+      <h2>Article II — Nature of Coaching Services</h2>
+      <p><strong>2.1 Coaching Is Not Therapy, Counseling, or Professional Advice.</strong> Client expressly acknowledges and agrees that the Coaching Services provided hereunder are not and shall not be construed as psychotherapy, psychological counseling, psychiatric treatment, mental health services, medical advice, legal counsel, financial advisory services, accounting services, or any other licensed, regulated, or clinical professional service. Lajoie Fortune LLC and its coaches are not licensed physicians, psychologists, psychiatrists, psychotherapists, social workers, attorneys, certified public accountants, registered investment advisors, or any other licensed or regulated professionals, unless separately and explicitly disclosed in writing, and do not act in any such capacity in connection with the Coaching Services.</p>
+      <p><strong>2.2 No Professional Relationship Created.</strong> The relationship between Coach and Client is strictly that of an independent coaching engagement. Nothing in this Agreement shall be construed to create a fiduciary relationship, doctor-patient relationship, therapist-client relationship, attorney-client relationship, or any other professional relationship beyond that of coach and client.</p>
+      <p><strong>2.3 Educational and Supportive Nature.</strong> The Coaching Services are educational, supportive, and facilitative in nature. Coach may offer perspectives, frameworks, tools, strategies, guidance, opinions, feedback, recommendations, and accountability support. Client acknowledges that any information, guidance, suggestions, strategies, or recommendations provided by Coach are offered for general informational and educational purposes only and are based on Coach's personal experience, training, and professional judgment.</p>
+      <p><strong>2.4 No Diagnosis or Treatment.</strong> Coach shall not and does not diagnose, treat, prescribe for, or provide remedies for any physical, psychological, emotional, or behavioral condition, disorder, illness, or disease. If Client is currently under the care of a mental health professional, physician, or other healthcare provider, Client is encouraged to consult with such provider regarding the advisability of engaging in coaching and to inform said provider of Client's participation in Coaching Services.</p>
+      <p><strong>2.5 Client Responsibility to Seek Professional Help.</strong> Client acknowledges sole responsibility for seeking appropriate licensed professional assistance for any medical, psychological, psychiatric, legal, financial, or other regulated matter. Coach's services are a complement to, and not a substitute for, such professional services.</p>
+
+      <h2>Article III — Client Representations, Warranties, and Acknowledgments</h2>
+      <p><strong>3.1 Legal Capacity.</strong> Client represents and warrants that Client is at least eighteen (18) years of age (or the age of majority in Client's jurisdiction, whichever is greater), is of sound mind, and has the legal capacity to enter into this Agreement.</p>
+      <p><strong>3.2 Voluntary Participation.</strong> Client acknowledges and agrees that participation in the Coaching Services is entirely voluntary and that Client is engaging Lajoie Fortune LLC of Client's own free will, without coercion, duress, or undue influence of any kind.</p>
+      <p><strong>3.3 Personal Responsibility.</strong> Client expressly acknowledges and agrees that Client is solely and entirely responsible for Client's own actions, decisions, choices, behaviors, results, and well-being, both during and after the coaching engagement. Lajoie Fortune LLC is not and shall not be held responsible or liable for any actions taken or not taken by Client as a result of, or in connection with, the Coaching Services.</p>
+      <p><strong>3.4 No Guaranteed Outcomes.</strong> Client expressly acknowledges and agrees that Coach makes no representations, warranties, guarantees, or promises, whether express or implied, regarding specific outcomes, results, or benefits that may or may not be achieved through the Coaching Services. Any statements regarding potential outcomes, whether contained on Coach's website, social media, marketing materials, testimonials, case studies, or made verbally, are expressions of opinion or illustrations of potential possibilities only and are not guarantees of results. Results are inherently dependent upon numerous factors, including but not limited to Client's individual effort, dedication, commitment, circumstances, background, experience, and market conditions, all of which are beyond Coach's control.</p>
+      <p><strong>3.5 Testimonials and Success Stories.</strong> Client acknowledges that any testimonials, case studies, endorsements, or success stories shared by Coach or appearing on Coach's platforms represent individual experiences and are not indicative of future performance or results. Such testimonials do not constitute a guarantee, warranty, or prediction that Client will achieve similar or identical results.</p>
+      <p><strong>3.6 Honest and Accurate Information.</strong> Client agrees to provide honest, accurate, and complete information to Coach throughout the coaching engagement. Client acknowledges that the effectiveness of the Coaching Services is dependent upon Client's candor and full disclosure of relevant information.</p>
+      <p><strong>3.7 Physical and Mental Fitness.</strong> Client represents and warrants that Client is in adequate physical and psychological condition to participate in the Coaching Services and that Client is not aware of any medical, psychological, or other condition that would impair or prevent Client's full and informed participation.</p>
+
+      <h2>Article IV — Assumption of Risk</h2>
+      <p><strong>4.1 Acknowledgment of Inherent Risks.</strong> Client acknowledges and agrees that participation in coaching involves inherent risks, including but not limited to: emotional discomfort, psychological distress, feelings of vulnerability, confrontation of deeply held beliefs, dissatisfaction with coaching outcomes, financial implications of decisions made during or after coaching, disruption of existing personal or professional relationships, and the possibility that coaching may elicit strong emotional responses. Client expressly and voluntarily assumes all risks, both known and unknown, foreseeable and unforeseeable, associated with the Coaching Services.</p>
+      <p><strong>4.2 Voluntary Assumption.</strong> Client's assumption of risk under this Article is voluntary, knowing, and intelligent, and Client hereby releases Lajoie Fortune LLC from any and all claims, demands, causes of action, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or relating to the inherent risks described herein.</p>
+
+      <h2>Article V — Limitation of Liability</h2>
+      <p class="caps"><strong>5.1 Maximum Aggregate Liability.</strong> TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, LAJOIE FORTUNE LLC'S TOTAL CUMULATIVE LIABILITY TO CLIENT ARISING OUT OF OR RELATING TO THIS AGREEMENT, THE COACHING SERVICES, OR ANY OTHER MATTER HEREUNDER, WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY, OR ANY OTHER LEGAL OR EQUITABLE THEORY, SHALL NOT EXCEED THE TOTAL AMOUNT OF FEES ACTUALLY PAID BY CLIENT TO LAJOIE FORTUNE LLC DURING THE SIX (6) MONTH PERIOD IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM.</p>
+      <p class="caps"><strong>5.2 Exclusion of Consequential Damages.</strong> TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL LAJOIE FORTUNE LLC BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, EXEMPLARY, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, LOSS OF REVENUE, LOSS OF BUSINESS, LOSS OF GOODWILL, LOSS OF DATA, LOSS OF USE, LOSS OF OPPORTUNITY, DIMINUTION IN VALUE, EMOTIONAL DISTRESS, OR ANY OTHER INTANGIBLE LOSSES, EVEN IF COACH HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+      <p><strong>5.3 Exclusion of Certain Damages.</strong> Without limiting the generality of the foregoing, Lajoie Fortune LLC shall not be liable for any damages, losses, or expenses arising out of or relating to: (a) any decisions made or actions taken by Client based on information, guidance, recommendations, or strategies provided during the Coaching Services; (b) Client's failure to achieve desired results or outcomes; (c) any business, investment, career, personal, or relational decisions made by Client during or after the coaching engagement; (d) Client's interactions with third parties; (e) any reliance by Client upon the Coaching Services; (f) any interruption, delay, or failure of the Coaching Services; or (g) causes beyond Coach's reasonable control, including Force Majeure Events.</p>
+      <p><strong>5.4 Essential Basis of Bargain.</strong> Client acknowledges that the limitations of liability set forth in this Article reflect a fair and reasonable allocation of risk between the parties and that such limitations constitute an essential basis of the bargain between the parties. Lajoie Fortune LLC would not provide the Coaching Services at the Fees charged without these limitations.</p>
+
+      <h2>Article VI — Disclaimer of Warranties</h2>
+      <p class="caps"><strong>6.1 "As Is" Basis.</strong> THE COACHING SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, LAJOIE FORTUNE LLC EXPRESSLY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT LIMITED TO: (A) IMPLIED WARRANTIES OF MERCHANTABILITY; (B) IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE; (C) WARRANTIES OF TITLE; (D) WARRANTIES OF NON-INFRINGEMENT; (E) WARRANTIES ARISING FROM COURSE OF DEALING, COURSE OF PERFORMANCE, OR USAGE OF TRADE; AND (F) ANY WARRANTIES THAT THE COACHING SERVICES WILL MEET CLIENT'S REQUIREMENTS, BE UNINTERRUPTED, TIMELY, SECURE, ERROR-FREE, OR PRODUCE ANY PARTICULAR RESULTS.</p>
+      <p><strong>6.2 No Warranty of Accuracy.</strong> Coach does not warrant the accuracy, completeness, reliability, timeliness, suitability, or quality of any information, materials, guidance, recommendations, or content provided in connection with the Coaching Services. Client's use of and reliance upon any such information is at Client's sole risk and discretion.</p>
+
+      <h2>Article VII — Indemnification</h2>
+      <p><strong>7.1 Client Indemnification Obligations.</strong> Client agrees to indemnify, defend, and hold harmless Lajoie Fortune LLC and its members, managers, officers, directors, employees, agents, contractors, affiliates, successors, and assigns (collectively, the "Indemnified Parties") from and against any and all claims, demands, actions, suits, proceedings, losses, damages, liabilities, costs, and expenses (including reasonable attorneys' fees, court costs, and costs of settlement) arising out of, relating to, or in connection with:</p>
+      <p>(a) Client's breach of any representation, warranty, covenant, or obligation under this Agreement;</p>
+      <p>(b) Client's use of or reliance upon the Coaching Services, including any decisions made or actions taken based upon information provided during coaching;</p>
+      <p>(c) Client's negligent, reckless, or willful acts or omissions;</p>
+      <p>(d) Any violation of applicable law, regulation, or ordinance by Client;</p>
+      <p>(e) Any claim by a third party arising out of or relating to Client's actions, omissions, decisions, conduct, or use of the Coaching Services;</p>
+      <p>(f) Any claim arising from information, materials, or content provided by Client to Coach; or</p>
+      <p>(g) Client's infringement or misappropriation of any third-party intellectual property rights.</p>
+      <p><strong>7.2 Indemnification Procedure.</strong> Lajoie Fortune LLC shall promptly notify Client of any claim subject to indemnification hereunder. Client shall have the right to assume control of the defense of any such claim, provided that Coach shall have the right to participate in the defense at Client's expense. Client shall not settle any claim without Coach's prior written consent if such settlement imposes any obligation or liability upon Coach.</p>
+
+      <h2>Article VIII — Release and Waiver of Claims</h2>
+      <p><strong>8.1 General Release.</strong> To the fullest extent permitted by applicable law, Client hereby irrevocably and unconditionally releases, acquits, and forever discharges Lajoie Fortune LLC and the Indemnified Parties from any and all claims, demands, causes of action, suits, proceedings, damages, losses, costs, expenses, and liabilities of every kind and nature, whether known or unknown, suspected or unsuspected, disclosed or undisclosed, accrued or unaccrued, which Client now has, has ever had, or may hereafter have against Coach arising out of, relating to, or in connection with the Coaching Services or this Agreement.</p>
+      <p><strong>8.2 Waiver of Unknown Claims.</strong> Client expressly waives any rights under any statute or legal principle (including but not limited to California Civil Code Section 1542 or any analogous statute in any other jurisdiction) that would otherwise limit the scope of this release to claims known or suspected at the time of execution. Client acknowledges that Client may hereafter discover claims or facts in addition to or different from those which Client now knows or believes to exist, and Client expressly agrees that this release shall be and remain effective in all respects notwithstanding such discovery.</p>
+      <p><strong>8.3 Covenant Not to Sue.</strong> Client covenants and agrees not to file, initiate, join, or participate in any lawsuit, arbitration, administrative proceeding, or other legal action against Lajoie Fortune LLC or the Indemnified Parties with respect to any claim released hereunder. In the event Client breaches this covenant, Client shall be liable for all costs, expenses, and attorneys' fees incurred by the Indemnified Parties in defending against such action.</p>
+
+      <h2>Article IX — Confidentiality</h2>
+      <p><strong>9.1 Mutual Confidentiality.</strong> Each party agrees to maintain the confidentiality of Confidential Information received from the other party and to not disclose such information to any third party without the disclosing party's prior written consent, except as required by law, regulation, or court order.</p>
+      <p><strong>9.2 Scope of Coach Confidentiality.</strong> Lajoie Fortune LLC agrees to treat all information shared by Client during coaching sessions as confidential, subject to the following exceptions: (a) information that is or becomes publicly available through no fault of Coach; (b) information that was known to Coach prior to disclosure by Client; (c) information that is independently developed by Coach without use of Client's Confidential Information; (d) information that Coach is required to disclose by law, regulation, subpoena, court order, or governmental authority; (e) situations where Coach reasonably believes disclosure is necessary to prevent imminent harm to Client or a third party; or (f) where Client has provided written consent to disclosure.</p>
+      <p><strong>9.3 Limitations of Confidentiality.</strong> Client acknowledges that coaching is not a legally privileged relationship (unlike the attorney-client or therapist-patient privilege) and that communications between Coach and Client may not be protected from disclosure in legal proceedings.</p>
+      <p><strong>9.4 Anonymized Use.</strong> Lajoie Fortune LLC reserves the right to use anonymized, de-identified information derived from the coaching engagement for purposes including but not limited to research, training, case studies, marketing materials, professional development, and publications, provided that no personally identifiable information of Client is disclosed without Client's express written consent.</p>
+
+      <h2>Article X — Intellectual Property</h2>
+      <p><strong>10.1 Ownership.</strong> All Intellectual Property created, developed, or provided by Lajoie Fortune LLC in connection with the Coaching Services remains the sole and exclusive property of Lajoie Fortune LLC. Nothing in this Agreement shall be construed to transfer, assign, or convey any ownership interest in Coach's Intellectual Property to Client.</p>
+      <p><strong>10.2 Limited License.</strong> Coach grants Client a limited, non-exclusive, non-transferable, revocable license to use materials provided during the Coaching Services solely for Client's personal, non-commercial use. Client shall not reproduce, distribute, publicly display, modify, create derivative works from, sell, sublicense, or otherwise exploit any of Coach's Intellectual Property without Coach's prior written consent.</p>
+      <p><strong>10.3 Prohibition on Reproduction.</strong> Client expressly agrees not to record (whether by audio, video, screen capture, or any other method) any coaching session, communication, or interaction without Coach's prior written consent.</p>
+      <p><strong>10.4 Client Content.</strong> To the extent Client provides Coach with any content, materials, or feedback during the coaching engagement, Client grants Lajoie Fortune LLC a non-exclusive, royalty-free, worldwide license to use such content for the purposes of delivering the Coaching Services and for the anonymized uses described in Section 9.4.</p>
+
+      <h2>Article XI — Payment Terms</h2>
+      <p><strong>11.1 Fees and Payment.</strong> Client agrees to pay all Fees as set forth in the applicable coaching package, proposal, invoice, or payment schedule provided by Lajoie Fortune LLC. All Fees are due and payable in full at the time of Purchase, unless otherwise expressly stated in writing by Coach.</p>
+      <p><strong>11.2 Non-Refundable Fees.</strong> Unless otherwise expressly stated in writing by Lajoie Fortune LLC, all Fees paid are non-refundable. Client acknowledges that Coach reserves time, resources, and availability for Client's coaching engagement, and that such reservation constitutes valuable consideration irrespective of whether Client utilizes all scheduled Sessions.</p>
+      <p><strong>11.3 Late Payments.</strong> Any amounts not paid when due shall accrue interest at the rate of one and one-half percent (1.5%) per month (or the maximum rate permitted by applicable law, whichever is less), from the date due until paid in full. Client shall be responsible for all costs of collection, including reasonable attorneys' fees.</p>
+      <p><strong>11.4 Taxes.</strong> All Fees are exclusive of applicable taxes. Client is responsible for all applicable sales, use, value-added, or other taxes imposed by any governmental authority in connection with the Coaching Services.</p>
+      <p><strong>11.5 Chargebacks and Disputed Charges.</strong> In the event Client initiates a chargeback, payment dispute, or reversal of payment with Client's bank, credit card company, or payment processor, and such chargeback or dispute is resolved in favor of Lajoie Fortune LLC, Client shall be responsible for all chargeback fees, administrative costs, and any additional costs incurred by Coach in connection with the dispute.</p>
+
+      <h2>Article XII — Scheduling, Cancellation, and Rescheduling</h2>
+      <p><strong>12.1 Scheduling.</strong> Sessions shall be scheduled by mutual agreement between Coach and Client. Coach shall make reasonable efforts to accommodate Client's scheduling preferences.</p>
+      <p><strong>12.2 Cancellation and Rescheduling Policy.</strong> Client must provide at least forty-eight (48) hours' advance written notice to cancel or reschedule a Session. Sessions cancelled or rescheduled with less than forty-eight (48) hours' notice shall be forfeited and considered a completed Session for billing purposes. No-shows shall be treated as Sessions completed.</p>
+      <p><strong>12.3 Session Expiration.</strong> All purchased Sessions must be used within ninety (90) days of the date of Purchase, unless otherwise agreed in writing by Lajoie Fortune LLC. Unused Sessions that are not scheduled within this period shall expire and shall not be refundable or transferable.</p>
+      <p><strong>12.4 Coach Cancellation.</strong> In the event Coach must cancel a Session, Coach shall provide reasonable notice and shall reschedule the Session at a mutually agreeable time at no additional charge to Client.</p>
+
+      <h2>Article XIII — Term and Termination</h2>
+      <p><strong>13.1 Term.</strong> This Agreement shall commence upon the date of Client's Purchase of a 1:1 coaching session or any other Coaching Service from Lajoie Fortune LLC and shall continue for the duration specified in the applicable coaching package or until terminated in accordance with this Article.</p>
+      <p><strong>13.2 Termination by Either Party.</strong> Either party may terminate this Agreement at any time, with or without cause, upon fourteen (14) days' prior written notice to the other party. Termination shall not relieve Client of the obligation to pay any Fees accrued prior to the effective date of termination, and no refunds shall be issued for prepaid, unused Sessions unless otherwise agreed in writing by Coach.</p>
+      <p><strong>13.3 Termination for Cause.</strong> Lajoie Fortune LLC may terminate this Agreement immediately and without notice if: (a) Client breaches any material term of this Agreement; (b) Coach reasonably determines that the coaching relationship is no longer productive or appropriate; (c) Client engages in conduct that is abusive, threatening, harassing, or otherwise inappropriate toward Coach or any member of Coach's team; or (d) Coach determines in Coach's sole professional judgment that Client would be better served by a different type of professional (e.g., therapist, counselor, attorney, financial advisor).</p>
+      <p><strong>13.4 Effect of Termination.</strong> Upon termination, all rights and licenses granted to Client hereunder shall immediately cease. Articles V, VI, VII, VIII, IX, X, XIV, XV, XVI, and XVII shall survive termination and continue in full force and effect.</p>
+
+      <h2>Article XIV — Dispute Resolution</h2>
+      <p><strong>14.1 Mandatory Mediation.</strong> In the event of any dispute, controversy, or claim arising out of or relating to this Agreement or the Coaching Services, the parties shall first attempt to resolve such dispute through good-faith informal negotiation for a period of not less than thirty (30) days. If the dispute is not resolved through negotiation, the parties shall submit the dispute to non-binding mediation administered by a mutually agreed-upon mediator in King County, Washington, with costs shared equally.</p>
+      <p><strong>14.2 Binding Arbitration.</strong> If mediation is unsuccessful within sixty (60) days of initiation, any remaining dispute shall be resolved by final and binding arbitration administered by the American Arbitration Association ("AAA") in accordance with its then-current Commercial Arbitration Rules. The arbitration shall take place in King County, Washington, before a single arbitrator mutually agreed upon by the parties or, failing agreement, appointed by the AAA. The arbitrator's decision shall be final and binding, and judgment upon the award rendered may be entered in any court having jurisdiction thereof.</p>
+      <p class="caps"><strong>14.3 Waiver of Jury Trial.</strong> TO THE FULLEST EXTENT PERMITTED BY LAW, EACH PARTY HEREBY IRREVOCABLY AND UNCONDITIONALLY WAIVES ANY RIGHT TO TRIAL BY JURY IN ANY ACTION, PROCEEDING, OR COUNTERCLAIM ARISING OUT OF OR RELATING TO THIS AGREEMENT OR THE COACHING SERVICES.</p>
+      <p><strong>14.4 Waiver of Class Action.</strong> Client agrees that any dispute resolution proceedings shall be conducted on an individual basis only, and not as a class action, collective action, or representative action. Client waives any right to participate in or bring claims in a class, collective, consolidated, or representative capacity.</p>
+      <p><strong>14.5 Limitation Period.</strong> Any claim or cause of action arising out of or relating to this Agreement or the Coaching Services must be filed within one (1) year after the claim or cause of action accrues, regardless of any statute of limitations to the contrary. Any claim not brought within this period is permanently barred.</p>
+      <p><strong>14.6 Prevailing Party.</strong> In any dispute resolution proceeding arising out of this Agreement, the prevailing party shall be entitled to recover its reasonable attorneys' fees, costs, and expenses from the non-prevailing party.</p>
+
+      <h2>Article XV — Governing Law and Jurisdiction</h2>
+      <p><strong>15.1 Governing Law.</strong> This Agreement shall be governed by and construed in accordance with the laws of the State of Washington, without regard to its conflict of law principles.</p>
+      <p><strong>15.2 Jurisdiction and Venue.</strong> To the extent any matter is not subject to arbitration under Article XIV, the parties consent to the exclusive jurisdiction and venue of the state and federal courts located in King County, Washington, and each party irrevocably waives any objection to such jurisdiction or venue, including objections based on inconvenient forum.</p>
+      <p><strong>15.3 Compliance with Washington State Law.</strong> Both parties agree to comply with all applicable Washington State consumer protection statutes, including the Washington Consumer Protection Act (RCW 19.86), to the extent applicable to the Coaching Services. Nothing in this Agreement is intended to waive any rights that cannot be waived under Washington State law.</p>
+
+      <h2>Article XVI — Force Majeure</h2>
+      <p><strong>16.1</strong> Neither party shall be liable for any failure or delay in performing its obligations under this Agreement to the extent that such failure or delay results from causes beyond that party's reasonable control, including but not limited to: acts of God, natural disasters, epidemics, pandemics, government actions or orders, war, terrorism, civil unrest, strikes, labor disputes, fire, flood, earthquake, power outage, internet disruption, equipment failure, or other similar events (collectively, "Force Majeure Events"). The affected party shall provide prompt notice and shall use commercially reasonable efforts to resume performance as soon as practicable.</p>
+
+      <h2>Article XVII — General Provisions</h2>
+      <p><strong>17.1 Entire Agreement.</strong> This Agreement constitutes the entire agreement between the parties with respect to the subject matter hereof and supersedes all prior and contemporaneous agreements, understandings, negotiations, representations, and warranties, whether oral or written, relating to such subject matter.</p>
+      <p><strong>17.2 Amendments.</strong> This Agreement may not be amended, modified, or supplemented except by a written instrument executed by Lajoie Fortune LLC. Coach reserves the right to update these Terms and Conditions from time to time by posting the revised version on Coach's website or providing notice to Client, and continued use of the Coaching Services after such updates constitutes acceptance of the revised terms.</p>
+      <p><strong>17.3 Severability.</strong> If any provision of this Agreement is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction or arbitrator, such provision shall be modified to the minimum extent necessary to make it valid, legal, and enforceable, and the remaining provisions shall continue in full force and effect. The invalidity of any provision in a particular jurisdiction shall not invalidate or render unenforceable such provision in any other jurisdiction.</p>
+      <p><strong>17.4 Waiver.</strong> The failure of either party to enforce any right or provision of this Agreement shall not constitute a waiver of such right or provision. Any waiver of any provision shall be effective only if in writing and signed by the waiving party.</p>
+      <p><strong>17.5 Assignment.</strong> Client may not assign or transfer this Agreement or any rights or obligations hereunder without Lajoie Fortune LLC's prior written consent. Lajoie Fortune LLC may freely assign this Agreement, in whole or in part, without restriction, including in connection with a merger, acquisition, corporate reorganization, or sale of all or substantially all of its assets.</p>
+      <p><strong>17.6 Independent Contractor.</strong> Coach is an independent contractor, and nothing in this Agreement creates a partnership, joint venture, employment, or agency relationship between Coach and Client.</p>
+      <p><strong>17.7 Notices.</strong> All notices under this Agreement shall be in writing and shall be deemed effective upon delivery if delivered personally, upon confirmation of receipt if sent by email, or three (3) business days after deposit in the U.S. mail, postage prepaid, certified or registered, return receipt requested, addressed to the parties at the addresses set forth herein or such other address as either party may designate in writing. Notices to Lajoie Fortune LLC shall be sent to: [INSERT BUSINESS EMAIL ADDRESS AND/OR MAILING ADDRESS].</p>
+      <p><strong>17.8 No Third-Party Beneficiaries.</strong> This Agreement is intended for the sole and exclusive benefit of the parties hereto and shall not confer any rights or remedies upon any third party.</p>
+      <p><strong>17.9 Headings.</strong> The headings in this Agreement are for reference purposes only and shall not affect the interpretation or construction of this Agreement.</p>
+      <p><strong>17.10 Counterparts and Electronic Execution.</strong> This Agreement may be executed in counterparts, each of which shall be deemed an original, and all of which together shall constitute one and the same instrument. Electronic signatures and acceptance mechanisms (including acceptance by Purchase as described in Article XVIII) shall have the same force and effect as original ink signatures.</p>
+      <p><strong>17.11 Construction.</strong> This Agreement shall not be construed more strongly against either party regardless of which party is responsible for its preparation. Any ambiguity shall not be construed against the drafting party.</p>
+      <p><strong>17.12 Cumulative Remedies.</strong> All rights and remedies provided in this Agreement are cumulative and not exclusive of any other rights or remedies that may be available to Coach at law, in equity, or otherwise.</p>
+
+      <h2>Article XVIII — Acceptance by Purchase</h2>
+      <p class="caps"><strong>18.1 Acceptance of Terms.</strong> BY COMPLETING A PURCHASE OF A 1:1 COACHING SESSION OR ANY OTHER COACHING SERVICE FROM LAJOIE FORTUNE LLC — WHETHER THROUGH COACH'S WEBSITE, BOOKING PLATFORM, PAYMENT PROCESSOR, DIRECT INVOICE, OR ANY OTHER MEANS — CLIENT HEREBY ACKNOWLEDGES, AGREES, AND CONFIRMS THAT:</p>
+      <p>(a) Client has read this Agreement in its entirety and understands all terms and conditions set forth herein;</p>
+      <p>(b) Client voluntarily agrees to be legally bound by all terms and conditions of this Agreement;</p>
+      <p>(c) Client's act of completing a Purchase constitutes Client's electronic signature and express acceptance of this Agreement, with the same legal force and effect as a handwritten signature;</p>
+      <p>(d) Client has had the opportunity to consult with independent legal counsel regarding this Agreement prior to making a Purchase;</p>
+      <p>(e) Client enters into this Agreement knowingly, voluntarily, and with full understanding of its terms, including the limitation of liability, indemnification, release, arbitration, jury trial waiver, and class action waiver provisions contained herein;</p>
+      <p>(f) No representations, promises, or inducements have been made to Client other than those expressly set forth in this Agreement; and</p>
+      <p>(g) This Agreement is binding upon Client, Client's heirs, executors, administrators, personal representatives, successors, and assigns.</p>
+      <p><strong>18.2 Binding Effect of Purchase.</strong> The parties agree that the act of completing a Purchase shall serve as conclusive evidence that Client has accepted and agreed to be bound by this Agreement in its entirety. No separate written or physical signature shall be required to render this Agreement valid and enforceable.</p>
+      <p><strong>18.3 Accessibility of Terms.</strong> Lajoie Fortune LLC shall make this Agreement publicly accessible on its website and/or shall provide a link to this Agreement on or before the point of Purchase, such that Client has a reasonable opportunity to review the terms prior to completing any transaction.</p>
+      <p><strong>18.4 Continued Applicability.</strong> This Agreement shall apply to each and every Purchase made by Client, whether a single 1:1 Session or a multi-session package, and shall remain in effect for the duration of the coaching engagement and, with respect to surviving provisions, in perpetuity thereafter.</p>
+
+      <p style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 0.58rem; color: #888; letter-spacing: 1px; text-transform: uppercase; font-family: 'Oswald', sans-serif;">
+        Lajoie Fortune LLC &nbsp;·&nbsp; A Washington State Limited Liability Company &nbsp;·&nbsp; [INSERT BUSINESS ADDRESS] &nbsp;·&nbsp; [INSERT BUSINESS EMAIL]
+      </p>
+    </div>
+
+    <footer>
+      <div class="footer-brand">Lajoie</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="programs.html">Programs</a
+        ><a href="about.html">About</a><a href="resources.html">Resources</a
+        ><a href="podcast.html">Podcast</a><a href="events.html">Events</a>
+      </div>
+      <div class="footer-right">
+        <div class="footer-copy">© 2026 All Rights Reserved</div>
+        <div class="footer-legal">
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleDark() {
+        document.body.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          document.body.classList.contains("dark") ? "dark" : "light"
+        );
+      }
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+      }
+    </script>
+  </body>
+</html>
