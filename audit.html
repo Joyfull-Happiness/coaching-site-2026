@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Executive Function Audit — Joy | Founder Coach for Neurodivergent Leaders</title>
+<title>Executive Function Audit — Joy | Leadership Coach for Neurodivergent Leaders in Tech</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   :root{--mint:#A8E6CF;--mint-light:#D4F5E4;--mint-dark:#7DCBA8;--black:#0A0A0A;--white:#FAFAFA;--gray:#888}
@@ -143,8 +143,8 @@
 
 <section class="page-hero">
   <div class="time-badge fade-up">Free — 5 Minutes Or Less</div>
-  <h1 class="fade-up delay-1">The Founder's Executive Function Audit</h1>
-  <p class="subtitle fade-up delay-2">Pick a founder task from this week that didn't get done. Now sit with this: is it stalled because it's hard — or because your brain has nothing to work with? This audit maps your executive function patterns so you can stop calling yourself lazy and start building around how you actually work.</p>
+  <h1 class="fade-up delay-1">The Leader's Executive Function Audit</h1>
+  <p class="subtitle fade-up delay-2">Pick a leadership task from this week that didn't get done. Now sit with this: is it stalled because it's hard — or because your brain has nothing to work with? This audit maps your executive function patterns so you can stop calling yourself lazy and start building around how you actually work.</p>
 </section>
 
 <div class="quiz-wrap" id="quiz-container">
@@ -160,7 +160,7 @@
   <div class="quiz-question active" data-question="1">
     <div class="question-number">Question 01</div>
     <h2>When a task on your to-do list keeps getting pushed to tomorrow, what's usually the real reason?</h2>
-    <p class="question-subtitle">Be honest — not what you tell your co-founder.</p>
+    <p class="question-subtitle">Be honest — not what you tell your team.</p>
     <div class="quiz-options">
       <div class="quiz-option" data-value="urgency" onclick="selectOption(this)">
         <div class="option-label">A</div>
@@ -363,13 +363,13 @@
 <!-- Email Gate -->
 <section class="email-section" id="email-section">
   <h2>Your Results Are Ready</h2>
-  <p class="desc">Enter your email to see your Founder Executive Function Profile — plus a personalized quick win you can use today.</p>
+  <p class="desc">Enter your email to see your Leader Executive Function Profile — plus a personalized quick win you can use today.</p>
   <div class="email-form">
     <input type="text" class="email-input" id="name-input" placeholder="First name" />
     <input type="email" class="email-input" id="email-input" placeholder="Your best email" />
     <div class="email-error" id="email-error">Please enter a valid email address</div>
     <button class="cta-pill" onclick="submitEmail()" style="justify-content:center">Show My Results <span class="arrow">→</span></button>
-    <p class="email-disclaimer">No spam. Just your results and occasionally useful things for ND founders.</p>
+    <p class="email-disclaimer">No spam. Just your results and occasionally useful things for ND leaders.</p>
   </div>
 </section>
 
@@ -495,31 +495,31 @@ function showResults() {
 
   var profiles = {
     urgency: {
-      title: 'The Deadline-Dependent Founder',
+      title: 'The Deadline-Dependent Leader',
       description: 'Your brain runs on urgency. Without a real deadline — someone waiting, a launch date, consequences — tasks literally don\'t register as "real" to your executive function system. You\'re not procrastinating. Your brain is triaging based on immediacy, and everything without a hard edge gets filed under "later."',
-      quickWin: 'Pick the one task you\'ve been avoiding longest. Set a 25-minute timer right now and tell one person (co-founder, advisor, friend) that you\'ll send it to them when the timer ends. You just manufactured the urgency your brain needs. This works because your executive function activates when there\'s a real human expecting something — not when a calendar reminder goes off.',
+      quickWin: 'Pick the one task you\'ve been avoiding longest. Set a 25-minute timer right now and tell one person (colleague, advisor, friend) that you\'ll send it to them when the timer ends. You just manufactured the urgency your brain needs. This works because your executive function activates when there\'s a real human expecting something — not when a calendar reminder goes off.',
       meaning: 'You don\'t have a discipline problem — you have a brain that\'s wired to prioritize threat-level signals. The fix isn\'t "try harder." It\'s building artificial urgency into every task that matters: accountability partners, public commitments, sprint deadlines with real check-ins. Stop relying on willpower and start engineering the pressure your brain needs to engage.',
       color: '#e74c3c'
     },
     novelty: {
-      title: 'The Novelty-Driven Founder',
+      title: 'The Novelty-Driven Leader',
       description: 'Your brain is a novelty-seeking machine. New problems, new tools, new ideas — you\'re unstoppable. But the moment something becomes routine, repetitive, or "figured out," your executive function checks out. You\'re not flaky. Your dopamine system literally downregulates for familiar stimuli.',
       quickWin: 'Take the most boring recurring task on your plate and change ONE thing about how you do it. New tool, new template, new format, do it in a coffee shop instead of your desk — anything. You just gave your brain enough novelty to re-engage. Rotate the "how" every few weeks and the task stops being invisible.',
       meaning: 'You\'re incredible at 0-to-1 but you stall at 1-to-100 because repetition is kryptonite for your dopamine system. The fix isn\'t forcing yourself to love ops — it\'s building novelty cycles into routine work (rotate formats, batch boring tasks into "game days," delegate the repetitive layer) and knowing when to hire for the parts your brain will never willingly do twice.',
       color: '#9b59b6'
     },
     clarity: {
-      title: 'The Clarity-Starved Founder',
+      title: 'The Clarity-Starved Leader',
       description: 'Your brain can execute at elite speed — once it knows exactly what to do. The problem isn\'t motivation or willpower. It\'s ambiguity. When a task has unclear steps, undefined scope, or multiple possible approaches, your executive function freezes. You\'re not overthinking. Your brain is trying to solve the task before starting it.',
       quickWin: 'Open the task you\'ve been avoiding. Don\'t do it — just write down the very first physical action. Not "work on hiring" but "open Google Docs and type the job title." That one sentence of clarity is often the only thing standing between you and two hours of flow. Your brain doesn\'t need motivation. It needs a first step.',
       meaning: 'You\'re not indecisive — you\'re running a processor that needs clean inputs to produce clean outputs. Ambiguity isn\'t a small friction for you, it\'s a full stop. The fix is front-loading clarity: break every task into its first physical action before you schedule it, use decision frameworks to collapse options fast, and build "clarity rituals" (5-minute pre-work planning) into your daily rhythm.',
       color: '#3498db'
     },
     reward: {
-      title: 'The Impact-Driven Founder',
+      title: 'The Impact-Driven Leader',
       description: 'Your brain runs on meaning and visible impact. If a task feels performative, invisible, or disconnected from real outcomes, your executive function refuses to engage. You\'re not lazy — your dopamine system literally requires a "why this matters" signal before it releases the neurochemicals you need to start.',
       quickWin: 'Pick the task you\'ve been avoiding. Before you start, write one sentence: "When this is done, [specific person] will [specific benefit]." Tape it next to the task. You just connected the work to an outcome your brain cares about. That connection is the ignition switch your executive function has been waiting for.',
-      meaning: 'You\'re wired to do meaningful work — which makes you an incredible founder when the mission is clear, and completely stuck when the work feels disconnected from impact. The fix isn\'t "just do it anyway." It\'s connecting every task to a visible outcome: who benefits, what changes, what moves forward. Build feedback loops into your week (customer calls, team wins, metrics dashboards) so your brain always has proof that the work matters.',
+      meaning: 'You\'re wired to do meaningful work — which makes you an incredible leader when the mission is clear, and completely stuck when the work feels disconnected from impact. The fix isn\'t "just do it anyway." It\'s connecting every task to a visible outcome: who benefits, what changes, what moves forward. Build feedback loops into your week (customer calls, team wins, metrics dashboards) so your brain always has proof that the work matters.',
       color: '#f39c12'
     }
   };
