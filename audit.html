@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Function Audit — Joy | Founder Coach for Neurodivergent Leaders</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{--mint:#A8E6CF;--mint-light:#D4F5E4;--mint-dark:#7DCBA8;--black:#0A0A0A;--white:#FAFAFA;--gray:#888}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body.dark{--mint:#7DCBA8;--mint-light:#1a2e24;--mint-dark:#5fb892;--black:#EBEBEB;--white:#111111;--gray:#999}
+  body.dark{background:#111;color:#ebebeb}
+  body.dark nav{background:#1a2e24}
+  body.dark nav a{color:#ebebeb}
+  body.dark nav a.nav-link::after{background:#ebebeb}
+  body.dark nav a.active{border-bottom-color:#ebebeb}
+  body.dark .page-hero .subtitle{color:#bbb}
+  body.dark .cta-pill{background:#7DCBA8;color:#111}
+  body.dark .cta-pill:hover{background:#5fb892}
+  body.dark .cta-banner{background:#1a2e24}
+  body.dark .cta-banner h2{color:#ebebeb}
+  body.dark .cta-banner .cta-pill{background:#ebebeb;color:#111}
+  body.dark .cta-banner .cta-pill:hover{background:#ccc}
+  body.dark .quiz-card{border-color:#333;background:#1a1a1a}
+  body.dark .quiz-option{border-color:#333;background:#1a1a1a;color:#ebebeb}
+  body.dark .quiz-option:hover{border-color:#7DCBA8;background:#1a2e24}
+  body.dark .quiz-option.selected{border-color:#7DCBA8;background:#1a2e24}
+  body.dark .quiz-progress-bar{background:#333}
+  body.dark .email-section{background:#1a2e24}
+  body.dark .email-input{background:#111;border-color:#333;color:#ebebeb}
+  body.dark .email-input::placeholder{color:#666}
+  body.dark .result-card{border-color:#333;background:#1a1a1a}
+  body.dark .result-card p{color:#bbb}
+  body.dark .result-insight{background:#1a2e24;border-color:#333}
+  body.dark .result-insight p{color:#bbb}
+  body.dark .breakdown-item p{color:#bbb}
+  body.dark .question-subtitle{color:#bbb}
+  .dark-toggle{position:fixed;top:58px;right:16px;z-index:1001;background:none;border:none;cursor:pointer;font-size:1.1rem;width:36px;height:36px;border-radius:50px;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:.7}
+  .dark-toggle:hover{opacity:1;transform:scale(1.1)}
+  html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--white);color:var(--black);overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--mint);padding:16px 0;display:flex;justify-content:stretch;align-items:center;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;font-weight:600}nav a{color:var(--black);text-decoration:none;transition:opacity .3s;flex:1;text-align:center}nav a:hover{opacity:.6}nav a.nav-link{position:relative}nav a.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1.5px;background:var(--black);transition:width .3s}nav a.nav-link:hover::after{width:60%}nav a.active{border-bottom:2px solid var(--black)}
+
+  .page-hero{padding:180px 48px 60px;text-align:center}.page-hero h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2.5rem,6vw,5rem);text-transform:uppercase;line-height:.95;max-width:800px;margin:0 auto}.page-hero .subtitle{font-size:1.3rem;line-height:1.7;color:#444;max-width:600px;margin:28px auto 0}
+  .page-hero .time-badge{display:inline-block;background:var(--mint);color:var(--black);font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.72rem;letter-spacing:4px;padding:6px 24px;border-radius:50px;margin-bottom:28px;font-weight:700}
+
+  /* Quiz container */
+  .quiz-wrap{max-width:720px;margin:0 auto;padding:0 48px 80px}
+
+  /* Progress */
+  .quiz-progress{margin-bottom:48px}
+  .quiz-progress-text{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.72rem;letter-spacing:3px;color:var(--gray);margin-bottom:10px;display:flex;justify-content:space-between}
+  .quiz-progress-bar{height:4px;background:#e0e0e0;border-radius:2px;overflow:hidden}
+  .quiz-progress-fill{height:100%;background:var(--mint-dark);border-radius:2px;transition:width .4s ease}
+
+  /* Question */
+  .quiz-question{display:none}
+  .quiz-question.active{display:block}
+  .question-number{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.72rem;letter-spacing:4px;color:var(--mint-dark);margin-bottom:12px}
+  .quiz-question h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.4rem,3vw,2rem);text-transform:uppercase;line-height:1.15;margin-bottom:12px}
+  .question-subtitle{font-size:1.1rem;line-height:1.6;color:#555;margin-bottom:32px}
+
+  /* Options */
+  .quiz-options{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+  .quiz-option{padding:20px 24px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer;transition:all .25s;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;line-height:1.5;background:var(--white);text-align:left}
+  .quiz-option:hover{border-color:var(--mint);background:var(--mint-light);transform:translateX(4px)}
+  .quiz-option.selected{border-color:var(--mint-dark);background:var(--mint-light);font-weight:600}
+  .quiz-option .option-label{font-family:'Oswald',sans-serif;font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;color:var(--mint-dark)}
+
+  /* Nav buttons */
+  .quiz-nav{display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .quiz-nav .cta-pill{font-size:.78rem;padding:12px 28px}
+  .quiz-nav .cta-pill.back{background:transparent;border:2px solid var(--gray);color:var(--gray)}
+  .quiz-nav .cta-pill.back:hover{border-color:var(--black);color:var(--black)}
+  body.dark .quiz-nav .cta-pill.back{border-color:#555;color:#999}
+  body.dark .quiz-nav .cta-pill.back:hover{border-color:#ebebeb;color:#ebebeb}
+  .quiz-nav .cta-pill:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+  /* Email gate */
+  .email-section{display:none;background:var(--mint-light);padding:80px 48px;text-align:center}
+  .email-section.active{display:block}
+  .email-section h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.8rem,3.5vw,2.8rem);text-transform:uppercase;line-height:1.05;margin-bottom:16px}
+  .email-section .desc{font-size:1.15rem;line-height:1.7;color:#555;max-width:520px;margin:0 auto 36px}
+  body.dark .email-section .desc{color:#bbb}
+  .email-form{max-width:440px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .email-input{padding:16px 20px;border:2px solid #e0e0e0;border-radius:8px;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;outline:none;transition:border-color .3s;background:var(--white);color:var(--black)}
+  .email-input:focus{border-color:var(--mint-dark)}
+  .email-input::placeholder{color:#aaa}
+  .email-error{font-family:'Oswald',sans-serif;font-size:.75rem;color:#e74c3c;letter-spacing:1px;text-transform:uppercase;display:none}
+  .email-disclaimer{font-size:.85rem;color:var(--gray);margin-top:8px;line-height:1.5}
+
+  /* Results */
+  .results-section{display:none;padding:80px 48px}
+  .results-section.active{display:block}
+  .results-inner{max-width:720px;margin:0 auto}
+  .result-header{text-align:center;margin-bottom:60px}
+  .result-header .eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.72rem;letter-spacing:4px;color:var(--mint-dark);margin-bottom:16px}
+  .result-header h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2rem,4vw,3.5rem);text-transform:uppercase;line-height:1;margin-bottom:20px}
+  .result-header p{font-size:1.2rem;line-height:1.7;color:#555;max-width:560px;margin:0 auto}
+  body.dark .result-header p{color:#bbb}
+
+  .result-card{border:2px solid #e0e0e0;border-radius:8px;padding:40px;margin-bottom:32px}
+  .result-card h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;color:var(--mint-dark)}
+  .result-card p{font-size:1.1rem;line-height:1.7;color:#555}
+
+  .result-insight{background:var(--mint-light);border:1px solid var(--mint);border-radius:8px;padding:32px;margin-bottom:32px}
+  .result-insight h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+  .result-insight p{font-size:1.05rem;line-height:1.7;color:#444}
+
+  .breakdown-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:48px}
+  .breakdown-item{padding:24px;border:1px solid #e0e0e0;border-radius:8px}
+  body.dark .breakdown-item{border-color:#333;background:#1a1a1a}
+  .breakdown-item .score-label{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.7rem;letter-spacing:3px;color:var(--gray);margin-bottom:8px}
+  .breakdown-item .score-bar{height:6px;background:#e0e0e0;border-radius:3px;margin-bottom:12px;overflow:hidden}
+  body.dark .breakdown-item .score-bar{background:#333}
+  .breakdown-item .score-fill{height:100%;border-radius:3px;transition:width .6s ease}
+  .breakdown-item h4{font-family:'Oswald',sans-serif;font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+  .breakdown-item p{font-size:.95rem;line-height:1.6;color:#555}
+
+  .cta-pill{display:inline-flex;align-items:center;gap:12px;background:var(--mint);color:var(--black);padding:14px 32px;border-radius:50px;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.85rem;letter-spacing:2px;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer;border:none}.cta-pill:hover{background:var(--mint-dark);transform:translateX(4px)}.cta-pill .arrow{font-size:1.2rem;transition:transform .3s}.cta-pill:hover .arrow{transform:translateX(4px)}
+
+  .cta-banner{background:var(--black);padding:80px 48px;text-align:center;color:var(--white)}
+  .cta-banner h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.8rem,3.5vw,2.8rem);text-transform:uppercase;line-height:1.05;margin-bottom:24px}
+  .cta-banner .cta-pill{background:var(--white);color:var(--black)}
+  .cta-banner .cta-pill:hover{background:#ccc}
+
+  footer{background:var(--black);border-top:1px solid #222;padding:60px 48px;display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif}.footer-brand{font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:3px;color:var(--mint)}.footer-links{display:flex;gap:32px}.footer-links a{color:var(--gray);text-decoration:none;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;transition:color .3s}.footer-links a:hover{color:var(--mint)}.footer-right{text-align:right}.footer-copy{color:#555;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}.footer-legal{display:flex;gap:16px;justify-content:flex-end}.footer-legal a{color:#555;text-decoration:none;text-transform:uppercase;font-size:.6rem;letter-spacing:1.5px;transition:color .3s}.footer-legal a:hover{color:var(--mint)}
+  .fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.fade-up.delay-1{transition-delay:.1s}.fade-up.delay-2{transition-delay:.2s}.fade-up.delay-3{transition-delay:.3s}
+
+  @media(max-width:900px){
+    nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}
+    .page-hero{padding:140px 24px 40px}
+    .quiz-wrap{padding:0 24px 60px}
+    .email-section{padding:60px 24px}
+    .results-section{padding:60px 24px}
+    .breakdown-grid{grid-template-columns:1fr}
+    .cta-banner{padding:60px 24px}
+    footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}
+  }
+</style>
+</head>
+<body>
+<button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode">☀️</button>
+<nav><a href="index.html">Home</a><a href="programs.html" class="nav-link">Programs</a><a href="about.html" class="nav-link">About</a><a href="resources.html" class="nav-link">Free Tools</a><a href="podcast.html" class="nav-link">Podcast</a><a href="events.html" class="nav-link">Events</a></nav>
+
+<section class="page-hero">
+  <div class="time-badge fade-up">Free — 5 Minutes Or Less</div>
+  <h1 class="fade-up delay-1">The Founder's Executive Function Audit</h1>
+  <p class="subtitle fade-up delay-2">Pick a founder task from this week that didn't get done. Now sit with this: is it stalled because it's hard — or because your brain has nothing to work with? This audit maps your executive function patterns so you can stop calling yourself lazy and start building around how you actually work.</p>
+</section>
+
+<div class="quiz-wrap" id="quiz-container">
+  <div class="quiz-progress fade-up">
+    <div class="quiz-progress-text">
+      <span id="progress-label">Question 1 of 7</span>
+      <span id="progress-percent">0%</span>
+    </div>
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="progress-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- Question 1 -->
+  <div class="quiz-question active" data-question="1">
+    <div class="question-number">Question 01</div>
+    <h2>When a task on your to-do list keeps getting pushed to tomorrow, what's usually the real reason?</h2>
+    <p class="question-subtitle">Be honest — not what you tell your co-founder.</p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-value="urgency" onclick="selectOption(this)">
+        <div class="option-label">A</div>
+        There's no real deadline, so my brain treats it like it doesn't exist yet
+      </div>
+      <div class="quiz-option" data-value="novelty" onclick="selectOption(this)">
+        <div class="option-label">B</div>
+        It's boring — I've done this kind of task a hundred times and there's nothing new about it
+      </div>
+      <div class="quiz-option" data-value="clarity" onclick="selectOption(this)">
+        <div class="option-label">C</div>
+        I know it needs to happen but I genuinely don't know what the first step is
+      </div>
+      <div class="quiz-option" data-value="reward" onclick="selectOption(this)">
+        <div class="option-label">D</div>
+        Nobody's going to notice if I do it — there's no visible payoff
+      </div>
+    </div>
+    <div class="quiz-nav">
+      <div></div>
+      <button class="cta-pill" onclick="nextQuestion()" disabled id="next-1">Next <span class="arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="quiz-question" data-question="2">
+    <div class="question-number">Question 02</div>
+    <h2>You have three hours blocked for deep work. What actually happens?</h2>
+    <p class="question-subtitle">The calendar says "focus time." Your brain says...</p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-value="urgency" onclick="selectOption(this)">
+        <div class="option-label">A</div>
+        I end up firefighting something urgent instead — the block never stood a chance
+      </div>
+      <div class="quiz-option" data-value="novelty" onclick="selectOption(this)">
+        <div class="option-label">B</div>
+        I start researching something tangentially related and go down a rabbit hole for two hours
+      </div>
+      <div class="quiz-option" data-value="clarity" onclick="selectOption(this)">
+        <div class="option-label">C</div>
+        I stare at the task, open six tabs, rearrange my desk, and accomplish nothing
+      </div>
+      <div class="quiz-option" data-value="reward" onclick="selectOption(this)">
+        <div class="option-label">D</div>
+        I do the work but switch to something more stimulating halfway through
+      </div>
+    </div>
+    <div class="quiz-nav">
+      <button class="cta-pill back" onclick="prevQuestion()">← Back</button>
+      <button class="cta-pill" onclick="nextQuestion()" disabled id="next-2">Next <span class="arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="quiz-question" data-question="3">
+    <div class="question-number">Question 03</div>
+    <h2>When you're absolutely crushing it — in flow, doing your best work — what's usually true?</h2>
+    <p class="question-subtitle">Think about the last time you were unstoppable.</p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-value="urgency" onclick="selectOption(this)">
+        <div class="option-label">A</div>
+        There's a hard deadline — a launch, a board meeting, a demo in 48 hours
+      </div>
+      <div class="quiz-option" data-value="novelty" onclick="selectOption(this)">
+        <div class="option-label">B</div>
+        It's a brand new problem I've never solved before — my brain is obsessed with figuring it out
+      </div>
+      <div class="quiz-option" data-value="clarity" onclick="selectOption(this)">
+        <div class="option-label">C</div>
+        I know exactly what needs to happen — the steps are clear and I can just execute
+      </div>
+      <div class="quiz-option" data-value="reward" onclick="selectOption(this)">
+        <div class="option-label">D</div>
+        Someone I respect is going to see the result — the stakes feel personal
+      </div>
+    </div>
+    <div class="quiz-nav">
+      <button class="cta-pill back" onclick="prevQuestion()">← Back</button>
+      <button class="cta-pill" onclick="nextQuestion()" disabled id="next-3">Next <span class="arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- Question 4 -->
+  <div class="quiz-question" data-question="4">
+    <div class="question-number">Question 04</div>
+    <h2>Your investor asks for a monthly update. It's been three months. What happened?</h2>
+    <p class="question-subtitle">No judgment. Just pattern recognition.</p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-value="urgency" onclick="selectOption(this)">
+        <div class="option-label">A</div>
+        There's no consequence for not sending it, so it never becomes "real" enough to do
+      </div>
+      <div class="quiz-option" data-value="novelty" onclick="selectOption(this)">
+        <div class="option-label">B</div>
+        Writing the same format update every month makes me want to claw my eyes out
+      </div>
+      <div class="quiz-option" data-value="clarity" onclick="selectOption(this)">
+        <div class="option-label">C</div>
+        I don't know what to say — I overthink what to include and the draft never feels ready
+      </div>
+      <div class="quiz-option" data-value="reward" onclick="selectOption(this)">
+        <div class="option-label">D</div>
+        It feels performative — I'm building, not writing recaps nobody reads
+      </div>
+    </div>
+    <div class="quiz-nav">
+      <button class="cta-pill back" onclick="prevQuestion()">← Back</button>
+      <button class="cta-pill" onclick="nextQuestion()" disabled id="next-4">Next <span class="arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- Question 5 -->
+  <div class="quiz-question" data-question="5">
+    <div class="question-number">Question 05</div>
+    <h2>You need to hire someone. The job post has been half-written for two weeks. Why?</h2>
+    <p class="question-subtitle">The team needs help. Your brain needs something else.</p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-value="urgency" onclick="selectOption(this)">
+        <div class="option-label">A</div>
+        It's not on fire yet — I can still do everything myself (barely)
+      </div>
+      <div class="quiz-option" data-value="novelty" onclick="selectOption(this)">
+        <div class="option-label">B</div>
+        Writing job descriptions is the most boring task on the planet
+      </div>
+      <div class="quiz-option" data-value="clarity" onclick="selectOption(this)">
+        <div class="option-label">C</div>
+        I keep second-guessing the role — should it be full-time? Part-time? A contractor? I can't decide
+      </div>
+      <div class="quiz-option" data-value="reward" onclick="selectOption(this)">
+        <div class="option-label">D</div>
+        Nobody's going to thank me for a job post — I'd rather spend that energy on the product
+      </div>
+    </div>
+    <div class="quiz-nav">
+      <button class="cta-pill back" onclick="prevQuestion()">← Back</button>
+      <button class="cta-pill" onclick="nextQuestion()" disabled id="next-5">Next <span class="arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- Question 6 -->
+  <div class="quiz-question" data-question="6">
+    <div class="question-number">Question 06</div>
+    <h2>Be honest: when do you actually reply to important emails?</h2>
+    <p class="question-subtitle">Not when you read them. When you reply.</p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-value="urgency" onclick="selectOption(this)">
+        <div class="option-label">A</div>
+        When someone follows up or I realize it's about to become a problem
+      </div>
+      <div class="quiz-option" data-value="novelty" onclick="selectOption(this)">
+        <div class="option-label">B</div>
+        Only the interesting ones — partnership offers, press, anything unexpected
+      </div>
+      <div class="quiz-option" data-value="clarity" onclick="selectOption(this)">
+        <div class="option-label">C</div>
+        When I finally figure out what to say — some emails sit in my head for days
+      </div>
+      <div class="quiz-option" data-value="reward" onclick="selectOption(this)">
+        <div class="option-label">D</div>
+        When I know the reply will move something forward — otherwise it feels pointless
+      </div>
+    </div>
+    <div class="quiz-nav">
+      <button class="cta-pill back" onclick="prevQuestion()">← Back</button>
+      <button class="cta-pill" onclick="nextQuestion()" disabled id="next-6">Next <span class="arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- Question 7 -->
+  <div class="quiz-question" data-question="7">
+    <div class="question-number">Question 07</div>
+    <h2>A task you've been avoiding for weeks suddenly gets done in 20 minutes. What changed?</h2>
+    <p class="question-subtitle">Something flipped the switch. What was it?</p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-value="urgency" onclick="selectOption(this)">
+        <div class="option-label">A</div>
+        The deadline became real — someone was waiting on it TODAY
+      </div>
+      <div class="quiz-option" data-value="novelty" onclick="selectOption(this)">
+        <div class="option-label">B</div>
+        I found a new way to do it — a different tool, a different angle, something fresh
+      </div>
+      <div class="quiz-option" data-value="clarity" onclick="selectOption(this)">
+        <div class="option-label">C</div>
+        Someone told me exactly what to do and the ambiguity disappeared
+      </div>
+      <div class="quiz-option" data-value="reward" onclick="selectOption(this)">
+        <div class="option-label">D</div>
+        I realized someone would actually see and appreciate the output
+      </div>
+    </div>
+    <div class="quiz-nav">
+      <button class="cta-pill back" onclick="prevQuestion()">← Back</button>
+      <button class="cta-pill" onclick="showEmailGate()" disabled id="next-7">See My Results <span class="arrow">→</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Email Gate -->
+<section class="email-section" id="email-section">
+  <h2>Your Results Are Ready</h2>
+  <p class="desc">Enter your email to see your Founder Executive Function Profile — plus a personalized quick win you can use today.</p>
+  <div class="email-form">
+    <input type="text" class="email-input" id="name-input" placeholder="First name" />
+    <input type="email" class="email-input" id="email-input" placeholder="Your best email" />
+    <div class="email-error" id="email-error">Please enter a valid email address</div>
+    <button class="cta-pill" onclick="submitEmail()" style="justify-content:center">Show My Results <span class="arrow">→</span></button>
+    <p class="email-disclaimer">No spam. Just your results and occasionally useful things for ND founders.</p>
+  </div>
+</section>
+
+<!-- Results -->
+<section class="results-section" id="results-section">
+  <div class="results-inner">
+    <div class="result-header">
+      <div class="eyebrow">Your Executive Function Profile</div>
+      <h2 id="result-title"></h2>
+      <p id="result-description"></p>
+    </div>
+
+    <div class="result-insight" id="result-quick-win">
+      <h3>Your Quick Win — Use This Today</h3>
+      <p id="quick-win-text"></p>
+    </div>
+
+    <h3 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:3px;color:var(--gray);margin-bottom:24px">Your Breakdown</h3>
+    <div class="breakdown-grid" id="breakdown-grid"></div>
+
+    <div class="result-card">
+      <h3>What This Means For You</h3>
+      <p id="result-meaning"></p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner" id="cta-banner" style="display:none">
+  <h2>Ready To Build A System Around Your Brain?</h2>
+  <a href="programs.html" class="cta-pill">Explore Programs <span class="arrow">→</span></a>
+</section>
+
+<footer><div class="footer-brand">Joy</div><div class="footer-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="about.html">About</a><a href="resources.html">Free Tools</a><a href="podcast.html">Podcast</a><a href="events.html">Events</a></div><div class="footer-right"><div class="footer-copy">&copy; 2026 All Rights Reserved</div><div class="footer-legal"><a href="terms.html">Terms</a><a href="privacy.html">Privacy Policy</a></div></div></footer>
+
+<script>
+(function(){
+  if(localStorage.getItem('dark-mode')==='true'){document.body.classList.add('dark');document.querySelector('.dark-toggle').textContent='🌙'}
+})();
+function toggleDark(){document.body.classList.toggle('dark');const d=document.body.classList.contains('dark');localStorage.setItem('dark-mode',d);document.querySelector('.dark-toggle').textContent=d?'🌙':'☀️'}
+
+var currentQ = 1;
+var totalQ = 7;
+var answers = {};
+
+function selectOption(el) {
+  var parent = el.closest('.quiz-question');
+  parent.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+  el.classList.add('selected');
+  var qNum = parent.getAttribute('data-question');
+  answers[qNum] = el.getAttribute('data-value');
+  var nextBtn = parent.querySelector('.quiz-nav .cta-pill:not(.back)');
+  if (nextBtn) nextBtn.disabled = false;
+}
+
+function updateProgress() {
+  var pct = Math.round(((currentQ - 1) / totalQ) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = 'Question ' + currentQ + ' of ' + totalQ;
+  document.getElementById('progress-percent').textContent = pct + '%';
+}
+
+function showQuestion(n) {
+  document.querySelectorAll('.quiz-question').forEach(function(q) { q.classList.remove('active'); });
+  document.querySelector('[data-question="' + n + '"]').classList.add('active');
+  currentQ = n;
+  updateProgress();
+  window.scrollTo({ top: document.getElementById('quiz-container').offsetTop - 100, behavior: 'smooth' });
+}
+
+function nextQuestion() {
+  if (currentQ < totalQ) showQuestion(currentQ + 1);
+}
+
+function prevQuestion() {
+  if (currentQ > 1) showQuestion(currentQ - 1);
+}
+
+function showEmailGate() {
+  document.getElementById('quiz-container').style.display = 'none';
+  document.getElementById('email-section').classList.add('active');
+  window.scrollTo({ top: document.getElementById('email-section').offsetTop - 80, behavior: 'smooth' });
+}
+
+function submitEmail() {
+  var email = document.getElementById('email-input').value.trim();
+  var name = document.getElementById('name-input').value.trim();
+  var errorEl = document.getElementById('email-error');
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errorEl.style.display = 'block';
+    return;
+  }
+  errorEl.style.display = 'none';
+
+  // Store for later integration with email service
+  try { localStorage.setItem('audit_email', email); localStorage.setItem('audit_name', name); } catch(e) {}
+
+  // TODO: Replace with your email service integration (ConvertKit, Mailchimp, etc.)
+  // Example: fetch('https://api.convertkit.com/v3/forms/YOUR_FORM_ID/subscribe', {
+  //   method: 'POST',
+  //   headers: {'Content-Type': 'application/json'},
+  //   body: JSON.stringify({ api_key: 'YOUR_KEY', email: email, first_name: name })
+  // });
+
+  showResults();
+}
+
+function showResults() {
+  document.getElementById('email-section').classList.remove('active');
+  document.getElementById('email-section').style.display = 'none';
+  document.getElementById('results-section').classList.add('active');
+  document.getElementById('cta-banner').style.display = 'block';
+
+  var scores = { urgency: 0, novelty: 0, clarity: 0, reward: 0 };
+  for (var key in answers) {
+    scores[answers[key]]++;
+  }
+
+  var max = 0, primary = 'urgency';
+  for (var s in scores) {
+    if (scores[s] > max) { max = scores[s]; primary = s; }
+  }
+
+  var profiles = {
+    urgency: {
+      title: 'The Deadline-Dependent Founder',
+      description: 'Your brain runs on urgency. Without a real deadline — someone waiting, a launch date, consequences — tasks literally don\'t register as "real" to your executive function system. You\'re not procrastinating. Your brain is triaging based on immediacy, and everything without a hard edge gets filed under "later."',
+      quickWin: 'Pick the one task you\'ve been avoiding longest. Set a 25-minute timer right now and tell one person (co-founder, advisor, friend) that you\'ll send it to them when the timer ends. You just manufactured the urgency your brain needs. This works because your executive function activates when there\'s a real human expecting something — not when a calendar reminder goes off.',
+      meaning: 'You don\'t have a discipline problem — you have a brain that\'s wired to prioritize threat-level signals. The fix isn\'t "try harder." It\'s building artificial urgency into every task that matters: accountability partners, public commitments, sprint deadlines with real check-ins. Stop relying on willpower and start engineering the pressure your brain needs to engage.',
+      color: '#e74c3c'
+    },
+    novelty: {
+      title: 'The Novelty-Driven Founder',
+      description: 'Your brain is a novelty-seeking machine. New problems, new tools, new ideas — you\'re unstoppable. But the moment something becomes routine, repetitive, or "figured out," your executive function checks out. You\'re not flaky. Your dopamine system literally downregulates for familiar stimuli.',
+      quickWin: 'Take the most boring recurring task on your plate and change ONE thing about how you do it. New tool, new template, new format, do it in a coffee shop instead of your desk — anything. You just gave your brain enough novelty to re-engage. Rotate the "how" every few weeks and the task stops being invisible.',
+      meaning: 'You\'re incredible at 0-to-1 but you stall at 1-to-100 because repetition is kryptonite for your dopamine system. The fix isn\'t forcing yourself to love ops — it\'s building novelty cycles into routine work (rotate formats, batch boring tasks into "game days," delegate the repetitive layer) and knowing when to hire for the parts your brain will never willingly do twice.',
+      color: '#9b59b6'
+    },
+    clarity: {
+      title: 'The Clarity-Starved Founder',
+      description: 'Your brain can execute at elite speed — once it knows exactly what to do. The problem isn\'t motivation or willpower. It\'s ambiguity. When a task has unclear steps, undefined scope, or multiple possible approaches, your executive function freezes. You\'re not overthinking. Your brain is trying to solve the task before starting it.',
+      quickWin: 'Open the task you\'ve been avoiding. Don\'t do it — just write down the very first physical action. Not "work on hiring" but "open Google Docs and type the job title." That one sentence of clarity is often the only thing standing between you and two hours of flow. Your brain doesn\'t need motivation. It needs a first step.',
+      meaning: 'You\'re not indecisive — you\'re running a processor that needs clean inputs to produce clean outputs. Ambiguity isn\'t a small friction for you, it\'s a full stop. The fix is front-loading clarity: break every task into its first physical action before you schedule it, use decision frameworks to collapse options fast, and build "clarity rituals" (5-minute pre-work planning) into your daily rhythm.',
+      color: '#3498db'
+    },
+    reward: {
+      title: 'The Impact-Driven Founder',
+      description: 'Your brain runs on meaning and visible impact. If a task feels performative, invisible, or disconnected from real outcomes, your executive function refuses to engage. You\'re not lazy — your dopamine system literally requires a "why this matters" signal before it releases the neurochemicals you need to start.',
+      quickWin: 'Pick the task you\'ve been avoiding. Before you start, write one sentence: "When this is done, [specific person] will [specific benefit]." Tape it next to the task. You just connected the work to an outcome your brain cares about. That connection is the ignition switch your executive function has been waiting for.',
+      meaning: 'You\'re wired to do meaningful work — which makes you an incredible founder when the mission is clear, and completely stuck when the work feels disconnected from impact. The fix isn\'t "just do it anyway." It\'s connecting every task to a visible outcome: who benefits, what changes, what moves forward. Build feedback loops into your week (customer calls, team wins, metrics dashboards) so your brain always has proof that the work matters.',
+      color: '#f39c12'
+    }
+  };
+
+  var profile = profiles[primary];
+  document.getElementById('result-title').textContent = profile.title;
+  document.getElementById('result-description').textContent = profile.description;
+  document.getElementById('quick-win-text').textContent = profile.quickWin;
+  document.getElementById('result-meaning').textContent = profile.meaning;
+
+  var labels = {
+    urgency: { name: 'Urgency-Dependent', desc: 'Your brain needs deadlines and real consequences to activate' },
+    novelty: { name: 'Novelty-Seeking', desc: 'Your brain needs something new or stimulating to engage' },
+    clarity: { name: 'Clarity-Dependent', desc: 'Your brain needs defined steps and low ambiguity to execute' },
+    reward: { name: 'Impact-Driven', desc: 'Your brain needs visible outcomes and meaning to stay locked in' }
+  };
+
+  var grid = document.getElementById('breakdown-grid');
+  grid.innerHTML = '';
+  var order = ['urgency', 'novelty', 'clarity', 'reward'];
+  var colors = { urgency: '#e74c3c', novelty: '#9b59b6', clarity: '#3498db', reward: '#f39c12' };
+  order.forEach(function(key) {
+    var pct = Math.round((scores[key] / totalQ) * 100);
+    var item = document.createElement('div');
+    item.className = 'breakdown-item';
+    item.innerHTML =
+      '<div class="score-label">' + labels[key].name + ' — ' + scores[key] + '/' + totalQ + '</div>' +
+      '<div class="score-bar"><div class="score-fill" style="width:' + pct + '%;background:' + colors[key] + '"></div></div>' +
+      '<h4>' + labels[key].name + '</h4>' +
+      '<p>' + labels[key].desc + '</p>';
+    grid.appendChild(item);
+  });
+
+  window.scrollTo({ top: document.getElementById('results-section').offsetTop - 80, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.fade-up').forEach(function(el){
+  new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible')}})},{threshold:.15}).observe(el);
+});
+</script>
+</body>
+</html>

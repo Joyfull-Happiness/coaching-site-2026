@@ -14,6 +14,8 @@ export default defineConfig({
         events: resolve(__dirname, 'events.html'),
         terms: resolve(__dirname, 'terms.html'),
         privacy: resolve(__dirname, 'privacy.html'),
+        audit: resolve(__dirname, 'audit.html'),
+        assessment: resolve(__dirname, 'assessment.html'),
       },
     },
   },

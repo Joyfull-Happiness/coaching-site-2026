@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is It Me Or The System? — Joy | Founder Coach for Neurodivergent Leaders</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Playfair+Display:wght@400;700;900&family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{--mint:#A8E6CF;--mint-light:#D4F5E4;--mint-dark:#7DCBA8;--black:#0A0A0A;--white:#FAFAFA;--gray:#888}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body.dark{--mint:#7DCBA8;--mint-light:#1a2e24;--mint-dark:#5fb892;--black:#EBEBEB;--white:#111111;--gray:#999}
+  body.dark{background:#111;color:#ebebeb}
+  body.dark nav{background:#1a2e24}
+  body.dark nav a{color:#ebebeb}
+  body.dark nav a.nav-link::after{background:#ebebeb}
+  .dark-toggle{position:fixed;top:58px;right:16px;z-index:1001;background:none;border:none;cursor:pointer;font-size:1.1rem;width:36px;height:36px;border-radius:50px;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:.7}
+  .dark-toggle:hover{opacity:1;transform:scale(1.1)}
+  html{scroll-behavior:smooth;font-size:16px}body{font-family:'Cormorant Garamond',Georgia,serif;background:#0d1117;color:#c9d1d9;overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--mint);padding:16px 0;display:flex;justify-content:stretch;align-items:center;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;font-weight:600}nav a{color:var(--black);text-decoration:none;transition:opacity .3s;flex:1;text-align:center}nav a:hover{opacity:.6}nav a.nav-link{position:relative}nav a.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1.5px;background:var(--black);transition:width .3s}nav a.nav-link:hover::after{width:60%}
+
+  .game-page{background:#0d1117;min-height:100vh;padding-top:52px}
+
+  /* Game viewport */
+  .game-viewport{position:relative;width:100%;max-width:800px;margin:0 auto;aspect-ratio:16/10;overflow:hidden;border-bottom:4px solid #1a472a}
+  .game-viewport canvas{width:100%;height:100%;display:block;image-rendering:pixelated;image-rendering:crisp-edges}
+
+  /* Game overlay UI */
+  .game-ui{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;display:flex;flex-direction:column}
+
+  /* Progress bar */
+  .game-progress{padding:12px 16px;display:flex;align-items:center;gap:8px;justify-content:center}
+  .progress-dot{width:12px;height:12px;border:2px solid #3fb950;background:transparent;transition:all .3s}
+  .progress-dot.filled{background:#3fb950}
+  .progress-dot.current{background:#3fb950;box-shadow:0 0 8px #3fb950}
+
+  /* Question overlay */
+  .question-overlay{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 16px 16px;opacity:0;transition:opacity .5s;pointer-events:none}
+  .question-overlay.active{opacity:1;pointer-events:auto}
+
+  .question-box{background:rgba(13,17,23,.92);border:2px solid #3fb950;padding:16px 20px;max-width:700px;margin:0 auto;width:100%;backdrop-filter:blur(4px)}
+  .question-box .q-label{font-family:'Press Start 2P',monospace;font-size:8px;color:#3fb950;margin-bottom:10px;letter-spacing:1px}
+  .question-box .q-text{font-family:'Press Start 2P',monospace;font-size:10px;color:#e6edf3;line-height:1.8;margin-bottom:16px}
+  .question-box .q-sub{font-family:'Press Start 2P',monospace;font-size:7px;color:#7d8590;line-height:1.7;margin-bottom:16px}
+
+  .paths-container{display:flex;gap:12px}
+  .path-btn{flex:1;background:rgba(13,17,23,.85);border:2px solid #30363d;padding:14px 16px;cursor:pointer;transition:all .2s;text-align:left;pointer-events:auto}
+  .path-btn:hover{border-color:#3fb950;background:rgba(63,185,80,.1);transform:translateY(-2px)}
+  .path-btn.selected{border-color:#3fb950;background:rgba(63,185,80,.15)}
+  .path-btn .path-label{font-family:'Press Start 2P',monospace;font-size:8px;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+  .path-btn.left .path-label{color:#d2a8ff}
+  .path-btn.right .path-label{color:#d2a8ff}
+  .path-btn .path-text{font-family:'Press Start 2P',monospace;font-size:7px;color:#c9d1d9;line-height:1.8}
+
+  /* Title screen */
+  .title-overlay{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(13,17,23,.7);z-index:5;transition:opacity .5s}
+  .title-overlay.hidden{opacity:0;pointer-events:none}
+  .title-overlay h1{font-family:'Press Start 2P',monospace;font-size:clamp(10px,2.5vw,18px);color:#3fb950;text-align:center;line-height:2;margin-bottom:8px;text-shadow:0 0 20px rgba(63,185,80,.4)}
+  .title-overlay .title-sub{font-family:'Press Start 2P',monospace;font-size:clamp(6px,1.2vw,8px);color:#7d8590;text-align:center;line-height:2;margin-bottom:32px;max-width:500px;padding:0 24px}
+  .start-btn{font-family:'Press Start 2P',monospace;font-size:clamp(8px,1.5vw,12px);background:none;border:2px solid #3fb950;color:#3fb950;padding:12px 32px;cursor:pointer;transition:all .2s;animation:blink 1.2s infinite}
+  .start-btn:hover{background:#3fb950;color:#0d1117;animation:none}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+
+  /* Walk animation overlay */
+  .walk-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#0d1117;opacity:0;pointer-events:none;transition:opacity .2s;z-index:4}
+  .walk-overlay.active{opacity:1}
+
+  /* Email section */
+  .email-section{display:none;padding:80px 24px;text-align:center;background:#0d1117;max-width:600px;margin:0 auto}
+  .email-section.active{display:block}
+  .email-section h2{font-family:'Press Start 2P',monospace;font-size:clamp(12px,2vw,16px);color:#3fb950;margin-bottom:12px;line-height:2}
+  .email-section .desc{font-family:'Press Start 2P',monospace;font-size:clamp(7px,1.1vw,9px);color:#7d8590;line-height:2;margin-bottom:32px}
+  .email-form{display:flex;flex-direction:column;gap:12px;max-width:360px;margin:0 auto}
+  .email-input{font-family:'Press Start 2P',monospace;font-size:10px;padding:14px 16px;background:#161b22;border:2px solid #30363d;color:#e6edf3;outline:none;transition:border-color .3s}
+  .email-input:focus{border-color:#3fb950}
+  .email-input::placeholder{color:#484f58}
+  .email-error{font-family:'Press Start 2P',monospace;font-size:7px;color:#f97583;display:none}
+  .email-submit{font-family:'Press Start 2P',monospace;font-size:10px;background:#3fb950;color:#0d1117;border:none;padding:14px 24px;cursor:pointer;transition:all .2s;margin-top:8px}
+  .email-submit:hover{background:#2ea043;transform:translateY(-2px)}
+  .email-disclaimer{font-family:'Press Start 2P',monospace;font-size:6px;color:#484f58;margin-top:12px;line-height:2}
+
+  /* Results */
+  .results-section{display:none;padding:60px 24px 80px;background:#0d1117;max-width:700px;margin:0 auto}
+  .results-section.active{display:block}
+  .result-header{text-align:center;margin-bottom:48px}
+  .result-header .eyebrow{font-family:'Press Start 2P',monospace;font-size:7px;color:#3fb950;letter-spacing:2px;margin-bottom:16px}
+  .result-header h2{font-family:'Press Start 2P',monospace;font-size:clamp(12px,2.5vw,18px);color:#e6edf3;line-height:2;margin-bottom:16px}
+  .result-header p{font-family:'Press Start 2P',monospace;font-size:clamp(7px,1vw,9px);color:#7d8590;line-height:2.2;max-width:560px;margin:0 auto}
+
+  .result-quick-win{background:#161b22;border:2px solid #3fb950;padding:24px;margin-bottom:32px}
+  .result-quick-win h3{font-family:'Press Start 2P',monospace;font-size:9px;color:#3fb950;margin-bottom:14px}
+  .result-quick-win p{font-family:'Press Start 2P',monospace;font-size:7px;color:#c9d1d9;line-height:2.2}
+
+  .result-breakdown{margin-bottom:32px}
+  .result-breakdown h3{font-family:'Press Start 2P',monospace;font-size:8px;color:#7d8590;margin-bottom:20px}
+  .breakdown-row{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:12px 16px;background:#161b22;border:1px solid #21262d}
+  .breakdown-row .q-num{font-family:'Press Start 2P',monospace;font-size:7px;color:#484f58;min-width:24px}
+  .breakdown-row .q-short{font-family:'Press Start 2P',monospace;font-size:7px;color:#c9d1d9;flex:1;line-height:1.8}
+  .breakdown-row .q-tag{font-family:'Press Start 2P',monospace;font-size:6px;padding:4px 8px;border:1px solid}
+  .breakdown-row .q-tag.me{color:#f97583;border-color:#f97583}
+  .breakdown-row .q-tag.system{color:#79c0ff;border-color:#79c0ff}
+
+  .result-ratio{text-align:center;margin-bottom:32px;padding:24px;background:#161b22;border:1px solid #21262d}
+  .ratio-bar{display:flex;height:16px;margin:16px 0;overflow:hidden}
+  .ratio-me{background:#f97583;height:100%;transition:width .6s}
+  .ratio-system{background:#79c0ff;height:100%;transition:width .6s}
+  .ratio-labels{display:flex;justify-content:space-between}
+  .ratio-labels span{font-family:'Press Start 2P',monospace;font-size:7px}
+  .ratio-labels .me-label{color:#f97583}
+  .ratio-labels .sys-label{color:#79c0ff}
+
+  .result-meaning{background:#161b22;border:1px solid #21262d;padding:24px;margin-bottom:32px}
+  .result-meaning h3{font-family:'Press Start 2P',monospace;font-size:9px;color:#e6edf3;margin-bottom:14px}
+  .result-meaning p{font-family:'Press Start 2P',monospace;font-size:7px;color:#7d8590;line-height:2.2}
+
+  .result-cta{text-align:center;padding:32px;background:#161b22;border:2px solid #3fb950}
+  .result-cta h3{font-family:'Press Start 2P',monospace;font-size:10px;color:#3fb950;margin-bottom:8px;line-height:2}
+  .result-cta p{font-family:'Press Start 2P',monospace;font-size:7px;color:#7d8590;line-height:2;margin-bottom:20px}
+  .result-cta a{display:inline-block;font-family:'Press Start 2P',monospace;font-size:9px;background:#3fb950;color:#0d1117;padding:12px 28px;text-decoration:none;transition:all .2s}
+  .result-cta a:hover{background:#2ea043;transform:translateY(-2px)}
+
+  footer{background:#010409;border-top:1px solid #21262d;padding:60px 48px;display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif}.footer-brand{font-weight:700;font-size:1.2rem;text-transform:uppercase;letter-spacing:3px;color:var(--mint)}.footer-links{display:flex;gap:32px}.footer-links a{color:var(--gray);text-decoration:none;text-transform:uppercase;font-size:.75rem;letter-spacing:2px;transition:color .3s}.footer-links a:hover{color:var(--mint)}.footer-right{text-align:right}.footer-copy{color:#555;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}.footer-legal{display:flex;gap:16px;justify-content:flex-end}.footer-legal a{color:#555;text-decoration:none;text-transform:uppercase;font-size:.6rem;letter-spacing:1.5px;transition:color .3s}.footer-legal a:hover{color:var(--mint)}
+
+  @media(max-width:900px){
+    nav{padding:14px 8px;font-size:.6rem;letter-spacing:1px}
+    .paths-container{flex-direction:column}
+    .question-box{padding:12px 14px}
+    .question-box .q-text{font-size:8px}
+    .path-btn .path-text{font-size:6px}
+    footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}
+  }
+</style>
+</head>
+<body>
+<button class="dark-toggle" onclick="toggleDark()" aria-label="Toggle dark mode" style="display:none"></button>
+<nav><a href="index.html">Home</a><a href="programs.html" class="nav-link">Programs</a><a href="about.html" class="nav-link">About</a><a href="resources.html" class="nav-link">Free Tools</a><a href="podcast.html" class="nav-link">Podcast</a><a href="events.html" class="nav-link">Events</a></nav>
+
+<div class="game-page">
+  <div class="game-viewport" id="game-viewport">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- Title screen -->
+    <div class="title-overlay" id="title-screen">
+      <h1>IS IT ME<br>OR IS IT<br>THE SYSTEM?</h1>
+      <div class="title-sub">A neurodivergent founder walks into a forest. At every fork, one path blames your brain. The other blames the system. Which way do you go?</div>
+      <button class="start-btn" onclick="startGame()">&#9654; START</button>
+    </div>
+
+    <!-- Walk transition -->
+    <div class="walk-overlay" id="walk-overlay"></div>
+
+    <!-- Game UI -->
+    <div class="game-ui" id="game-ui">
+      <div class="game-progress" id="game-progress" style="display:none">
+        <div class="progress-dot" id="dot-0"></div>
+        <div class="progress-dot" id="dot-1"></div>
+        <div class="progress-dot" id="dot-2"></div>
+        <div class="progress-dot" id="dot-3"></div>
+        <div class="progress-dot" id="dot-4"></div>
+        <div class="progress-dot" id="dot-5"></div>
+        <div class="progress-dot" id="dot-6"></div>
+      </div>
+
+      <div class="question-overlay" id="question-overlay">
+        <div class="question-box">
+          <div class="q-label" id="q-label">FORK 1 OF 7</div>
+          <div class="q-text" id="q-text"></div>
+          <div class="q-sub" id="q-sub"></div>
+          <div class="paths-container">
+            <div class="path-btn left" id="path-me" onclick="choosePath('me')">
+              <div class="path-label">&#9666; LEFT PATH</div>
+              <div class="path-text" id="path-me-text"></div>
+            </div>
+            <div class="path-btn right" id="path-system" onclick="choosePath('system')">
+              <div class="path-label">RIGHT PATH &#9656;</div>
+              <div class="path-text" id="path-system-text"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email gate -->
+  <div class="email-section" id="email-section">
+    <h2>YOU MADE IT<br>THROUGH THE FOREST</h2>
+    <p class="desc">Enter your email to see which paths you chose — and what they reveal about where you're blaming your brain for system problems.</p>
+    <div class="email-form">
+      <input type="text" class="email-input" id="name-input" placeholder="FIRST NAME" />
+      <input type="email" class="email-input" id="email-input" placeholder="YOUR EMAIL" />
+      <div class="email-error" id="email-error">ENTER A VALID EMAIL</div>
+      <button class="email-submit" onclick="submitEmail()">SEE MY RESULTS &#9654;</button>
+      <p class="email-disclaimer">No spam. Your results + occasionally useful ND founder things.</p>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="results-section" id="results-section">
+    <div class="result-header">
+      <div class="eyebrow">YOUR FOREST PATH REVEALS...</div>
+      <h2 id="result-title"></h2>
+      <p id="result-description"></p>
+    </div>
+
+    <div class="result-ratio" id="result-ratio">
+      <div class="ratio-labels">
+        <span class="me-label" id="me-count"></span>
+        <span class="sys-label" id="sys-count"></span>
+      </div>
+      <div class="ratio-bar">
+        <div class="ratio-me" id="ratio-me"></div>
+        <div class="ratio-system" id="ratio-sys"></div>
+      </div>
+      <div class="ratio-labels">
+        <span class="me-label">IT'S ME</span>
+        <span class="sys-label">IT'S THE SYSTEM</span>
+      </div>
+    </div>
+
+    <div class="result-quick-win">
+      <h3>&#9889; YOUR QUICK WIN</h3>
+      <p id="quick-win-text"></p>
+    </div>
+
+    <div class="result-breakdown" id="result-breakdown">
+      <h3>YOUR PATH THROUGH THE FOREST</h3>
+    </div>
+
+    <div class="result-meaning">
+      <h3>WHAT THIS ACTUALLY MEANS</h3>
+      <p id="result-meaning-text"></p>
+    </div>
+
+    <div class="result-cta">
+      <h3>READY TO BUILD<br>AROUND YOUR BRAIN?</h3>
+      <p>Stop guessing. Start building systems that work for you.</p>
+      <a href="programs.html">EXPLORE PROGRAMS &#9654;</a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-brand">Joy</div><div class="footer-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="about.html">About</a><a href="resources.html">Free Tools</a><a href="podcast.html">Podcast</a><a href="events.html">Events</a></div><div class="footer-right"><div class="footer-copy">&copy; 2026 All Rights Reserved</div><div class="footer-legal"><a href="terms.html">Terms</a><a href="privacy.html">Privacy Policy</a></div></div></footer>
+
+<script>
+(function(){
+  if(localStorage.getItem('dark-mode')==='true'){document.body.classList.add('dark')}
+})();
+function toggleDark(){document.body.classList.toggle('dark');localStorage.setItem('dark-mode',document.body.classList.contains('dark'))}
+
+/* ── GAME ENGINE ── */
+var canvas = document.getElementById('game-canvas');
+var ctx = canvas.getContext('2d');
+var W = 320, H = 200;
+canvas.width = W;
+canvas.height = H;
+
+var questions = [
+  {
+    text: "You're late to every meeting this week. Why?",
+    sub: "Be honest with yourself.",
+    me: "I lose track of time. Five minutes feels like thirty seconds when I'm locked in on something.",
+    system: "Back-to-back meetings with zero buffer time. Nobody could be on time with this calendar.",
+    short: "Late to meetings"
+  },
+  {
+    text: "The quarterly roadmap is three weeks overdue.",
+    sub: "It's not like you don't care.",
+    me: "Every time I sit down to write it, my working memory drops the thread the second I context-switch.",
+    system: "Three stakeholders keep changing priorities with no single source of truth. The target moves weekly.",
+    short: "Overdue roadmap"
+  },
+  {
+    text: "You forgot to follow up on a critical partnership.",
+    sub: "They emailed two weeks ago.",
+    me: "Out of sight, out of mind. Once I closed my laptop that email stopped existing in my brain.",
+    system: "No CRM, no follow-up system, no reminders. I'm tracking 40 relationships in my head.",
+    short: "Missed follow-up"
+  },
+  {
+    text: "You're doing four jobs at once and drowning.",
+    sub: "Something has to give.",
+    me: "I keep saying yes because saying no feels unbearable. Rejection sensitivity hits different.",
+    system: "We literally haven't hired for these roles. There is nobody to hand this work to.",
+    short: "Doing 4 jobs"
+  },
+  {
+    text: "Every project stalls at 80% done.",
+    sub: "The pattern is obvious by now.",
+    me: "The last 20% is boring detail work and my brain physically refuses to engage with it.",
+    system: "No definition of 'done.' No checklist, no handoff process, no finish line to cross.",
+    short: "80% and stalls"
+  },
+  {
+    text: "Important details in contracts keep slipping through.",
+    sub: "This one scared you.",
+    me: "Dense text with no visual hierarchy is invisible to my pattern-seeking brain. I skim everything.",
+    system: "I'm the only person reviewing these. There's no second pair of eyes anywhere in the process.",
+    short: "Missed details"
+  },
+  {
+    text: "Monday morning feels impossible. Every single week.",
+    sub: "You used to think everyone felt this way.",
+    me: "The weekend-to-work transition requires activation energy I genuinely don't have on demand.",
+    system: "No weekly planning ritual. No priority list. I wake up to chaos with no idea where to start.",
+    short: "Monday dread"
+  }
+];
+
+var currentQ = 0;
+var answers = [];
+var gameState = 'title';
+var charX, charY, charTargetX, charTargetY, charFrame = 0, charTimer = 0;
+var trees = [];
+var pathForkY = 90;
+var forkLeftX = 80, forkRightX = 240, forkCenterX = 160;
+var animTimer = 0;
+var fadeAlpha = 0;
+
+/* ── SPRITES ── */
+var P = 2; // pixel scale
+
+// Character facing up (back view) - 7 wide, 9 tall
+var charColors = {
+  h: '#5c3317', // hair
+  c: '#58a6ff', // hoodie
+  p: '#2d333b', // pants
+  s: '#6e7681'  // shoes
+};
+
+var charFrames = [
+  // Frame 0 - standing / right step
+  [
+    [0,0,'h','h','h',0,0],
+    [0,'h','h','h','h','h',0],
+    [0,'h','h','h','h','h',0],
+    [0,0,'c','c','c',0,0],
+    [0,'c','c','c','c','c',0],
+    ['c','c','c','c','c','c','c'],
+    [0,0,'p','p','p',0,0],
+    [0,'p','p',0,'p','p',0],
+    [0,'s',0,0,0,'s',0]
+  ],
+  // Frame 1 - left step
+  [
+    [0,0,'h','h','h',0,0],
+    [0,'h','h','h','h','h',0],
+    [0,'h','h','h','h','h',0],
+    [0,0,'c','c','c',0,0],
+    [0,'c','c','c','c','c',0],
+    ['c','c','c','c','c','c','c'],
+    [0,0,'p','p','p',0,0],
+    [0,'p',0,'p',0,'p',0],
+    [0,0,'s',0,'s',0,0]
+  ]
+];
+
+function drawChar(x, y, frame) {
+  var sprite = charFrames[frame];
+  for (var r = 0; r < sprite.length; r++) {
+    for (var c = 0; c < sprite[r].length; c++) {
+      if (sprite[r][c]) {
+        ctx.fillStyle = charColors[sprite[r][c]];
+        ctx.fillRect(x + c * P, y + r * P, P, P);
+      }
+    }
+  }
+}
+
+/* ── TREE DRAWING ── */
+function drawTree(x, y, size) {
+  var s = size;
+  // trunk
+  ctx.fillStyle = '#3d2817';
+  ctx.fillRect(x - 1, y, 4, s * 3);
+  // foliage layers
+  var greens = ['#1a472a','#1f5c35','#0f3d1f'];
+  for (var i = 0; i < 3; i++) {
+    ctx.fillStyle = greens[i % 3];
+    var w = (3 - i) * s + 4;
+    var h = s + 2;
+    var ty = y - (i * (s - 1)) - s;
+    ctx.fillRect(x - w/2 + 1, ty, w, h);
+  }
+}
+
+function generateTrees(seed) {
+  trees = [];
+  var rng = seed * 9301 + 49297;
+  function rand() { rng = (rng * 9301 + 49297) % 233280; return rng / 233280; }
+  // left trees
+  for (var i = 0; i < 10; i++) {
+    trees.push({ x: rand() * 80 + 4, y: rand() * 160 + 20, s: 3 + Math.floor(rand() * 3) });
+  }
+  // right trees
+  for (var i = 0; i < 10; i++) {
+    trees.push({ x: rand() * 80 + 236, y: rand() * 160 + 20, s: 3 + Math.floor(rand() * 3) });
+  }
+  // top-left cluster
+  for (var i = 0; i < 5; i++) {
+    trees.push({ x: rand() * 50 + 80, y: rand() * 40 + 8, s: 2 + Math.floor(rand() * 3) });
+  }
+  // top-right cluster
+  for (var i = 0; i < 5; i++) {
+    trees.push({ x: rand() * 50 + 190, y: rand() * 40 + 8, s: 2 + Math.floor(rand() * 3) });
+  }
+  trees.sort(function(a, b) { return a.y - b.y; });
+}
+
+/* ── SCENE DRAWING ── */
+function drawScene() {
+  // Sky
+  var skyGrad = ctx.createLinearGradient(0, 0, 0, H);
+  skyGrad.addColorStop(0, '#0d1117');
+  skyGrad.addColorStop(0.3, '#161b22');
+  skyGrad.addColorStop(1, '#1a2e1a');
+  ctx.fillStyle = skyGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Stars
+  ctx.fillStyle = '#c9d1d9';
+  var starPositions = [[20,12],[55,8],[100,15],[180,10],[250,18],[290,6],[145,5],[210,14],[40,25],[270,22]];
+  for (var i = 0; i < starPositions.length; i++) {
+    var bright = (animTimer + i * 50) % 120 < 80 ? 1 : 0.3;
+    ctx.globalAlpha = bright;
+    ctx.fillRect(starPositions[i][0], starPositions[i][1], 1, 1);
+  }
+  ctx.globalAlpha = 1;
+
+  // Ground
+  ctx.fillStyle = '#0f2b0f';
+  ctx.fillRect(0, 40, W, H - 40);
+
+  // Grass texture
+  ctx.fillStyle = '#163016';
+  for (var gx = 0; gx < W; gx += 6) {
+    for (var gy = 45; gy < H; gy += 8) {
+      ctx.fillRect(gx + ((gy * 3) % 5), gy, 2, 1);
+    }
+  }
+
+  // Main path (bottom center going up to fork)
+  ctx.fillStyle = '#4a3728';
+  ctx.fillRect(forkCenterX - 12, pathForkY, 24, H - pathForkY);
+
+  // Path edges
+  ctx.fillStyle = '#3d2817';
+  ctx.fillRect(forkCenterX - 14, pathForkY, 2, H - pathForkY);
+  ctx.fillRect(forkCenterX + 12, pathForkY, 2, H - pathForkY);
+
+  // Left fork path
+  ctx.fillStyle = '#4a3728';
+  for (var py = pathForkY; py > 20; py -= 2) {
+    var t = (pathForkY - py) / (pathForkY - 20);
+    var px = forkCenterX - t * (forkCenterX - forkLeftX);
+    ctx.fillRect(px - 10, py, 20, 4);
+  }
+
+  // Right fork path
+  for (var py = pathForkY; py > 20; py -= 2) {
+    var t = (pathForkY - py) / (pathForkY - 20);
+    var px = forkCenterX + t * (forkRightX - forkCenterX);
+    ctx.fillRect(px - 10, py, 20, 4);
+  }
+
+  // Fork junction circle
+  ctx.fillStyle = '#5a4538';
+  ctx.fillRect(forkCenterX - 16, pathForkY - 6, 32, 14);
+
+  // Signs at fork
+  if (gameState === 'question' || gameState === 'choosing') {
+    // Left sign post + arrow
+    ctx.fillStyle = '#5c3317';
+    ctx.fillRect(forkCenterX - 50, pathForkY - 22, 3, 18);
+    ctx.fillStyle = '#8b6914';
+    ctx.fillRect(forkCenterX - 62, pathForkY - 24, 28, 10);
+    ctx.fillStyle = '#e6edf3';
+    ctx.fillRect(forkCenterX - 58, pathForkY - 20, 6, 2);
+    ctx.fillRect(forkCenterX - 58, pathForkY - 22, 2, 2);
+    ctx.fillRect(forkCenterX - 58, pathForkY - 18, 2, 2);
+    // Right sign post + arrow
+    ctx.fillStyle = '#5c3317';
+    ctx.fillRect(forkCenterX + 48, pathForkY - 22, 3, 18);
+    ctx.fillStyle = '#8b6914';
+    ctx.fillRect(forkCenterX + 36, pathForkY - 24, 28, 10);
+    ctx.fillStyle = '#e6edf3';
+    ctx.fillRect(forkCenterX + 54, pathForkY - 20, 6, 2);
+    ctx.fillRect(forkCenterX + 58, pathForkY - 22, 2, 2);
+    ctx.fillRect(forkCenterX + 58, pathForkY - 18, 2, 2);
+  }
+
+  // Trees (behind character)
+  for (var i = 0; i < trees.length; i++) {
+    if (trees[i].y < charY) drawTree(trees[i].x, trees[i].y, trees[i].s);
+  }
+
+  // Character
+  drawChar(charX - 7, charY - 18, charFrame);
+
+  // Trees (in front of character)
+  for (var i = 0; i < trees.length; i++) {
+    if (trees[i].y >= charY) drawTree(trees[i].x, trees[i].y, trees[i].s);
+  }
+
+  // Fog/atmosphere
+  ctx.fillStyle = 'rgba(13,17,23,0.15)';
+  ctx.fillRect(0, 0, W, 30);
+}
+
+/* ── GAME LOOP ── */
+var WALK_SPEED = 3;
+
+function gameLoop() {
+  animTimer++;
+
+  if (gameState === 'walking_in' || gameState === 'walking_out') {
+    var dx = charTargetX - charX;
+    var dy = charTargetY - charY;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist > WALK_SPEED) {
+      charX += (dx / dist) * WALK_SPEED;
+      charY += (dy / dist) * WALK_SPEED;
+      charTimer++;
+      if (charTimer % 6 === 0) charFrame = charFrame === 0 ? 1 : 0;
+    } else {
+      charX = charTargetX;
+      charY = charTargetY;
+      charFrame = 0;
+      if (gameState === 'walking_in') {
+        gameState = 'question';
+        showQuestion();
+      } else {
+        startTransition();
+      }
+    }
+  }
+
+  drawScene();
+  requestAnimationFrame(gameLoop);
+}
+
+function startTransition() {
+  gameState = 'transition';
+  var overlay = document.getElementById('walk-overlay');
+  overlay.classList.add('active');
+  setTimeout(function() {
+    currentQ++;
+    if (currentQ >= questions.length) {
+      showEmailGate();
+    } else {
+      setupFork();
+      setTimeout(function() { overlay.classList.remove('active'); }, 200);
+    }
+  }, 250);
+}
+
+function setupFork() {
+  generateTrees(currentQ + 42);
+  charX = forkCenterX;
+  charY = H - 10;
+  charTargetX = forkCenterX;
+  charTargetY = pathForkY + 6;
+  gameState = 'walking_in';
+  updateProgress();
+  document.getElementById('question-overlay').classList.remove('active');
+}
+
+function showQuestion() {
+  var q = questions[currentQ];
+  document.getElementById('q-label').textContent = 'FORK ' + (currentQ + 1) + ' OF 7';
+  document.getElementById('q-text').textContent = q.text;
+  document.getElementById('q-sub').textContent = q.sub;
+  document.getElementById('path-me-text').textContent = q.me;
+  document.getElementById('path-system-text').textContent = q.system;
+  document.getElementById('path-me').classList.remove('selected');
+  document.getElementById('path-system').classList.remove('selected');
+  document.getElementById('question-overlay').classList.add('active');
+}
+
+function updateProgress() {
+  for (var i = 0; i < 7; i++) {
+    var dot = document.getElementById('dot-' + i);
+    dot.classList.remove('filled', 'current');
+    if (i < currentQ) dot.classList.add('filled');
+    if (i === currentQ) dot.classList.add('current');
+  }
+}
+
+/* ── INPUT ── */
+function startGame() {
+  document.getElementById('title-screen').classList.add('hidden');
+  document.getElementById('game-progress').style.display = 'flex';
+  currentQ = 0;
+  answers = [];
+  setupFork();
+}
+
+function choosePath(choice) {
+  if (gameState !== 'question') return;
+  gameState = 'choosing';
+
+  answers.push(choice);
+
+  if (choice === 'me') {
+    document.getElementById('path-me').classList.add('selected');
+  } else {
+    document.getElementById('path-system').classList.add('selected');
+  }
+
+  setTimeout(function() {
+    document.getElementById('question-overlay').classList.remove('active');
+
+    if (choice === 'me') {
+      charTargetX = forkLeftX;
+      charTargetY = 30;
+    } else {
+      charTargetX = forkRightX;
+      charTargetY = 30;
+    }
+    gameState = 'walking_out';
+
+    var dot = document.getElementById('dot-' + currentQ);
+    dot.classList.remove('current');
+    dot.classList.add('filled');
+  }, 300);
+}
+
+/* ── EMAIL ── */
+function showEmailGate() {
+  document.getElementById('game-viewport').style.display = 'none';
+  document.getElementById('email-section').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function submitEmail() {
+  var email = document.getElementById('email-input').value.trim();
+  var name = document.getElementById('name-input').value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('email-error').style.display = 'block';
+    return;
+  }
+  document.getElementById('email-error').style.display = 'none';
+  try { localStorage.setItem('assessment_email', email); localStorage.setItem('assessment_name', name); } catch(e) {}
+
+  // TODO: Replace with your email service (ConvertKit, Mailchimp, etc.)
+
+  showResults();
+}
+
+/* ── RESULTS ── */
+function showResults() {
+  document.getElementById('email-section').classList.remove('active');
+  document.getElementById('email-section').style.display = 'none';
+  document.getElementById('results-section').classList.add('active');
+
+  var meCount = 0, sysCount = 0;
+  for (var i = 0; i < answers.length; i++) {
+    if (answers[i] === 'me') meCount++;
+    else sysCount++;
+  }
+
+  var mePct = Math.round((meCount / 7) * 100);
+  var sysPct = 100 - mePct;
+
+  document.getElementById('me-count').textContent = 'IT\'S ME: ' + meCount + '/7';
+  document.getElementById('sys-count').textContent = 'THE SYSTEM: ' + sysCount + '/7';
+  document.getElementById('ratio-me').style.width = mePct + '%';
+  document.getElementById('ratio-sys').style.width = sysPct + '%';
+
+  var profiles = {
+    brain_blamer: {
+      title: 'THE BRAIN BLAMER',
+      desc: 'You chose "It\'s Me" on most forks. You\'re so used to being told your brain is the problem that you\'ve stopped questioning whether the system was even designed for anyone to succeed. Yes, some of these are ADHD patterns — time blindness, novelty-seeking, activation energy gaps. But you\'re absorbing blame for structural failures that would trip up any founder, neurodivergent or not.',
+      quickWin: 'Pick one task you blamed on your brain this week. Now ask: "If I had an ops person, a system, or a process for this — would my ADHD still be the problem?" If the answer is no, you don\'t need a coping strategy. You need a system. Build that first.',
+      meaning: 'Your instinct to self-blame is actually a sign of high self-awareness — but it\'s miscalibrated. You\'re pattern-matching on "my brain is broken" when the real pattern is "nobody set this up to work." The most important shift you can make: stop trying to fix your brain for problems your business structure created. Build the system first. Then see what\'s actually left over.'
+    },
+    system_spotter: {
+      title: 'THE SYSTEM SPOTTER',
+      desc: 'You chose "It\'s The System" on most forks. Good eye — you can see that most of what\'s blocking you isn\'t actually your ADHD. The structures around you weren\'t built for how you work. But here\'s the honest follow-up: seeing the problem clearly doesn\'t fix it. And using "it\'s the system" as a reason to not build your own is its own kind of trap.',
+      quickWin: 'Pick the one system gap you identified most clearly in this quiz. Spend 15 minutes building a v1 solution — ugly, imperfect, just functional. A Notion template, a recurring calendar block, a two-line checklist. The point isn\'t perfection. It\'s proving to your brain that the gap can close.',
+      meaning: 'You\'re right that the system is broken — but "right" doesn\'t get tasks done. The risk for system-spotters is learned helplessness disguised as analysis: "I can see it\'s broken, so I\'m waiting for it to be fixed." Nobody\'s coming to build these systems for you. The sooner you accept that and start patching the gaps — even imperfectly — the sooner your actual ADHD challenges become visible and manageable.'
+    },
+    pattern_reader: {
+      title: 'THE PATTERN READER',
+      desc: 'You split roughly even between "It\'s Me" and "It\'s The System." That means you can already tell the difference — and that\'s the skill most neurodivergent founders never develop. Some of your stalls are genuine ADHD executive function gaps. Some are structural problems anyone would struggle with. You\'re not confused. You\'re calibrated.',
+      quickWin: 'Make two columns on a page: "Brain Things" and "System Things." Move ONE item from your brain column into your system column this week. (It\'s almost always the follow-up or the planning task.) Build a 5-minute system for it. That single reclassification changes how you approach it — from "I need to try harder" to "I need a process."',
+      meaning: 'You\'re in the rare position of seeing both sides clearly. The next step isn\'t more self-awareness — it\'s action on what you\'re seeing. For every "Brain Thing": build around it (timers, body-doubling, dopamine stacking). For every "System Thing": build the system (checklists, delegation, automation). Stop blending them together and start solving them differently.'
+    }
+  };
+
+  var profileKey;
+  if (meCount >= 5) profileKey = 'brain_blamer';
+  else if (sysCount >= 5) profileKey = 'system_spotter';
+  else profileKey = 'pattern_reader';
+
+  var profile = profiles[profileKey];
+  document.getElementById('result-title').textContent = profile.title;
+  document.getElementById('result-description').textContent = profile.desc;
+  document.getElementById('quick-win-text').textContent = profile.quickWin;
+  document.getElementById('result-meaning-text').textContent = profile.meaning;
+
+  // Breakdown
+  var container = document.getElementById('result-breakdown');
+  for (var i = 0; i < questions.length; i++) {
+    var row = document.createElement('div');
+    row.className = 'breakdown-row';
+    row.innerHTML =
+      '<div class="q-num">' + (i + 1) + '</div>' +
+      '<div class="q-short">' + questions[i].short + '</div>' +
+      '<div class="q-tag ' + answers[i] + '">' + (answers[i] === 'me' ? "IT'S ME" : 'SYSTEM') + '</div>';
+    container.appendChild(row);
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── INIT ── */
+generateTrees(42);
+charX = forkCenterX;
+charY = pathForkY + 6;
+gameLoop();
+</script>
+</body>
+</html>
