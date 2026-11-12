@@ -91,6 +91,13 @@
   .mtool-card p{font-size:1.05rem;line-height:1.7;color:#555;margin-bottom:8px}
   .stuck-moment{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.72rem;letter-spacing:1.5px;color:var(--mint-dark);margin:16px 0 24px;line-height:1.5}
   .mtool-card .cta-pill{margin-top:auto;align-self:flex-start}
+  .mtool-wide{grid-column:1/-1;flex-direction:row;gap:40px;align-items:center}
+  .mtool-img{flex:0 0 48%;display:block;border-radius:4px;overflow:hidden;border:1px solid #e0e0e0;background:#0b0b0b}
+  .mtool-img img{display:block;width:100%;height:auto;transition:transform .4s}
+  .mtool-wide:hover .mtool-img img{transform:scale(1.03)}
+  .mtool-body{flex:1;display:flex;flex-direction:column}
+  body.dark .mtool-img{border-color:#333}
+  @media(max-width:900px){.mtool-wide{flex-direction:column;align-items:stretch;gap:24px}.mtool-img{flex:none}}
 
   /* Coaching bridge */
   .coaching-bridge{background:var(--mint-light);padding:100px 48px;text-align:center}
@@ -151,6 +158,18 @@
       <h3>Power Parts: The ND Command System</h3>
       <p>A full gamified program built like a mission briefing — not a worksheet. Four missions take you from mapping your power values and cognitive architecture to building a permanent operating system for your brain. Mini games, Commander Vox walking you through each phase, and an interface designed to make self-discovery feel like something your brain actually wants to do.</p>
       <a href="https://powerparts.netlify.app/" class="cta-pill" target="_blank" rel="noopener">Begin Mission 1 <span class="arrow">→</span></a>
+    </div>
+
+    <div class="mtool-card mtool-wide fade-up">
+      <a href="value-bracket.html" class="mtool-img"><img src="/assets/images/tool-value-bracket.png" alt="Value Bracket game: two soccer balls labeled More Justice and More Love, with a pitch showing the ball's path to the goal" loading="lazy"></a>
+      <div class="mtool-body">
+        <div class="mtool-price">Free</div>
+        <div class="tag">Game — 10 Quick Kicks</div>
+        <h3>Value Bracket: Find Your Lived Values</h3>
+        <p>The values you say matter and the ones you actually live by aren't always the same. Pick an area of life (wellness, career, finances or relationships) and choose your top five values. Then they go head-to-head in quick real-life scenarios, and every answer kicks the ball toward the goal. By the final whistle, you'll have your top three, ranked.</p>
+        <p class="stuck-moment">Small win: Play it twice. If the same value wins both times, you can trust it.</p>
+        <a href="value-bracket.html" class="cta-pill">Kick Off <span class="arrow">→</span></a>
+      </div>
     </div>
 
   </div>
