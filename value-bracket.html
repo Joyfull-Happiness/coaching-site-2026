@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Value Bracket — Joy | Free Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0B0B; --panel:#141414; --white:#FFFFFF; --dim:#9C9C9C;
+    --cyan:#4DEAF0; --magenta:#EE33EE; --yellow:#F5F53B; --black-text:#0B0B0B;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;position:relative;}
+  body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1.5px, transparent 1.5px);background-size:26px 26px;pointer-events:none;z-index:0;}
+  .wrap{max-width:1100px;margin:0 auto;padding:36px 24px 90px;position:relative;z-index:1;}
+  button:focus-visible{outline:3px solid var(--cyan);outline-offset:2px;}
+
+  header.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:10px;}
+  .brand{font-family:'Manrope',sans-serif;font-weight:800;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);}
+  .brand b{color:var(--white);}
+  .phase-tag{font-family:'Manrope',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--black-text);background:var(--magenta);padding:4px 10px;border-radius:2px;}
+
+  .action-bar{display:flex;justify-content:flex-end;gap:12px;margin-bottom:26px;flex-wrap:wrap;}
+  h1.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(28px,4.5vw,42px);line-height:1.08;letter-spacing:.01em;margin:0 0 16px;max-width:24ch;}
+  .eyebrow{font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;display:block;}
+  p.lede{font-size:16.5px;line-height:1.6;color:var(--dim);max-width:64ch;margin:0 0 8px;}
+  .help-card{background:var(--panel);border:2px solid rgba(255,255,255,.15);border-left:5px solid var(--yellow);padding:16px 18px;margin:16px 0 8px;max-width:68ch;}
+  .help-card p{font-size:14.5px;line-height:1.6;color:var(--dim);margin:0 0 8px;}
+  .help-card p:last-child{margin-bottom:0;}
+  .help-card b{color:var(--white);}
+
+  .btn{font-family:'Manrope',sans-serif;font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.02em;border:3px solid #000;padding:14px 22px;cursor:pointer;box-shadow:5px 5px 0 #000;transition:transform .08s ease, box-shadow .08s ease;color:var(--black-text);background:var(--magenta);}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #000;}
+  .btn:active{transform:translate(0,0);box-shadow:2px 2px 0 #000;}
+  .btn:disabled{opacity:.3;cursor:not-allowed;transform:none;box-shadow:5px 5px 0 #000;}
+  .btn.cyan{background:var(--cyan);} .btn.yellow{background:var(--yellow);}
+  .btn.ghost{background:var(--panel);color:var(--white);border:3px solid var(--white);box-shadow:5px 5px 0 rgba(255,255,255,.2);}
+
+  .count-line{font-family:'Manrope',sans-serif;font-weight:800;font-size:13px;color:var(--dim);margin:16px 0 4px;text-transform:uppercase;letter-spacing:.03em;}
+  .count-line b{color:var(--white);}
+
+  .card{border:3px solid var(--white);box-shadow:6px 6px 0 #000;background:var(--panel);margin-top:20px;width:100%;}
+  .card-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--accent, var(--cyan));border-bottom:3px solid var(--white);}
+  .card-head .title{font-family:'Manrope',sans-serif;font-weight:800;text-transform:uppercase;color:var(--black-text);font-size:15px;letter-spacing:.02em;}
+  .card-head .meta{font-family:'Manrope',sans-serif;font-weight:800;color:var(--black-text);font-size:12px;text-transform:uppercase;letter-spacing:.03em;}
+  .grid-select{display:flex;flex-wrap:wrap;gap:10px;padding:18px;}
+  .tile{all:unset;box-sizing:border-box;text-align:center;padding:15px 10px;position:relative;border:2px solid rgba(255,255,255,.25);background:var(--bg);color:var(--white);font-family:'Manrope',sans-serif;font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.01em;cursor:pointer;border-radius:2px;flex:1 1 140px;}
+  .tile:hover:not(.disabled){border-color:var(--accent, var(--cyan));color:var(--accent, var(--cyan));}
+  .tile.picked{background:var(--accent, var(--cyan));color:var(--black-text);border-color:var(--accent, var(--cyan));}
+  .tile.picked:hover{color:var(--black-text);}
+  .tile.disabled{opacity:.3;cursor:not-allowed;}
+  .tile:focus-visible{outline:3px solid var(--cyan);outline-offset:2px;}
+
+  /* ---------- the matchup ---------- */
+  .round-label{font-family:'Manrope',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--yellow);}
+  .progress{height:8px;background:var(--panel);border:2px solid rgba(255,255,255,.25);margin:10px 0 18px;}
+  .progress i{display:block;height:100%;background:var(--cyan);transition:width .25s ease;}
+  .q{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(22px,3.4vw,32px);text-transform:uppercase;letter-spacing:.01em;margin:0 0 18px;}
+  .duel{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;}
+  .side{
+    all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:block;justify-self:center;
+    width:clamp(150px,30vw,300px);aspect-ratio:1/1;border-radius:50%;
+    transition:transform .12s ease, opacity .2s ease;
+  }
+  .ballsvg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(6px 6px 0 #000);transition:transform .35s cubic-bezier(.2,.8,.3,1);}
+  .plate{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:74%;text-align:center;
+    background:#0B0B0B;color:var(--white);border:3px solid #000;padding:8px 6px;border-radius:4px;
+    font-family:'Anton',sans-serif;font-size:calc(clamp(15px,2.6vw,26px) * var(--fs,1));text-transform:uppercase;letter-spacing:.02em;line-height:1.1;overflow-wrap:break-word;
+  }
+  .side.s1 .plate{box-shadow:0 0 0 3px var(--cyan);}
+  .side.s2 .plate{box-shadow:0 0 0 3px var(--magenta);}
+  .side:hover .ballsvg{transform:rotate(-14deg) scale(1.04);}
+  .side:active{transform:scale(.97);}
+  .side.kicked{visibility:hidden;}
+  .side.dim{opacity:.25;}
+  .side:focus-visible{outline:3px solid var(--white);outline-offset:6px;}
+  .or{align-self:center;font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;color:var(--dim);}
+  .q .ask{color:var(--yellow);}
+  .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px;}
+  @media (max-width:640px){.cat-grid{grid-template-columns:1fr;}}
+  .cat{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-height:170px;padding:22px;
+    border:3px solid var(--accent);background:var(--panel);box-shadow:6px 6px 0 #000;transition:transform .08s ease, box-shadow .08s ease;}
+  .cat:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 #000;background:#1b1b1b;}
+  .cat:active{transform:translate(0,0);box-shadow:2px 2px 0 #000;}
+  .cat:focus-visible{outline:3px solid var(--white);outline-offset:4px;}
+  .cat-name{font-family:'Anton',sans-serif;font-size:clamp(30px,5vw,46px);text-transform:uppercase;color:var(--accent);letter-spacing:.02em;line-height:1;}
+  .cat-blurb{font-size:16px;color:var(--white);line-height:1.4;}
+  .cat-count{margin-top:auto;font-family:'Manrope',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);}
+  .hint{font-size:13px;color:var(--dim);margin:14px 0 0;}
+  .duel{padding:6px 0 10px;}
+  @media (max-width:640px){
+    .duel{gap:6px;}
+    .side{width:min(40vw,190px);}
+    .plate{width:80%;font-size:calc(13px * var(--fs,1));padding:6px 4px;}
+  }
+
+  /* ---------- bracket ---------- */
+  .board{display:grid;grid-template-columns:1fr 280px;gap:18px;margin-top:28px;align-items:start;}
+  @media (max-width:860px){.board{grid-template-columns:1fr;}}
+  .bracket{display:flex;flex-wrap:wrap;gap:18px 22px;}
+  .col{display:flex;flex-direction:column;gap:10px;min-width:150px;flex:1 1 150px;}
+  .col h4{font-family:'Manrope',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 2px;}
+  .mbox{border:2px solid rgba(255,255,255,.25);background:var(--panel);}
+  .mbox.now{border-color:var(--yellow);box-shadow:0 0 0 2px var(--yellow);}
+  .mrow{padding:7px 9px;font-family:'Manrope',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.12);color:var(--white);overflow-wrap:anywhere;}
+  .mrow:last-child{border-bottom:none;}
+  .mrow.win{background:var(--cyan);color:var(--black-text);}
+  .mrow.lose{color:var(--dim);}
+  .mrow.tbd{color:rgba(255,255,255,.3);font-weight:600;}
+  .board-sub{margin-top:18px;}
+  .leader .rec{font-size:12px;color:var(--dim);font-weight:800;letter-spacing:.04em;}
+
+  .leader{border:3px solid var(--white);background:var(--panel);box-shadow:6px 6px 0 #000;}
+  .leader .card-head{background:var(--yellow);}
+  .leader ol{list-style:none;margin:0;padding:12px 14px;}
+  .leader li{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.1);font-family:'Manrope',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;}
+  .leader li:last-child{border-bottom:none;}
+  .leader .n{width:26px;height:26px;border-radius:50%;background:var(--bg);border:2px solid rgba(255,255,255,.3);color:var(--dim);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+  .leader li.set .n{background:var(--yellow);border-color:var(--yellow);color:var(--black-text);}
+  .leader li.unset .name{color:rgba(255,255,255,.3);font-weight:600;}
+  .leader .note{padding:0 14px 14px;font-size:12.5px;color:var(--dim);line-height:1.5;}
+
+  /* ---------- results ---------- */
+  .champ{border:3px solid var(--yellow);background:var(--panel);box-shadow:6px 6px 0 #000;padding:22px;margin:6px 0 4px;}
+  .champ small{font-family:'Manrope',sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);}
+  .champ .big{font-family:'Anton',sans-serif;font-size:clamp(36px,7vw,64px);text-transform:uppercase;line-height:1.05;margin-top:4px;}
+  .extras{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;}
+  .extras span{font-family:'Manrope',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;background:var(--panel);border:2px solid rgba(255,255,255,.2);color:var(--dim);padding:7px 11px;border-radius:2px;}
+  .signal{border-left:5px solid var(--cyan);background:var(--panel);border-top:2px solid rgba(255,255,255,.15);border-right:2px solid rgba(255,255,255,.15);border-bottom:2px solid rgba(255,255,255,.15);padding:14px 16px;margin-top:16px;max-width:68ch;font-size:14.5px;line-height:1.6;color:var(--dim);}
+  .signal b{color:var(--white);}
+  h3.sec{font-family:'Manrope',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:26px 0 8px;}
+
+  /* ---------- soccer pitch ---------- */
+  .pitch{position:relative;height:170px;border:3px solid var(--white);box-shadow:6px 6px 0 #000;overflow:hidden;
+    background:repeating-linear-gradient(90deg,#0e2a17 0 9%,#123320 9% 18%);}
+  .pitch > div{position:absolute;}
+  .p-half{left:50%;top:0;bottom:0;width:2px;background:rgba(255,255,255,.4);}
+  .p-circle{left:50%;top:50%;width:70px;height:70px;margin:-35px 0 0 -35px;border:2px solid rgba(255,255,255,.4);border-radius:50%;}
+  .p-box{top:20%;bottom:20%;width:14%;border:2px solid rgba(255,255,255,.4);}
+  .p-box.l{left:0;border-left:none;} .p-box.r{right:0;border-right:none;}
+  .p-goal{right:0;top:36%;bottom:36%;width:26px;border:3px solid var(--white);border-right:none;
+    background:repeating-linear-gradient(45deg,rgba(255,255,255,.35) 0 2px,transparent 2px 7px),#0B0B0B;display:flex;align-items:center;justify-content:center;}
+  .p-goal span{font-family:'Manrope',sans-serif;font-weight:800;font-size:8px;writing-mode:vertical-rl;color:var(--yellow);letter-spacing:.1em;}
+  .ball{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;transition:left .55s cubic-bezier(.2,.8,.3,1),top .55s ease;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.6));z-index:2;}
+  .pitch.scored .ball{width:34px;height:34px;margin:-17px 0 0 -17px;}
+  .goal-banner{left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:clamp(34px,8vw,64px);color:var(--yellow);text-shadow:4px 4px 0 #000;background:rgba(11,11,11,.45);animation:pop .5s ease both;z-index:3;}
+  @keyframes pop{0%{transform:scale(.5);opacity:0;}70%{transform:scale(1.1);opacity:1;}100%{transform:scale(1);}}
+  .pitch-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px;}
+  .pdots{display:flex;gap:5px;}
+  .pdots i{width:14px;height:8px;border:2px solid rgba(255,255,255,.35);background:var(--panel);display:block;}
+  .pdots i.on{background:var(--yellow);border-color:var(--yellow);}
+  .zone{font-family:'Manrope',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);}
+  .zone b{color:var(--yellow);}
+  @media (max-width:640px){.pitch{height:130px;}.p-circle{width:50px;height:50px;margin:-25px 0 0 -25px;}}
+
+  /* kick animation layer */
+  .kick-layer{position:fixed;inset:0;z-index:2000;pointer-events:none;overflow:hidden;}
+  .side.kick-ball{position:fixed;left:0;top:0;margin:0;transition:none;pointer-events:none;transform-origin:50% 50%;will-change:transform;}
+  .kick-ball .ballsvg{transition:none;}
+  .kick-trail{position:fixed;left:0;top:0;border-radius:50%;transform-origin:50% 50%;will-change:transform;}
+  .kick-leg{position:fixed;transform-origin:50% 0;will-change:transform;}
+  .kick-burst{position:fixed;width:70px;height:70px;border-radius:50%;border:5px solid var(--yellow);transform:translate(-50%,-50%);}
+  .ball.land{animation:landpulse .45s ease-out;}
+  @keyframes landpulse{0%{transform:scale(1.9);}100%{transform:scale(1);}}
+  .defender{position:absolute;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;background:var(--magenta);border:2px solid #000;color:var(--black-text);font-family:'Manrope',sans-serif;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;z-index:1;}
+
+  @media (prefers-reduced-motion:reduce){.side,.btn,.progress i,.ballsvg{transition:none;}.ball.land{animation:none;}.side:hover .ballsvg{transform:none;}.ball{transition:none;}.goal-banner{animation:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><a href="resources.html" style="color:var(--dim);text-decoration:none">← Free Tools</a> · <b>Value Bracket</b></div>
+    <div class="phase-tag" id="phaseTag">Pick</div>
+  </header>
+  <div id="app"></div>
+</div>
+
+<script>
+/* ====== CONFIG — everything the Values Ledger will need to hook into later ====== */
+const CONFIG = {
+  windowLabel: 'Past year',                       // which window this round is about
+  eyebrow: 'The past year',
+  pickCount: 5,                                   // how many values to pick first
+  keepRanked: 3,                                  // how many ranks the game settles (a top 3)
+  // Generic scenarios: they never name the values, so any two picks fit. Write them in the tense of the window
+  // (this set is for "the past year"; swap in a present/future set when wiring up the other windows).
+  // Four focus areas. Each one has its own pool of values and its own scenarios.
+  // Scenario styles: 'first' -> "Which did you put first?", 'more' -> cards read "More X", 'keep' -> "Which did you hold onto?"
+  // Scenarios never name the values. Written for "the past year" — swap in present/future wording when wiring up the other windows.
+  categories: {
+    wellness: {
+      label:'Wellness', blurb:'Body, mind, rest and joy', accent:'#4DEAF0',
+      values:["Well-being","Health","Balance","Contentment","Serenity","Peace","Joy","Fun","Leisure","Humor","Optimism","Hope","Gratitude","Self-respect","Self-discipline","Spirituality","Faith","Nature","Simplicity","Grace","Patience","Beauty","Intuition","Personal fulfillment","Wholeheartedness","Self-expression","Adventure","Travel","Curiosity"],
+      scenarios:[
+      {style:'first', text:"Your schedule was packed and your body was asking for a break.", ask:"Which did you put first?"},
+      {style:'first', text:"You were stressed and had one evening to yourself.", ask:"Which did you put first?"},
+      {style:'first', text:"A rough week made it hard to look after yourself.", ask:"Which did you put first?"},
+      {style:'first', text:"A rare quiet morning opened up.", ask:"Which did you put first?"},
+      {style:'first', text:"A busy season pulled you in several directions.", ask:"Which did you put first?"},
+      {style:'more', text:"Think about an ordinary week for your mind and body this year.", ask:"Which did you have more of?"},
+      {style:'more', text:"You looked at how you spent your free time.", ask:"Which did you have more of?"},
+      {style:'more', text:"A close friend watched how you looked after yourself.", ask:"Which would they say you had more of?"},
+      {style:'more', text:"Your mood, sleep and habits tell a story.", ask:"Which do they show more of?"},
+      {style:'keep', text:"A stressful stretch forced you to cut things back.", ask:"Which did you hold onto?"},
+      {style:'keep', text:"Your energy ran low and something had to go.", ask:"Which did you hold onto?"},
+      {style:'keep', text:"You could only protect one part of how you look after yourself.", ask:"Which did you hold onto?"}
+      ],
+      finalScenario:{style:'keep', text:"Final kick. Only one can stay as your number one for wellness.", ask:'Which do you keep?'}
+    },
+    career: {
+      label:'Career', blurb:'Work, growth and impact', accent:'#F5F53B',
+      values:["Ambition","Achievement","Success","Excellence","Competence","Confidence","Leadership","Initiative","Teamwork","Collaboration","Knowledge","Learning","Growth","Recognition","Pride","Vision","Usefulness","Contribution","Making a difference","Service","Creativity","Courage","Risk-taking","Truth","Uniqueness","Sportsmanship"],
+      scenarios:[
+      {style:'first', text:"Two deadlines landed on the same day.", ask:"Which did you put first?"},
+      {style:'first', text:"A big work decision came up with no time to think.", ask:"Which did you put first?"},
+      {style:'first', text:"A busy season at work stretched you thin.", ask:"Which did you put first?"},
+      {style:'first', text:"You had one hour of focused time at work.", ask:"Which did you put first?"},
+      {style:'first', text:"An opportunity showed up that you could not fully say yes to.", ask:"Which did you put first?"},
+      {style:'more', text:"Think about an ordinary workday this year.", ask:"Which did you have more of?"},
+      {style:'more', text:"A colleague watched how you worked.", ask:"Which would they say you had more of?"},
+      {style:'more', text:"Your calendar and inbox tell a story about your year at work.", ask:"Which do they show more of?"},
+      {style:'more', text:"A slow week at work opened up some room.", ask:"Which did you end up with more of?"},
+      {style:'keep', text:"Work got intense and something had to give.", ask:"Which did you hold onto?"},
+      {style:'keep', text:"A hard season at work tested you.", ask:"Which did you hold onto?"},
+      {style:'keep', text:"A project or job change meant letting something go.", ask:"Which did you hold onto?"}
+      ],
+      finalScenario:{style:'keep', text:"Final kick. Only one can stay as your number one for your career.", ask:'Which do you keep?'}
+    },
+    finances: {
+      label:'Finances', blurb:'Money, security and stability', accent:'#EE33EE',
+      values:["Financial security","Wealth","Thrift","Stability","Security","Safety","Job security","Resourcefulness","Efficiency","Order","Responsibility","Reliability","Independence","Freedom","Stewardship","Legacy","Future generations","Time","Accountability","Commitment","Fairness","Ethics","Integrity","Wisdom","Adaptability","Perseverance","Power","Environment"],
+      scenarios:[
+      {style:'first', text:"Money got tight for a stretch.", ask:"Which did you put first?"},
+      {style:'first', text:"An unexpected bill landed.", ask:"Which did you put first?"},
+      {style:'first', text:"You had some extra money and a few ways to use it.", ask:"Which did you put first?"},
+      {style:'first', text:"A big purchase decision came up.", ask:"Which did you put first?"},
+      {style:'first', text:"A money decision had to be made fast.", ask:"Which did you put first?"},
+      {style:'more', text:"Think about an ordinary month with your money this year.", ask:"Which did you have more of?"},
+      {style:'more', text:"Your bank statement tells a story.", ask:"Which does it show more of?"},
+      {style:'more', text:"Someone looked at how you handled money this year.", ask:"Which would they say you had more of?"},
+      {style:'more', text:"A good month left a little extra.", ask:"Which did you end up with more of?"},
+      {style:'keep', text:"Money got tight and something had to give.", ask:"Which did you hold onto?"},
+      {style:'keep', text:"A financial setback forced some cuts.", ask:"Which did you hold onto?"},
+      {style:'keep', text:"You could only protect one part of your financial life.", ask:"Which did you hold onto?"}
+      ],
+      finalScenario:{style:'keep', text:"Final kick. Only one can stay as your number one for your finances.", ask:'Which do you keep?'}
+    },
+    relationships: {
+      label:'Relationships', blurb:'Family, friends and community', accent:'#7CFF6B',
+      values:["Family","Friendship","Love","Connection","Community","Home","Parenting","Loyalty","Trust","Compassion","Kindness","Forgiveness","Generosity","Understanding","Respect","Harmony","Inclusion","Openness","Vulnerability","Authenticity","Humility","Cooperation","Tradition","Dignity","Equality","Diversity","Altruism","Giving back","Honesty","Justice","Patriotism"],
+      scenarios:[
+      {style:'first', text:"Two people needed you at the same time.", ask:"Which did you put first?"},
+      {style:'first', text:"A friend and a family commitment landed on the same day.", ask:"Which did you put first?"},
+      {style:'first', text:"Someone close reached out at a bad moment.", ask:"Which did you put first?"},
+      {style:'first', text:"You had one free evening to spend with others.", ask:"Which did you put first?"},
+      {style:'first', text:"A disagreement with someone you care about came up.", ask:"Which did you put first?"},
+      {style:'more', text:"Think about an ordinary week with the people closest to you.", ask:"Which did you have more of?"},
+      {style:'more', text:"A close friend watched how you showed up for people.", ask:"Which would they say you had more of?"},
+      {style:'more', text:"Your texts and calendar tell a story about your relationships.", ask:"Which do they show more of?"},
+      {style:'more', text:"A free weekend opened up with people you love.", ask:"Which did you end up with more of?"},
+      {style:'keep', text:"A relationship went through a hard stretch.", ask:"Which did you hold onto?"},
+      {style:'keep', text:"You did not have the energy to give everyone everything.", ask:"Which did you hold onto?"},
+      {style:'keep', text:"Something had to give in your social life.", ask:"Which did you hold onto?"}
+      ],
+      finalScenario:{style:'keep', text:"Final kick. Only one can stay as your number one in your relationships.", ask:'Which do you keep?'}
+    }
+  },
+  onComplete: null                                // function({ranked, others, champion, seed}) — set this when wiring into the ledger
+};
+
+const MASTER_LIST = [
+"Community","Curiosity","Freedom","Learning","Well-being","Authenticity","Compassion","Efficiency","Reliability","Travel",
+"Adaptability","Ambition","Connection","Equality","Financial security","Gratitude","Independence","Knowledge","Resourcefulness",
+"Accountability","Achievement","Adventure","Altruism","Balance","Beauty","Collaboration","Commitment","Competence","Confidence",
+"Contentment","Contribution","Cooperation","Courage","Creativity","Dignity","Diversity","Environment","Ethics","Excellence",
+"Fairness","Faith","Family","Stability","Forgiveness","Friendship","Fun","Future generations","Generosity","Giving back",
+"Grace","Growth","Harmony","Health","Home","Honesty","Hope","Humility","Humor","Inclusion","Initiative","Integrity","Intuition",
+"Job security","Joy","Justice","Kindness","Leadership","Legacy","Leisure","Love","Loyalty","Making a difference","Nature",
+"Openness","Optimism","Order","Parenting","Patience","Patriotism","Peace","Perseverance","Personal fulfillment","Power","Pride",
+"Recognition","Respect","Responsibility","Risk-taking","Safety","Security","Self-discipline","Self-expression","Self-respect",
+"Serenity","Service","Simplicity","Spirituality","Sportsmanship","Stewardship","Success","Teamwork","Thrift","Time","Tradition",
+"Trust","Truth","Understanding","Uniqueness","Usefulness","Vision","Vulnerability","Wealth","Wholeheartedness","Wisdom"
+];
+
+/* ---------- state ---------- */
+const ui = {
+  phase: 'cat',      // cat | pick | play | done
+  cat: null,         // key into CONFIG.categories
+  picks: [],
+  seed: 0,
+  matches: [],
+  results: {},       // matchId -> {winner, loser}
+  history: [],       // matchIds in the order they were decided (for undo)
+  busy: false,
+  seedOrder: [],
+  champions: []      // champion of each finished run on the same ten values
+};
+
+function cat(){ return CONFIG.categories[ui.cat]; }
+function el(html){ const d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstElementChild; }
+function esc(s){ return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+
+/* ---------- round-robin definition ----------
+   5 values → every value meets every other value once (10 questions, 5 rounds of 2).
+   The top 3 come from the win totals. When wins are level inside the top 3, head-to-head decides it;
+   if that is still circular (A beat B, B beat C, C beat A) the game adds "extra time" questions until it is settled.
+   Extra time never counts toward the win totals — it only breaks ties between the values that are level. */
+const BASE_STEPS = 10;
+const EXTRA_SCENARIO = {style:'keep', text:'Extra time. These two are level.', ask:'Which do you hold onto?'};
+
+function buildMatches(seed, picks){
+  const rng = mulberry32(seed);
+  const s = picks.slice();
+  for(let i=s.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1)); [s[i],s[j]]=[s[j],s[i]]; }
+  ui.seedOrder = s;
+  // circle method: 5 values + a bye → 5 rounds, each value plays at most once per round
+  let arr = [0,1,2,3,4,null];
+  const pairs = [];
+  for(let r=0;r<5;r++){
+    for(let i=0;i<3;i++){ const x=arr[i], y=arr[5-i]; if(x!==null && y!==null) pairs.push({r:r+1, a:s[x], b:s[y]}); }
+    arr = [arr[0], arr[5], ...arr.slice(1,5)];
+  }
+  const sc = cat().scenarios.slice();
+  for(let i=sc.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1)); [sc[i],sc[j]]=[sc[j],sc[i]]; }
+  return pairs.map((pr,i)=>({ id:'R'+(i+1), kind:'rr', round:'Round '+pr.r+' of 5', a:pr.a, b:pr.b, flip: rng()<0.5, scenario: sc[i % sc.length] }));
+}
+function resolve(ref){ return ref; }
+function nextMatch(){
+  return ui.matches.find(m=>!ui.results[m.id]) || null;
+}
+function rrMatch(a,b){
+  return ui.matches.find(m=>m.kind==='rr' && ((m.a===a && m.b===b) || (m.a===b && m.b===a)));
+}
+/* Works out the standings from ui.results. Returns {wins, order, need}:
+   order = the values in ranked order (only the top 3 positions are guaranteed),
+   need  = [a,b] when an extra-time question is required, otherwise null. */
+function analyze(){
+  const picks = ui.picks, res = ui.results;
+  const wins = {}; picks.forEach(p=>wins[p]=0);
+  const rr = ui.matches.filter(m=>m.kind==='rr');
+  rr.forEach(m=>{ const r = res[m.id]; if(r) wins[r.winner]++; });
+  if(!rr.every(m=>res[m.id])) return {wins, order:null, need:null};
+
+  const seedIdx = v => ui.seedOrder.indexOf(v);
+  const extras = ui.matches.filter(m=>m.kind==='ex');
+  const exPlayed = (a,b)=> extras.filter(m=>(m.a===a&&m.b===b)||(m.a===b&&m.b===a)).length;
+
+  function orderGroup(members){
+    if(members.length === 1) return {order:members};
+    if(members.length === 2){
+      const w = res[rrMatch(members[0],members[1]).id].winner;
+      return {order:[w, members.find(v=>v!==w)]};
+    }
+    const score = v => {
+      let rrw = 0, exw = 0;
+      rr.forEach(m=>{ const r=res[m.id]; if(r && r.winner===v && members.includes(r.loser)) rrw++; });
+      extras.forEach(m=>{ const r=res[m.id]; if(r && r.winner===v && members.includes(r.loser)) exw++; });
+      return rrw*100 + exw;
+    };
+    const byScore = {};
+    members.forEach(v=>{ (byScore[score(v)] = byScore[score(v)] || []).push(v); });
+    const keys = Object.keys(byScore).map(Number).sort((x,y)=>y-x);
+    if(keys.length === 1){
+      // still a dead heat (a circle): ask about the pair that has been asked about least
+      let best = null;
+      for(let i=0;i<members.length;i++) for(let j=i+1;j<members.length;j++){
+        const a = members[i], b = members[j], n = exPlayed(a,b);
+        if(!best || n < best.n) best = {a,b,n};
+      }
+      return {need:[best.a, best.b]};
+    }
+    const out = [];
+    for(const k of keys){
+      const sub = orderGroup(byScore[k].slice().sort((x,y)=>seedIdx(x)-seedIdx(y)));
+      if(sub.need) return sub;
+      out.push(...sub.order);
+    }
+    return {order:out};
+  }
+
+  const sorted = picks.slice().sort((a,b)=> wins[b]-wins[a] || seedIdx(a)-seedIdx(b));
+  const groups = [];
+  sorted.forEach(v=>{ const g = groups[groups.length-1]; if(g && wins[g[0]]===wins[v]) g.push(v); else groups.push([v]); });
+  const order = []; let pos = 0;
+  for(const g of groups){
+    if(pos < CONFIG.keepRanked){
+      const r = orderGroup(g);
+      if(r.need) return {wins, order:null, need:r.need};
+      order.push(...r.order);
+    } else order.push(...g);
+    pos += g.length;
+  }
+  return {wins, order, need:null};
+}
+// adds an "extra time" question when the game needs one
+function ensureExtra(){
+  if(nextMatch()) return;
+  const a = analyze();
+  if(a.need){
+    const n = ui.matches.filter(m=>m.kind==='ex').length + 1;
+    ui.matches.push({ id:'X'+n, kind:'ex', round:'Extra time', a:a.need[0], b:a.need[1], flip: Math.random()<0.5, scenario:EXTRA_SCENARIO });
+  }
+}
+function isFinished(){ return !nextMatch() && !analyze().need; }
+function ranking(){
+  const a = analyze();
+  if(!a.order || !isFinished()) return Array(CONFIG.keepRanked).fill(null);
+  return a.order.slice(0, CONFIG.keepRanked);
+}
+
+/* ---------- flow ---------- */
+function startRun(newSeed){
+  ui.seed = newSeed || Math.floor(10000 + Math.random()*89999);
+  ui.matches = buildMatches(ui.seed, ui.picks);
+  ui.results = {}; ui.history = []; ui.busy = false;
+  ui.phase = 'play';
+  render();
+  window.scrollTo({top:0});
+}
+function choose(winner){
+  if(ui.busy || ui.phase !== 'play') return;
+  const m = nextMatch(); if(!m) return;
+  const a = resolve(m.a), b = resolve(m.b);
+  if(winner !== a && winner !== b) return;
+  ui.busy = true;
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sides = Array.from(document.querySelectorAll('.side'));
+  const chosen = sides.find(b=>b.dataset.v === winner);
+  sides.forEach(btn=>{ if(btn !== chosen) btn.classList.add('dim'); });
+  const record = ()=>{ ui.results[m.id] = { winner, loser: winner === a ? b : a }; };
+  // will this answer end the game? (decides whether the ball heads for the goal or stays in play)
+  record(); const ends = isFinished(); delete ui.results[m.id];
+  const step = ends ? BALL_PATH.length-1 : Math.min(Object.keys(ui.results).length + 1, BALL_PATH.length-2);
+  const commit = ()=>{
+    record();
+    ui.history.push(m.id);
+    ui.busy = false;
+    ui.kicked = true;
+    ensureExtra();
+    if(!nextMatch()) finishRun(); else render();
+    ui.kicked = false;
+  };
+  if(reduce || !chosen || !chosen.animate){ setTimeout(commit, 90); return; }
+  kickAnimation(chosen, step, commit);
+}
+
+/* ---------- the kick: the chosen ball is booted off toward the pitch, shrinking as it goes ---------- */
+const LEG_SVG = c => `<svg viewBox="0 0 60 120" width="100%" height="100%" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
+  <rect x="18" y="0" width="24" height="86" rx="7" fill="#fff" stroke="#000" stroke-width="3"/>
+  <rect x="18" y="62" width="24" height="13" fill="#F5F53B" stroke="#000" stroke-width="2"/>
+  <path d="M15 86 H45 V100 Q45 104 53 106 Q59 108 59 114 V118 H11 Q7 118 7 112 V94 Z" fill="${c}" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
+</svg>`;
+function kickAnimation(btn, step, done){
+  const r0 = btn.getBoundingClientRect();
+  const d = r0.width, cx = r0.left + d/2, cy = r0.top + d/2;
+  const isS2 = btn.classList.contains('s2'), accent = isS2 ? '#EE33EE' : '#4DEAF0';
+  const pr = document.querySelector('.pitch').getBoundingClientRect();
+  const [tx, ty] = BALL_PATH[Math.min(step, BALL_PATH.length-1)];
+  const ex = Math.min(innerWidth-20, Math.max(20, pr.left + pr.width*tx/100));
+  const ey = Math.min(innerHeight-20, Math.max(20, pr.top + pr.height*ty/100));
+  const targetSize = step >= BALL_PATH.length-1 ? 34 : 30;
+  const endScale = targetSize / d;
+
+  const layer = document.createElement('div');
+  layer.className = 'kick-layer';
+  document.body.appendChild(layer);
+
+  // the ball being kicked (a copy of the one they clicked)
+  const ball = btn.cloneNode(true);
+  ball.className = 'side kick-ball ' + (isS2 ? 's2' : 's1');
+  ball.removeAttribute('aria-label');
+  // the original is hidden, so give the copy its own clip-path id or its panels would not draw
+  ball.querySelectorAll('clipPath').forEach(c=>c.id = 'k' + c.id);
+  ball.querySelectorAll('[clip-path]').forEach(g=>g.setAttribute('clip-path', g.getAttribute('clip-path').replace('#','#k')));
+  ball.style.width = ball.style.height = d + 'px';
+  ball.style.transform = `translate(${cx-d/2}px,${cy-d/2}px)`;
+  layer.appendChild(ball);
+  btn.classList.add('kicked');
+
+  // the boot
+  // the leg hangs from a hip to the left of the ball and swings up into its lower-left edge
+  const L = d * 0.9;
+  const leg = document.createElement('div');
+  leg.className = 'kick-leg';
+  leg.style.width = (L/2) + 'px'; leg.style.height = L + 'px';
+  leg.style.left = (cx - 1.13*d - L/4) + 'px';
+  leg.style.top = (cy - 0.2*d) + 'px';
+  leg.innerHTML = LEG_SVG(accent);
+  layer.appendChild(leg);
+  leg.animate([
+    {transform:'rotate(35deg)', opacity:0, offset:0},
+    {transform:'rotate(28deg)', opacity:1, offset:.15},
+    {transform:'rotate(-60deg)', opacity:1, offset:.55},
+    {transform:'rotate(-88deg)', opacity:1, offset:.85},
+    {transform:'rotate(-95deg)', opacity:0, offset:1}
+  ], {duration:330, easing:'ease-in', fill:'forwards'});
+
+  const CONTACT = 170, FLIGHT = 760;
+
+  // impact burst
+  setTimeout(()=>{
+    const burst = document.createElement('div');
+    burst.className = 'kick-burst';
+    burst.style.left = (cx - 0.34*d) + 'px'; burst.style.top = (cy + 0.2*d) + 'px';
+    layer.appendChild(burst);
+    burst.animate([{transform:'translate(-50%,-50%) scale(.2)',opacity:1},{transform:'translate(-50%,-50%) scale(1.7)',opacity:0}],{duration:300,easing:'ease-out',fill:'forwards'});
+    ball.animate([{scale:'1 1'},{scale:'.82 1.08',offset:.4},{scale:'1 1'}],{duration:CONTACT*0.7});
+  }, CONTACT - 40);
+
+  // flight path: arcs up, starts big, ends pitch-ball sized
+  const mx = (cx + ex)/2, my = Math.max(24, Math.min(cy, ey) - Math.max(90, d*0.7));
+  const N = 28, frames = [];
+  for(let i=0;i<=N;i++){
+    const t = i/N, e = 1 - Math.pow(1-t, 2.1);
+    const x = (1-e)*(1-e)*cx + 2*(1-e)*e*mx + e*e*ex;
+    const y = (1-e)*(1-e)*cy + 2*(1-e)*e*my + e*e*ey;
+    const sc = 1 + (endScale-1)*e;
+    frames.push({transform:`translate(${x-d/2}px,${y-d/2}px) rotate(${(e*600).toFixed(1)}deg) scale(${sc.toFixed(3)})`, offset:t});
+  }
+  // trail
+  for(let k=1;k<=4;k++){
+    const g = document.createElement('div');
+    g.className = 'kick-trail';
+    g.style.width = g.style.height = d + 'px';
+    g.style.background = `radial-gradient(circle, ${accent} 0 55%, transparent 70%)`;
+    g.style.opacity = '0';
+    layer.insertBefore(g, ball);
+    g.animate(frames.map(f=>({...f, opacity: 0.38 - k*0.07})), {duration:FLIGHT, delay:CONTACT + k*38, easing:'linear', fill:'forwards'});
+  }
+  ball.querySelector('.plate').animate([{opacity:1},{opacity:0}],{duration:320,delay:CONTACT,fill:'forwards'});
+  const fly = ball.animate(frames, {duration:FLIGHT, delay:CONTACT, easing:'linear', fill:'forwards'});
+  // until the kick lands the ball sits at its start spot
+  ball.style.transform = `translate(${cx-d/2}px,${cy-d/2}px)`;
+
+  fly.onfinish = ()=>{
+    const ring = document.createElement('div');
+    ring.className = 'kick-burst';
+    ring.style.left = ex + 'px'; ring.style.top = ey + 'px';
+    layer.appendChild(ring);
+    ring.animate([{transform:'translate(-50%,-50%) scale(.3)',opacity:1},{transform:'translate(-50%,-50%) scale(1.5)',opacity:0}],{duration:380,easing:'ease-out',fill:'forwards'});
+    ball.style.visibility = 'hidden';
+    done();
+    setTimeout(()=>layer.remove(), 420);
+  };
+}
+function undo(){
+  if(ui.busy || !ui.history.length || ui.phase !== 'play') return;
+  const id = ui.history.pop();
+  delete ui.results[id];
+  if(id.startsWith('X')) ui.matches = ui.matches.filter(m=>m.id!==id);   // an extra-time question is re-created if still needed
+  ensureExtra();
+  render();
+}
+function finishRun(){
+  const r = ranking();
+  ui.champions.push(r[0]);
+  ui.phase = 'done';
+  render();
+  window.scrollTo({top:0});
+  if(typeof CONFIG.onComplete === 'function'){
+    CONFIG.onComplete({ ranked:r, others:ui.picks.filter(p=>!r.includes(p)), champion:r[0], seed:ui.seed, wins:analyze().wins });
+  }
+}
+
+/* ---------- views ---------- */
+function render(){
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+  document.getElementById('phaseTag').textContent = ui.phase==='cat' ? 'Step 1 · Focus' : ui.phase==='pick' ? 'Step 2 · Pick' : ui.phase==='play' ? 'Step 3 · Bracket' : 'Results';
+  app.appendChild(ui.phase==='cat' ? viewCat() : ui.phase==='pick' ? viewPick() : ui.phase==='play' ? viewPlay() : viewDone());
+}
+
+function viewCat(){
+  const keys = Object.keys(CONFIG.categories);
+  const wrap = el(`<div>
+    <span class="eyebrow">${esc(CONFIG.eyebrow)}</span>
+    <h1 class="display">Where do you want to start?</h1>
+    <p class="lede">Choose one area of life to look at. You'll pick your top ${CONFIG.pickCount} values from just that area, then play to find your top ${CONFIG.keepRanked}. You can come back and play the others.</p>
+    <div class="cat-grid">
+      ${keys.map(k=>{ const c = CONFIG.categories[k]; return `<button class="cat" data-k="${k}" style="--accent:${c.accent}">
+        <span class="cat-name">${esc(c.label)}</span>
+        <span class="cat-blurb">${esc(c.blurb)}</span>
+        <span class="cat-count">${c.values.length} values</span>
+      </button>`; }).join('')}
+    </div>
+  </div>`);
+  wrap.querySelectorAll('.cat').forEach(b=>{
+    b.onclick = ()=>{
+      if(ui.cat !== b.dataset.k){ ui.picks = []; ui.champions = []; }
+      ui.cat = b.dataset.k; ui.phase = 'pick'; render(); window.scrollTo({top:0});
+    };
+  });
+  return wrap;
+}
+
+function viewPick(){
+  const wrap = el(`<div>
+    <div class="action-bar">
+      <button class="btn ghost" id="areaBtn">Change area</button>
+      <button class="btn ghost" id="clearBtn">Clear</button>
+      <button class="btn yellow" id="startBtn">Start the game</button>
+    </div>
+    <span class="eyebrow">${esc(CONFIG.eyebrow)} · ${esc(cat().label)}</span>
+    <h1 class="display">Pick your top ${CONFIG.pickCount} ${esc(cat().label.toLowerCase())} values.</h1>
+    <div class="help-card">
+      <p><b>Need help?</b> These are your <b>lived</b> values — the ones you chose every day, not just ones you'd say matter. If you value health and eat clean seven days a week, and given the choice between a drive-through and home you'd always pick home, that's a lived value.</p>
+      <p>Pick ${CONFIG.pickCount}. Next, they go head-to-head to find your top ${CONFIG.keepRanked}.</p>
+    </div>
+    <div class="count-line" id="count"></div>
+    <div class="card" style="--accent:${cat().accent}">
+      <div class="card-head"><span class="title">${esc(CONFIG.windowLabel)} · ${esc(cat().label)} · Top ${CONFIG.pickCount}</span><span class="meta" id="meta"></span></div>
+      <div class="grid-select" id="grid"></div>
+    </div>
+  </div>`);
+  const grid = wrap.querySelector('#grid');
+  grid.innerHTML = cat().values.slice().sort().map(w=>`<button class="tile" data-w="${esc(w)}" aria-pressed="false">${esc(w)}</button>`).join('');
+  const startBtn = wrap.querySelector('#startBtn');
+
+  // updates in place so the page never jumps while picking
+  function paint(){
+    const n = ui.picks.length, full = n >= CONFIG.pickCount;
+    grid.querySelectorAll('.tile').forEach(t=>{
+      const on = ui.picks.includes(t.dataset.w);
+      t.classList.toggle('picked', on);
+      t.classList.toggle('disabled', full && !on);
+      t.setAttribute('aria-pressed', String(on));
+    });
+    wrap.querySelector('#meta').textContent = `${n} / ${CONFIG.pickCount}`;
+    wrap.querySelector('#count').innerHTML = full ? `<b>${n}</b> picked — ready.` : `<b>${n}</b> of ${CONFIG.pickCount} picked — ${CONFIG.pickCount-n} to go.`;
+    startBtn.disabled = !full;
+  }
+  grid.addEventListener('click', e=>{
+    const t = e.target.closest('.tile'); if(!t) return;
+    const w = t.dataset.w, i = ui.picks.indexOf(w);
+    if(i > -1) ui.picks.splice(i,1);
+    else if(ui.picks.length < CONFIG.pickCount) ui.picks.push(w);
+    paint();
+  });
+  wrap.querySelector('#areaBtn').onclick = ()=>{ ui.phase = 'cat'; render(); window.scrollTo({top:0}); };
+  wrap.querySelector('#clearBtn').onclick = ()=>{ ui.picks = []; ui.champions = []; paint(); };
+  startBtn.onclick = ()=>{ ui.champions = []; startRun(); };
+  paint();
+  return wrap;
+}
+
+function standingsHtml(showAll){
+  const a = analyze();
+  const played = {}; ui.picks.forEach(p=>played[p]=0);
+  ui.matches.filter(m=>m.kind==='rr').forEach(m=>{ if(ui.results[m.id]){ played[m.a]++; played[m.b]++; } });
+  const order = (a.order && isFinished()) ? a.order : ui.picks.slice().sort((x,y)=> a.wins[y]-a.wins[x] || ui.seedOrder.indexOf(x)-ui.seedOrder.indexOf(y));
+  return `<div class="leader">
+    <div class="card-head"><span class="title">Standings</span><span class="meta">wins · played</span></div>
+    <ol>${order.map((name,i)=>`<li class="${i<CONFIG.keepRanked?'set':'unset'}"><span class="n">${i+1}</span><span class="name" style="flex:1">${esc(name)}</span><span class="rec">${a.wins[name]} · ${played[name]}</span></li>`).join('')}</ol>
+    <div class="note">${showAll ? 'The top 3 are your ranked values.' : 'Live standings — they can change until every question is answered.'}</div>
+  </div>`;
+}
+function top3Html(){
+  const r = ranking();
+  return `<div class="leader">
+    <div class="card-head"><span class="title">Your top ${CONFIG.keepRanked}</span><span class="meta">ranked</span></div>
+    <ol>${r.map((name,i)=>`<li class="${name?'set':'unset'}"><span class="n">${i+1}</span><span class="name">${name?esc(name):'to be decided'}</span></li>`).join('')}</ol>
+  </div>`;
+}
+
+const BALL_SVG = `<svg viewBox="0 0 24 24" width="100%" height="100%" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#fff" stroke="#000" stroke-width="1.5"/><polygon points="12,7 16,10 14.5,15 9.5,15 8,10" fill="#000"/><path d="M12 7V2M16 10l5-2M14.5 15l3.5 4.5M9.5 15L6 19.5M8 10L3 8" stroke="#000" stroke-width="1.2" fill="none"/></svg>`;
+/* ball position (x%, y%) after each answer: zig-zags up the pitch, gets tackled and pushed back around the halfway mark, then drives on to the goal */
+const TACKLE_AT = 5;   // after this many answers (halfway) a defender tackles the ball and pushes it back
+const BALL_PATH = [
+  [5,50],      // 0: kickoff
+  [14,30],     // 1
+  [23,67],     // 2
+  [33,34],     // 3
+  [43,62],     // 4
+  [31,75],     // 5: tackled, pushed back
+  [44,44],     // 6: wins it back
+  [56,26],     // 7
+  [68,62],     // 8
+  [80,36],     // 9: edge of the box (extra time is played here)
+  [94,50]      // 10: goal
+];
+function zoneName(done, scored){
+  if(scored) return 'GOAL!';
+  if(done >= BASE_STEPS) return 'Extra time — level!';
+  if(done === TACKLE_AT) return 'Tackled — pushed back!';
+  if(done === TACKLE_AT + 1) return 'Winning it back';
+  const x = BALL_PATH[done][0];
+  return x < 22 ? 'Kickoff' : x < 48 ? 'Midfield' : x < 75 ? 'Final third' : 'Penalty box';
+}
+function pitchHtml(done, total, scored){
+  const p = done/total;
+  const [left, top] = BALL_PATH[scored ? BALL_PATH.length-1 : Math.min(done, BALL_PATH.length-2)];
+  const dots = Array.from({length:total},(_,i)=>`<i class="${i<done?'on':''}"></i>`).join('');
+  const left2 = Math.max(1, Math.min(total-done, BASE_STEPS-done > 0 ? BASE_STEPS-done : 1));
+  return `<div class="pitch ${scored?'scored':''}" role="img" aria-label="Ball is ${done} of ${total} steps toward the goal">
+      <div class="p-half"></div><div class="p-circle"></div><div class="p-box l"></div><div class="p-box r"></div>
+      <div class="p-goal"><span>GOAL</span></div>
+      ${done === TACKLE_AT && !scored ? '<div class="defender" style="left:46%;top:60%">5</div>' : ''}
+      <div class="ball ${ui.kicked ? 'land' : ''}" style="left:${left}%;top:${top}%">${BALL_SVG}</div>
+      ${scored ? '<div class="goal-banner">GOOOAL!</div>' : ''}
+    </div>
+    <div class="pitch-foot"><div class="pdots">${dots}</div><div class="zone"><b>${zoneName(done,scored)}</b>${scored ? '' : ` · ${left2} ${left2===1?'kick':'kicks'} to the goal`}</div></div>`;
+}
+
+function ballFace(uid, color){
+  const pent = (cx,cy,r,rot)=>Array.from({length:5},(_,k)=>{ const t=(rot+72*k)*Math.PI/180; return (cx+r*Math.cos(t)).toFixed(1)+','+(cy+r*Math.sin(t)).toFixed(1); }).join(' ');
+  let patches='', seams='';
+  for(let k=0;k<5;k++){
+    const th=-90+72*k, t=th*Math.PI/180;
+    const cx=50+50*Math.cos(t), cy=50+50*Math.sin(t);
+    patches += `<polygon points="${pent(cx,cy,14,th+180)}" fill="#0B0B0B" stroke="#0B0B0B" stroke-width="1" stroke-linejoin="round"/>`;
+    const x1=50+14*Math.cos(t), y1=50+14*Math.sin(t), x2=50+37*Math.cos(t), y2=50+37*Math.sin(t);
+    seams += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+  }
+  return `<svg class="ballsvg" viewBox="0 0 100 100" aria-hidden="true">
+    <defs><clipPath id="bc${uid}"><circle cx="50" cy="50" r="47"/></clipPath></defs>
+    <circle cx="50" cy="50" r="47" fill="#fff"/>
+    <g clip-path="url(#bc${uid})">${patches}<g stroke="#0B0B0B" stroke-width="2" stroke-linecap="round">${seams}</g>
+      <polygon points="${pent(50,50,15,-90)}" fill="${color}" stroke="#0B0B0B" stroke-width="2" stroke-linejoin="round"/></g>
+    <circle cx="50" cy="50" r="46.5" fill="none" stroke="#fff" stroke-width="3"/>
+  </svg>`;
+}
+function viewPlay(){
+  const m = nextMatch();
+  const total = ui.matches.length, done = Object.keys(ui.results).length;
+  const a = resolve(m.a), b = resolve(m.b);
+  const first = m.flip ? b : a, second = m.flip ? a : b;
+  // long words shrink so they never split mid-word on the ball
+  const fs = v => { const w = Math.max(...label(v).split(' ').map(x=>x.length)); return w<=8 ? 1 : w<=10 ? .86 : w<=12 ? .74 : .62; };
+  const label = v => m.scenario.style === 'more' ? 'More ' + v : v;   // "More Travel" reads as the answer to "have more of?"
+  const wrap = el(`<div>
+    <div class="action-bar">
+      <button class="btn ghost" id="undoBtn" ${ui.history.length?'':'disabled'}>Undo</button>
+      <button class="btn ghost" id="changeBtn">Change values</button>
+    </div>
+    ${pitchHtml(done,total,false)}
+    <div class="round-label" style="margin-top:22px">${esc(m.round)} · question ${done+1} of ${total}</div>
+    <h1 class="q">${esc(m.scenario.text)} <span class="ask">${esc(m.scenario.ask)}</span></h1>
+    <div class="duel">
+      <button class="side s1" data-v="${esc(first)}" aria-label="${esc(label(first))}">${ballFace(1,'#4DEAF0')}<span class="plate" style="--fs:${fs(first)}">${esc(label(first))}</span></button>
+      <div class="or">or</div>
+      <button class="side s2" data-v="${esc(second)}" aria-label="${esc(label(second))}">${ballFace(2,'#EE33EE')}<span class="plate" style="--fs:${fs(second)}">${esc(label(second))}</span></button>
+    </div>
+    <p class="hint">Each answer moves the ball toward the goal. Click or tap one · or press ← → (or 1 and 2). Go with your gut.</p>
+    <div class="board">
+      <div>${standingsHtml(false)}</div>
+      <div class="hint" style="margin:0">Every value meets every other value once. The values with the most wins make your top ${CONFIG.keepRanked}. If two are level, head-to-head decides; if it's still a circle, the game plays extra time.</div>
+    </div>
+  </div>`);
+  wrap.querySelectorAll('.side').forEach(b=>{ b.onclick = ()=> choose(b.dataset.v); });
+  wrap.querySelector('#undoBtn').onclick = undo;
+  const ch = wrap.querySelector('#changeBtn');
+  let armed = false, t = 0;
+  ch.onclick = ()=>{
+    if(!armed){ armed = true; ch.textContent = 'Tap again to leave'; t = setTimeout(()=>{ armed=false; ch.textContent='Change values'; }, 3000); }
+    else { clearTimeout(t); ui.phase = 'pick'; render(); }
+  };
+  return wrap;
+}
+
+function viewDone(){
+  const r = ranking();
+  const others = ui.picks.filter(p=>!r.includes(p));
+  const runs = ui.champions.length;
+  let signal = '';
+  if(runs >= 2){
+    const last = ui.champions[runs-1], prev = ui.champions[runs-2];
+    const tally = ui.champions.filter(c=>c===last).length;
+    signal = last === prev
+      ? `<b>${esc(last)}</b> won again with a fresh schedule (${tally} of ${runs} runs). When the same value wins from a different path, that's a strong signal it's the real one.`
+      : `A different champion this time (<b>${esc(prev)}</b> before, <b>${esc(last)}</b> now). That usually means these two are close — worth noticing which one you hesitated on.`;
+  }
+  const wrap = el(`<div>
+    <div class="action-bar">
+      <button class="btn ghost" id="areaBtn">Another area</button>
+      <button class="btn ghost" id="changeBtn">Pick new values</button>
+      <button class="btn cyan" id="againBtn">Play again · new seed</button>
+    </div>
+    ${pitchHtml(ui.matches.length, ui.matches.length, true)}
+    <span class="eyebrow" style="margin-top:22px">${esc(CONFIG.eyebrow)} · ${esc(cat().label)} · your top ${CONFIG.keepRanked}</span>
+    <h1 class="display">Here's how they really stack up.</h1>
+    <div class="champ"><small>#1 · Champion</small><div class="big">${esc(r[0])}</div></div>
+    <div class="board">
+      <div>
+        <h3 class="sec">Also in your five</h3>
+        <div class="extras">${others.map(o=>`<span>${esc(o)}</span>`).join('')}</div>
+        ${signal ? `<div class="signal">${signal}</div>` : `<div class="signal">Tip: <b>Play again</b> shuffles the questions with a new seed. If the same value keeps winning, you can trust it.</div>`}
+        <h3 class="sec">All the answers</h3>
+        ${standingsHtml(true)}
+        <p class="hint">Seed ${ui.seed}</p>
+      </div>
+      ${top3Html()}
+    </div>
+  </div>`);
+  wrap.querySelector('#againBtn').onclick = ()=> startRun();
+  wrap.querySelector('#areaBtn').onclick = ()=>{ ui.phase = 'cat'; render(); window.scrollTo({top:0}); };
+  wrap.querySelector('#changeBtn').onclick = ()=>{ ui.phase = 'pick'; render(); window.scrollTo({top:0}); };
+  return wrap;
+}
+
+document.addEventListener('keydown', e=>{
+  if(ui.phase !== 'play' || e.ctrlKey || e.metaKey || e.altKey) return;
+  const sides = document.querySelectorAll('.side'); if(sides.length < 2) return;
+  if(e.key === 'ArrowLeft' || e.key === '1') choose(sides[0].dataset.v);
+  else if(e.key === 'ArrowRight' || e.key === '2') choose(sides[1].dataset.v);
+  else if((e.key === 'z' || e.key === 'Z' || e.key === 'Backspace')) undo();
+});
+
+render();
+</script>
+</body>
+</html>
